@@ -148,7 +148,4 @@ for (const [file, title, make] of DOCS) {
   console.log('→', path.relative(root, pdf));
   printPdf(html, pdf);
 }
-// the AI journal is also published with the site (linked from the report)
-const journal = path.join(outDir, 'AI_journal_EN_draft.pdf');
-if (fs.existsSync(journal)) fs.copyFileSync(journal, path.join(root, 'public', 'ai-journal.pdf'));
 console.log('done');

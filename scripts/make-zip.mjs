@@ -29,9 +29,6 @@ if (fs.existsSync(pdf)) fs.copyFileSync(pdf, path.join(dir, 'Dossier_complet.pdf
 const easy = path.join(root, 'docs', 'Le_sujet_explique_FR.pdf');
 if (fs.existsSync(easy)) fs.copyFileSync(easy, path.join(dir, 'Le_sujet_explique.pdf'));
 fs.copyFileSync(path.join(root, 'docs', 'LISEZ-MOI.txt'), path.join(dir, 'LISEZ-MOI.txt'));
-// the report links ./ai-journal.pdf: keep it next to the single-file site
-const aij = path.join(root, 'public', 'ai-journal.pdf');
-if (fs.existsSync(aij)) fs.copyFileSync(aij, path.join(dir, 'ai-journal.pdf'));
 
 const skip = new Set(['node_modules', 'dist', 'dist-single', '.DS_Store', 'html']);
 function copy(src, dst) {

@@ -422,7 +422,7 @@ Pour une démonstration, la figure 1 (bouger une caméra) et le jeu (page <em>Pl
 <tr><td>Un rapport avec une bibliographie en forme standard</td><td>page <em>Report</em>, section R.7</td><td class="ok">fait</td></tr>
 <tr><td>Contributions individuelles clairement indiquées</td><td>« Explained by » sur chaque chapitre, rapport R.5</td><td class="todo">répartition du code à préciser (document « Work split »)</td></tr>
 <tr><td>Reconnaître l'aide de l'IA dans le rapport, citer ses sources</td><td>rapport R.6</td><td class="ok">fait</td></tr>
-<tr><td>Journal IA : outils, prompts, vérifications, décisions</td><td>docs/AI_journal_EN_draft.pdf, lié depuis le rapport</td><td class="todo">parties 4 et 5 à écrire nous-mêmes</td></tr>
+<tr><td>Journal IA : outils, prompts, vérifications, décisions</td><td>docs/AI_journal_EN_draft.pdf, à fournir avec la remise finale</td><td class="todo">parties 4 et 5 à écrire nous-mêmes</td></tr>
 <tr><td>Une courte présentation</td><td>l'accueil sert de support ; plan dans le dossier complet (partie C)</td><td class="todo">à répéter</td></tr>
 <tr><td>Un lien public vers la page (ex. GitHub Pages)</td><td>workflow prêt dans le projet</td><td class="todo">à publier</td></tr>
 <tr><td>Un zip (contenu de la page + tout le code + instructions) sur l'UV</td><td>Guarding-Walls-Contiguously.zip</td><td class="todo">prêt, à déposer</td></tr>

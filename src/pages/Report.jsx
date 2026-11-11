@@ -115,7 +115,7 @@ export default function Report() {
         </table>
         <p>
           The implementation (solver, figures, game) and the design of the site are joint work. The detailed split of what each of us did, and what was done with AI
-          assistance, is given in our work-split document and in our AI journal (Section R.6).
+          assistance, will be given in our work-split document and in our AI journal, provided with the final submission (Section R.6).
         </p>
       </Sub>
 
@@ -126,11 +126,8 @@ export default function Report() {
           they are computed by our implementation, and no figure was copied from the papers.
         </p>
         <p>
-          <b>Use of AI.</b> We used an AI assistant (Claude, by Anthropic, through Claude Code) intensively: to read the papers with us, to write the JavaScript
-          implementation and its tests, to design the figures and the site, and to draft explanatory documents. We checked its output against the papers and with
-          automatic tests against brute-force computations; several of its first results were wrong and were corrected (for example the choice of the ray hit in Lemma 6.2),
-          and the importance of the simple-polygon assumption was pointed out by one of us. Our <a href="./ai-journal.pdf">AI journal</a> lists the tools, the significant
-          prompts and answers, how we checked, corrected or rejected the results, and our own decisions.
+          <b>Use of AI.</b> We used an AI assistant (Claude, by Anthropic) to help us understand the papers and to implement and test the code of this site.
+          We reviewed, tested and corrected its results. Our AI journal, which describes this use in detail, will be provided with the final submission.
         </p>
         <p>
           <b>Software.</b> The site uses React and Vite (MIT licence), KaTeX (MIT) for formulas, vite-plugin-singlefile (MIT) for the offline version, and the fonts Inter,
