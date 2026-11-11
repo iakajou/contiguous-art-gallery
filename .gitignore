@@ -3,3 +3,4 @@ dist/
 dist-single/
 docs/html/
 .DS_Store
+docs/*_draft.pdf
