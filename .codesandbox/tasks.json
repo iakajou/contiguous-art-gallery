@@ -1,0 +1,17 @@
+{
+  "setupTasks": [
+    { "name": "Install dependencies", "command": "npm install" }
+  ],
+  "tasks": {
+    "dev": {
+      "name": "Site (dev server)",
+      "command": "npm run dev -- --host 0.0.0.0 --port 5173",
+      "runAtStart": true,
+      "preview": { "port": 5173 }
+    },
+    "test": {
+      "name": "Tests",
+      "command": "npm test"
+    }
+  }
+}

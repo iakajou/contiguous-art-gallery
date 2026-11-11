@@ -1,0 +1,68 @@
+GUARDING WALLS CONTIGUOUSLY
+Projet INFO-F420 Computational Geometry - ULB 2026-2027
+Ilias Akajou (520466) & Jomaa Abdulrahman (583629)
+=====================================================================
+
+1. VOIR LE SITE (aucune installation)
+   Double-cliquer sur VOIR_LE_SITE.html : c'est tout le site dans un seul
+   fichier, il fonctionne meme sans internet.
+     - Overview  : la page d'accueil = le support de notre presentation orale
+     - The proof : la preuve detaillee en 5 chapitres, avec 11 figures interactives
+     - Play      : le jeu et le bac a sable
+     - Report    : resume, contexte, implementation, equipe, references
+
+2. TOUT COMPRENDRE
+   Commencer par Le_sujet_explique.pdf : tout le sujet explique simplement,
+   depuis zero (14 pages), avec l'oral en 30 s et en 2 min, et ce que le
+   cours demande.
+   Ensuite :
+   Dossier_complet.pdf explique tout :
+     A. le projet en un coup d'oeil (et les demandes du prof)
+     B. la visite du site, avec captures d'ecran
+     C. la presentation orale (deroule minute par minute, qui dit quoi)
+        et les questions probables avec leurs reponses
+     D. la preuve en detail (toutes les etapes de l'article)
+     E. les 11 figures interactives, une par une
+     F. l'implementation et les tests
+     G. comment continuer le projet
+
+3. CONTINUER A TRAVAILLER SUR LE CODE (dossier projet/)
+   - Installer Node.js 18 ou plus recent (https://nodejs.org)
+   - Ouvrir un terminal dans le dossier projet/ puis :
+       npm install        (une seule fois)
+       npm run dev        (ouvre le site en local : http://localhost:5173,
+                           chaque modification se voit tout de suite)
+       npm test           (les tests doivent tous passer)
+       npm run build      (version a publier, dans dist/)
+   - Ou modifier quoi :
+       accueil (l'oral)       src/pages/Home.jsx
+       texte des chapitres    src/sections/chapters.jsx
+       titres des chapitres   src/pages/ChapterPage.jsx
+       rapport                src/pages/Report.jsx
+       qui explique quoi      src/sections/blocks.jsx (+ attributs author)
+       figures interactives   src/widgets/
+       animations             src/anim/
+       design / couleurs      src/styles.css
+       algorithme             src/geometry/solver.js
+
+4. OUVRIR LE CODE DANS CODESANDBOX
+   Le fichier Guarding-Walls-Contiguously-CodeSandbox.zip contient le code seul.
+   Le plus simple : le mettre sur GitHub, puis sur codesandbox.io choisir
+   "Import" et coller l'adresse du depot. Le fichier .codesandbox/tasks.json
+   fait installer les dependances et lancer le site automatiquement.
+
+5. PUBLIER SUR GITHUB PAGES
+   Mettre le contenu de projet/ dans un depot GitHub (branche main), puis
+   Settings > Pages > Source = "GitHub Actions". Le site est construit et
+   publie automatiquement a chaque push.
+
+6. RESTE A FAIRE
+   [ ] relire les chapitres face a l'article et preparer l'oral avec nos mots
+   [ ] valider la repartition des explications (Ilias : ch. 1-2, Jomaa : ch. 3-5)
+   [ ] completer projet/docs/Work_split_EN_draft.pdf
+       (source : projet/scripts/docs/admin.mjs, puis "npm run docs")
+   [ ] completer le journal IA : projet/docs/AI_journal_EN_draft.pdf
+   [ ] publier sur GitHub Pages et ajouter le lien dans le rapport
+   [ ] repeter l'oral en suivant la partie C du dossier
+   [ ] poster une version preliminaire sur le forum (deadline 11 novembre)
+   [ ] deposer le zip sur l'UV et le lien public (deadline 25 novembre)
