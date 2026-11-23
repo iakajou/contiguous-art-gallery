@@ -3,6 +3,7 @@
 //   ├── VOIR_LE_SITE.html          the whole site in one file (double-click, works offline)
 //   ├── Le_sujet_explique.pdf      the subject explained simply, from zero (FR)
 //   ├── Dossier_complet.pdf        the document that explains everything
+//   ├── Contribution_*.pdf         one page per student: who explains / presents / is responsible for what
 //   ├── LISEZ-MOI.txt              how to view, run and continue the project
 //   └── projet/                    the source code (without node_modules)
 // Usage: npm run zip   (runs build:single first)
@@ -28,9 +29,13 @@ const pdf = path.join(root, 'docs', 'Guarding_Walls_Contiguously_Dossier_complet
 if (fs.existsSync(pdf)) fs.copyFileSync(pdf, path.join(dir, 'Dossier_complet.pdf'));
 const easy = path.join(root, 'docs', 'Le_sujet_explique_FR.pdf');
 if (fs.existsSync(easy)) fs.copyFileSync(easy, path.join(dir, 'Le_sujet_explique.pdf'));
+for (const f of ['Contribution_Ilias_Akajou.pdf', 'Contribution_Jomaa_Abdulrahman.pdf']) {
+  const src = path.join(root, 'docs', f);
+  if (fs.existsSync(src)) fs.copyFileSync(src, path.join(dir, f));
+}
 fs.copyFileSync(path.join(root, 'docs', 'LISEZ-MOI.txt'), path.join(dir, 'LISEZ-MOI.txt'));
 
-const skip = new Set(['node_modules', 'dist', 'dist-single', '.DS_Store', 'html']);
+const skip = new Set(['node_modules', 'dist', 'dist-single', '.DS_Store', 'html', 'oral', '.git']);
 function copy(src, dst) {
   fs.mkdirSync(dst, { recursive: true });
   for (const e of fs.readdirSync(src, { withFileTypes: true })) {

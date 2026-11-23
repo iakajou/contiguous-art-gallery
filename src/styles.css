@@ -473,7 +473,7 @@ main { min-height: 70vh; }
 .site-footer { border-top: 1px solid var(--line); background: var(--surface); padding: 56px 0 40px; }
 .footer-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr); gap: 40px; font-size: 14px; color: var(--ink-2); }
 .footer-brand { display: flex; align-items: center; gap: 10px; font-weight: 650; color: var(--ink); font-size: 16px; }
-.footer-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.footer-cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .footer-cols div { display: flex; flex-direction: column; gap: 6px; }
 .footer-cols b { color: var(--ink); margin-bottom: 4px; }
 .footer-cols a { color: var(--muted); }
@@ -506,3 +506,20 @@ main { min-height: 70vh; }
 .simple-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; font-size: 15px; color: var(--ink-2); line-height: 1.55; }
 .simple-grid b { display: block; color: var(--ink); margin-bottom: 4px; }
 @media (max-width: 860px) { .simple-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* calmer overview page (peer feedback): content is shown at once, scenes play once */
+.home .reveal, .home .timeline .tl-item { opacity: 1; transform: none; transition: none; }
+.home .timeline .tl-line { transform: none; transition: none; }
+.home .timeline { margin-top: 56px; }
+.scene-replay { position: absolute; top: 6px; right: 6px; z-index: 2; font: 600 12px var(--font); padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-2); cursor: pointer; opacity: 0.75; transition: opacity 0.2s, border-color 0.2s; }
+.scene-replay:hover { opacity: 1; border-color: var(--accent); }
+.scene-replay.dark { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.25); color: #e7eaf3; }
+.scene-badge { right: auto; left: 8px; }
+.no-anim .scene-replay { display: none; }
+
+/* report: links and table titles */
+.links-box { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0 0 36px; padding: 16px 20px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface); font-size: 14.5px; }
+.links-box b { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 2px; }
+.links-box a { word-break: break-all; }
+@media (max-width: 820px) { .links-box { grid-template-columns: minmax(0, 1fr); } }
+.tbl-title { font-size: 17px; margin: 22px 0 4px; }

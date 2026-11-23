@@ -4,42 +4,35 @@ export function workSplit() {
   return String.raw`
 <div class="cover">
   <div class="kicker">INFO-F420 Computational Geometry · ULB · 2026–2027</div>
-  <h1>How we shared the work</h1>
+  <h1>Work distribution</h1>
   <p class="subtitle">Guarding Walls Contiguously — Ilias Akajou (520466) and Jomaa Abdulrahman (583629)</p>
-  <p class="draft">DRAFT — to be checked and completed by both of us so that it describes what each of us actually did.</p>
+  <p class="draft">Same content as Section R.5 of the report. To check together before the submission.</p>
 </div>
-<h2>1. Change with respect to the proposal</h2>
-<p>In the proposal, Ilias was responsible for part 1 (the problem) and Jomaa for part 2 (the algorithm). Following the feedback we received
-("do not spend too much time on classical art gallery problems; both work on part 2 and split the explanations there; use web widgets to
-illustrate the different steps of the proof"), we reduced part 1 to a short introduction and split the explanations of part 2 between us.</p>
-<h2>2. Explanations of the web page</h2>
-<table><thead><tr><th>Section</th><th>Topic</th><th>Paper</th><th>Responsible</th></tr></thead><tbody>
-<tr><td>1</td><td>The problem, context (short)</td><td>§1–2</td><td>Ilias</td></tr>
-<tr><td>2.1</td><td>Visibility cores, one-guard case</td><td>Obs. 2.1, 2.2</td><td>Ilias</td></tr>
-<tr><td>2.2</td><td>Greedy algorithm, k + 1 bound</td><td>Thm 7.1 (proof)</td><td>Ilias</td></tr>
-<tr><td>2.3</td><td>Good and bad guards</td><td>Def. 4.1, Obs. 4.8</td><td>Ilias</td></tr>
-<tr><td>2.4</td><td>Replacing guards</td><td>Prop. 4.3, Lemmas 4.2–4.6, Cor. 4.7, Lemma 4.9</td><td>Ilias</td></tr>
-<tr><td>2.5</td><td>Candidate guards and start points</td><td>Def. 5.1, 5.2, Lemma 6.6</td><td>Jomaa</td></tr>
-<tr><td>2.6</td><td>Theorem 5.4</td><td>Lemma 5.3, Thm 5.4</td><td>Jomaa</td></tr>
-<tr><td>2.7</td><td>Maximal visible chains</td><td>Def. 6.1, Lemmas 6.2, 6.5</td><td>Jomaa</td></tr>
-<tr><td>2.8</td><td>One greedy step in O(log² n)</td><td>Lemma 6.8</td><td>Jomaa</td></tr>
-<tr><td>2.9</td><td>Complete algorithm, running time</td><td>Thm 7.1</td><td>Ilias</td></tr>
-<tr><td>2.10</td><td>The Θ(n log n) algorithm</td><td>[6]</td><td>Jomaa</td></tr>
-<tr><td>3</td><td>Game and sandbox</td><td>—</td><td>both</td></tr>
-<tr><td>4</td><td>Summary, implementation, references</td><td>—</td><td>both</td></tr>
+<h2>1. Who explains what (site and presentation)</h2>
+<table><thead><tr><th>Part</th><th>Content</th><th>Explained by</th></tr></thead><tbody>
+<tr><td>Overview 01–02</td><td>The problem, the simple-polygon assumption, why the problem is surprising</td><td>Ilias</td></tr>
+<tr><td>Chapter 1</td><td>Visibility cores, the greedy algorithm and its $k+1$ bound</td><td>Ilias</td></tr>
+<tr><td>Chapter 2</td><td>Good and bad guards, replacement lemmas</td><td>Ilias</td></tr>
+<tr><td>Chapter 3</td><td>Candidate guards $G_P$, start points $U_P$, Theorem 5.4</td><td>Jomaa</td></tr>
+<tr><td>Chapter 4</td><td>Lemma 6.2, Lemma 6.8, Theorem 7.1</td><td>Jomaa</td></tr>
+<tr><td>Chapter 5</td><td>The optimal $\Theta(n\log n)$ algorithm</td><td>Jomaa</td></tr>
+<tr><td>Overview 05</td><td>Implementation and validation</td><td>Jomaa</td></tr>
+<tr><td>Overview 06, Play</td><td>The game, conclusion</td><td>Ilias</td></tr>
 </tbody></table>
-<p>Each subsection of the web page shows its author ("Explained by …").</p>
-<h2>3. Implementation</h2>
-<table><thead><tr><th>Component</th><th>Files</th><th>Responsible</th></tr></thead><tbody>
-<tr><td>Geometry kernel (visibility, cores, shortest paths)</td><td>src/geometry/vec, polygon, visibility, core, shortestPath</td><td>to complete</td></tr>
-<tr><td>Solver ($G_P$, $U_P$, next, greedy)</td><td>src/geometry/arrangement, solver</td><td>to complete</td></tr>
-<tr><td>Proof constructions and their figures</td><td>src/geometry/proofs, src/widgets (Figures 2–11)</td><td>split as in section 2</td></tr>
-<tr><td>Game, sandbox, random polygons</td><td>src/widgets/GameWidget, src/geometry/generate</td><td>to complete</td></tr>
-<tr><td>Tests</td><td>tests/</td><td>to complete</td></tr>
-<tr><td>Page layout, report text</td><td>src/App, src/sections</td><td>both</td></tr>
+<h2>2. Who is responsible for which part of the code</h2>
+<p>Each of us reviewed, tested and can explain these parts. The code was written with AI assistance (see the report, Section R.6, and the AI journal).</p>
+<table><thead><tr><th>Ilias Akajou</th><th>Jomaa Abdulrahman</th></tr></thead><tbody>
+<tr><td><code>vec.js</code>, <code>polygon.js</code>, <code>visibility.js</code>, <code>core.js</code></td><td><code>shortestPath.js</code>, <code>arrangement.js</code></td></tr>
+<tr><td><code>solver.js</code>: <code>next</code>, <code>greedy</code>, <code>solve</code></td><td><code>solver.js</code>: <code>candidateGuards</code>, <code>startPoints</code>, <code>nextBad</code></td></tr>
+<tr><td>Figures 1–5</td><td><code>proofs.js</code>, Figures 6–11</td></tr>
+<tr><td>Site structure, design, animations</td><td>Tests (<code>tests/</code>)</td></tr>
+<tr><td>Game, random polygons</td><td>Report sections on implementation and related work</td></tr>
 </tbody></table>
-<h2>4. Use of AI tools</h2>
-<p>We used an AI assistant during the project; how and for what is described in our AI journal, which is handed in with this document.</p>
+<h2>3. Together</h2>
+<p>Choice of the topic, the proposal and its revision, the division of the explanations, the report and the deployment. Ilias led the development sessions and chose
+the structure of the site; Jomaa reviewed the site and pointed out that the simple-polygon assumption had to be stated on the overview page.</p>
+<h2>4. External help</h2>
+<p>Professor's feedback on the proposal; a fellow student's feedback on the forum (animations of the overview); an AI assistant (Claude, Anthropic), documented in the AI journal.</p>
 `;
 }
 
@@ -69,6 +62,8 @@ export function aiJournal(info) {
 <td>Split the site into pages (overview = oral, five proof chapters, play, report); new design and animations replaying solver results; one complete French PDF with screenshots; a zip with a single-file version of the site.</td></tr>
 <tr><td>2026-11-11</td><td>"Make me a PDF that explains the whole subject, I understood nothing." Then: our teammate's remark "the site does not say that the polygon is simple; this is crucial, otherwise the algorithm no longer works"; "check that everything respects the course requirements"; "give the code for CodeSandbox".</td>
 <td>A step-by-step French PDF explaining the subject from scratch; the simple-polygon assumption stated on the home page, in Chapter 1, in the sandbox and in the report (checked in the papers: Merrild et al. write that their approach does not work with holes and that this case is open); report extended (related work, sources, AI use, licences); this journal restructured; a CodeSandbox-ready copy of the code.</td></tr>
+<tr><td>2026-11-23</td><td>"I must do everything in the course checklist; make a good work distribution (who says what, who did what) and two PDFs explaining who says what and how." Plus a fellow student's forum feedback: "the overview page is a bit hard to follow with all the animations and transitions".</td>
+<td>Checked the site against the checklist; added links to the public page and to the git repository, a work-distribution and acknowledgement section, and two presentation guides (one per student). Following the student's feedback, the overview shows its content at once, animations play once with a replay button, and a button turns them off.</td></tr>
 </tbody></table>
 
 <h2>3. How we used, checked, corrected or rejected the results</h2>
@@ -81,6 +76,7 @@ export function aiJournal(info) {
 <h3>Corrections</h3>
 <ul>
 <li><b>Lemma 6.2.</b> The first implementation took the ray hit closest to $g$ and disagreed with a direct visibility computation in about 19% of random cases. Re-reading the proof showed that the right hit is the one closest to $m$ (definition of $u^*$). The statement of the paper is imprecise when the chain winds around $g$ more than once.</li>
+<li><b>Animations (feedback from a fellow student).</b> The overview page was hard to follow; we made it calmer (see the 2026-11-23 session).</li>
 <li><b>Simple polygon (found by Jomaa).</b> The site only stated the assumption in the chapter on notation; it is now explained on the home page and in the report, with the reason it is essential.</li>
 <li>Round-off when comparing boundary parameters modulo $n$; the angle of a guard whose chain makes a full turn; several display bugs (missing spaces next to formulas, a formula interpreted as code).</li>
 </ul>

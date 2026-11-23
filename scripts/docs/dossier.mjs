@@ -116,16 +116,19 @@ ${part('B', 'Visite du site', 'Une page d\'accueil courte pour l\'oral, et des p
 </ul>
 
 ${part('C', 'La présentation orale', 'L\'accueil du site est le support : on le déroule de haut en bas.')}
-<h2>C.1 Déroulé (≈ 12–15 minutes)</h2>
-<table><thead><tr><th>Section de l'accueil</th><th>Qui</th><th>Durée</th><th>Ce qu'on dit</th><th>Geste</th></tr></thead><tbody>
-<tr><td>En-tête</td><td>Ilias</td><td>0:30</td><td>La question : combien de caméras, si chacune filme une portion continue de mur ?</td><td>Laisser tourner l'animation</td></tr>
-<tr><td>01 Le problème</td><td>Ilias</td><td>1:30</td><td>Définition du gardien contigu ; un point voit plusieurs morceaux mais n'en garde qu'un.</td><td>Bouger $g$, cocher « optimal »</td></tr>
-<tr><td>02 Pourquoi c'est surprenant</td><td>Ilias</td><td>1:30</td><td>Les autres variantes sont dures ; la contiguïté ramène à couvrir un cercle par des intervalles ; frise des résultats.</td><td>Faire défiler la frise</td></tr>
-<tr><td>03 Idée 1</td><td>Ilias</td><td>2:00</td><td>Le glouton ; « il reste en avance » : au plus $k+1$, et $k$ depuis le bon départ.</td><td>Montrer 4 puis 3 gardiens</td></tr>
-<tr><td>03 Idée 2</td><td>Jomaa</td><td>3:00</td><td>Bons/mauvais gardiens ; un bon gardien glisse vers un sommet de l'arrangement ; théorème 5.4 : un départ de $U_P$ est optimal.</td><td>Ouvrir le chapitre 3, figure 7, dérouler les 4 étapes</td></tr>
-<tr><td>03 Idée 3</td><td>Jomaa</td><td>2:00</td><td>Lemme 6.2 : deux plus courts chemins et deux rayons ; un pas glouton en $O(\log^2 n)$.</td><td>Laisser tourner l'animation</td></tr>
-<tr><td>04 Le résultat</td><td>Jomaa</td><td>1:30</td><td>$O(kn^2\log^2 n)$, puis $\Theta(n\log n)$ avec borne inférieure.</td><td>Bouger le curseur $n$</td></tr>
-<tr><td>05–06</td><td>les deux</td><td>1:30</td><td>Notre implémentation, nos tests, la remarque sur le lemme 6.2 ; démo du jeu.</td><td>Page Play, niveau « Easy »</td></tr>
+<h2>C.1 Déroulé (12 minutes)</h2>
+<p>Chacun a son guide détaillé (texte, gestes, questions) : <code>docs/oral/Oral_Ilias_FR.pdf</code> et <code>docs/oral/Oral_Jomaa_FR.pdf</code> (non publiés).</p>
+<table><thead><tr><th>Temps</th><th>Qui</th><th>Section de l'accueil</th><th>Ce qu'on dit</th></tr></thead><tbody>
+<tr><td>0:00–0:30</td><td>Ilias</td><td>En-tête</td><td>Le sujet en une question ; tout est calculé en direct.</td></tr>
+<tr><td>0:30–1:45</td><td>Ilias</td><td>01 Le problème</td><td>Polygone simple, voir, gardien contigu, $k$ ; démo figure 1 ; pourquoi « simple » est essentiel.</td></tr>
+<tr><td>1:45–2:30</td><td>Ilias</td><td>02 Pourquoi c'est surprenant</td><td>Les autres variantes sont dures ; frise 2024 → 2026 ; couvrir une boucle par des arcs.</td></tr>
+<tr><td>2:30–4:15</td><td>Ilias</td><td>03 Idée 1</td><td>Le glouton, « il reste en avance » : au plus $k+1$, et $k$ depuis le bon départ.</td></tr>
+<tr><td>4:15–5:15</td><td>Ilias</td><td>03 Idée 2 (début)</td><td>Bons et mauvais gardiens ; un bon gardien glisse vers un croisement. Passe la parole.</td></tr>
+<tr><td>5:15–7:00</td><td>Jomaa</td><td>03 Idée 2 (fin)</td><td>Arrangement, $G_P$, $U_P$, théorème 5.4 (option : figure 7 du chapitre 3).</td></tr>
+<tr><td>7:00–8:45</td><td>Jomaa</td><td>03 Idée 3</td><td>Lemme 6.2 (deux plus courts chemins, deux rayons), lemme 6.8 : $O(\log^2 n)$ par pas.</td></tr>
+<tr><td>8:45–10:00</td><td>Jomaa</td><td>04 Le résultat</td><td>$O(kn^2\log^2 n)$ ; puis $\Theta(n\log n)$ et la borne inférieure.</td></tr>
+<tr><td>10:00–11:15</td><td>Jomaa</td><td>05 Construit et vérifié</td><td>Implémentation, tests, remarque sur le lemme 6.2. Passe la parole.</td></tr>
+<tr><td>11:15–12:00</td><td>Ilias</td><td>06 + page Play</td><td>Démo du jeu, conclusion, usage de l'IA, remerciements.</td></tr>
 </tbody></table>
 <h2>C.2 Questions probables et réponses</h2>
 ${qa}

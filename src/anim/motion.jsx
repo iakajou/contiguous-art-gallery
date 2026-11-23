@@ -47,27 +47,40 @@ export function Reveal({ children, delay = 0, as: Tag = 'div', className = '', y
  * A clock in seconds that loops every `cycle` seconds while the element is visible.
  * Returns [ref, t]. With reduced motion, t stays at `still` (default: end of the cycle).
  */
-export function useLoopClock(cycle, { still = null, speed = 1 } = {}) {
+export function useLoopClock(cycle, { still = null, speed = 1, once = true } = {}) {
+  // once = true: play the animation a single time, then hold on the final frame (`still`).
+  // This keeps the pages calm to read; replay() starts it again.
   const [ref, inView] = useInView({ once: false, threshold: 0.05, rootMargin: '0px' });
   const [t, setT] = useState(0);
+  const [run, setRun] = useState(0);
   const base = useRef(null);
   const reduce = useRef(false);
   useEffect(() => { reduce.current = reducedMotion(); }, []);
+  const end = still ?? cycle * 0.999;
   useEffect(() => {
-    if (reduce.current) { setT(still ?? cycle * 0.999); return undefined; }
+    if (reduce.current) { setT(end); return undefined; }
     if (!inView) return undefined;
     let raf;
     const start = performance.now() - (base.current ?? 0) * 1000;
     const tick = (now) => {
-      const s = (((now - start) / 1000) * speed) % cycle;
+      let s = ((now - start) / 1000) * speed;
+      if (once && s >= end) { base.current = end / speed; setT(end); return; }
+      s %= cycle;
       base.current = s / speed;
       setT(s);
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [inView, cycle, speed, still]);
-  return [ref, t];
+  }, [inView, cycle, speed, end, once, run]);
+  const replay = () => { base.current = 0; setT(0); setRun((r) => r + 1); };
+  return [ref, t, replay];
+}
+
+/** Small button to play an animation again. */
+export function ReplayButton({ onClick, dark }) {
+  if (reducedMotion()) return null;
+  return <button type="button" className={`scene-replay ${dark ? 'dark' : ''}`} onClick={onClick} aria-label="replay the animation">↻ Replay</button>;
 }
 
 /** Number that counts up when it becomes visible. */

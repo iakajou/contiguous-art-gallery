@@ -2,6 +2,7 @@ import React from 'react';
 import { M } from '../components/ui.jsx';
 import { Sub, Thm, Cite, Aside } from '../sections/blocks.jsx';
 import { link } from '../router.js';
+import { REPO_URL, SITE_URL } from '../links.js';
 
 // The written report: results, context, implementation, team, references.
 export default function Report() {
@@ -18,6 +19,11 @@ export default function Report() {
         </div>
       </section>
       <article className="wrap prose report-body">
+      <div className="links-box">
+        <div><b>Public page</b><a href={SITE_URL}>{SITE_URL.replace('https://', '')}</a></div>
+        <div><b>Source code</b><a href={REPO_URL}>{REPO_URL.replace('https://', '')}</a></div>
+        <div><b>Authors</b>Ilias Akajou (520466) · Jomaa Abdulrahman (583629)</div>
+      </div>
       <Sub id="summary" num="R.1" title="Summary of the results">
         <Thm kind="Theorem" name="de Berg, Conradi, van der Hoog, Staals 2025">
           For a simple polygon <M>P</M> with <M>n</M> vertices, the Contiguous Art Gallery Problem can be solved in <M>O(kn^2\log^2 n)</M> time and <M>O(n^2)</M> space, where <M>k</M> is the size of an optimal solution.
@@ -96,26 +102,45 @@ export default function Report() {
         </Aside>
       </Sub>
 
-      <Sub id="team" num="R.5" title="Team and individual contributions">
+      <Sub id="team" num="R.5" title="Team, work distribution and acknowledgements">
         <p>
-          Following the feedback on our proposal, we both worked on the explanation of the algorithm and split its steps between us. Each chapter of the proof
-          shows who explains it.
+          <b>Authors.</b> Ilias Akajou (520466) and Jomaa Abdulrahman (583629). We both submit this same project.
         </p>
+        <h3 className="tbl-title">Who explains what (this site and the presentation)</h3>
         <table className="tbl">
           <thead><tr><th>Part</th><th>Content</th><th>Explained by</th></tr></thead>
           <tbody>
-            <tr><td>Overview</td><td>The problem, why it is surprising</td><td>Ilias Akajou</td></tr>
-            <tr><td>Chapter 1</td><td>Visibility cores, greedy algorithm</td><td>Ilias Akajou</td></tr>
+            <tr><td>Overview 01–02</td><td>The problem, the simple-polygon assumption, why the problem is surprising</td><td>Ilias Akajou</td></tr>
+            <tr><td>Chapter 1</td><td>Visibility cores, the greedy algorithm and its <M>k+1</M> bound</td><td>Ilias Akajou</td></tr>
             <tr><td>Chapter 2</td><td>Good and bad guards, replacement lemmas</td><td>Ilias Akajou</td></tr>
-            <tr><td>Chapter 3</td><td>Candidate guards, start points, Theorem 5.4</td><td>Jomaa Abdulrahman</td></tr>
-            <tr><td>Chapter 4</td><td>Maximal visible chains, fast greedy step, complete algorithm</td><td>Jomaa Abdulrahman</td></tr>
-            <tr><td>Chapter 5</td><td>The Θ(n log n) algorithm</td><td>Jomaa Abdulrahman</td></tr>
-            <tr><td>Play, report</td><td>Game, sandbox, this report</td><td>both</td></tr>
+            <tr><td>Chapter 3</td><td>Candidate guards <M>G_P</M>, start points <M>U_P</M>, Theorem 5.4</td><td>Jomaa Abdulrahman</td></tr>
+            <tr><td>Chapter 4</td><td>Maximal visible chains (Lemma 6.2), one greedy step (Lemma 6.8), Theorem 7.1</td><td>Jomaa Abdulrahman</td></tr>
+            <tr><td>Chapter 5</td><td>The optimal <M>{'\\Theta(n\\log n)'}</M> algorithm</td><td>Jomaa Abdulrahman</td></tr>
+            <tr><td>Overview 05</td><td>Implementation and validation</td><td>Jomaa Abdulrahman</td></tr>
+            <tr><td>Overview 06, Play</td><td>The game, conclusion</td><td>Ilias Akajou</td></tr>
+          </tbody>
+        </table>
+        <h3 className="tbl-title">Who is responsible for which part of the code</h3>
+        <p>Each of us reviewed, tested and can explain the following parts (the code was written with AI assistance, see R.6).</p>
+        <table className="tbl">
+          <thead><tr><th>Ilias Akajou</th><th>Jomaa Abdulrahman</th></tr></thead>
+          <tbody>
+            <tr><td>Geometry basics: <code>vec.js</code>, <code>polygon.js</code> (visibility test), <code>visibility.js</code>, <code>core.js</code></td><td>Shortest paths and arrangement: <code>shortestPath.js</code>, <code>arrangement.js</code></td></tr>
+            <tr><td>Greedy algorithm and optimum in <code>solver.js</code> (<code>next</code>, <code>greedy</code>, <code>solve</code>)</td><td>Candidates and bad guards in <code>solver.js</code> (<code>candidateGuards</code>, <code>startPoints</code>, <code>nextBad</code>)</td></tr>
+            <tr><td>Figures 1–5 (chapters 1–2)</td><td>Proof constructions <code>proofs.js</code> and Figures 6–11 (chapters 3–5)</td></tr>
+            <tr><td>Site structure, design and animations (<code>App.jsx</code>, <code>pages/</code>, <code>anim/</code>, <code>styles.css</code>)</td><td>Tests (<code>tests/</code>) and their brute-force comparisons</td></tr>
+            <tr><td>Game and random polygons (<code>GameWidget.jsx</code>, <code>generate.js</code>)</td><td>Report sections on implementation and related work</td></tr>
           </tbody>
         </table>
         <p>
-          The implementation (solver, figures, game) and the design of the site are joint work. The detailed split of what each of us did, and what was done with AI
-          assistance, will be given in our work-split document and in our AI journal, provided with the final submission (Section R.6).
+          <b>Together:</b> choice of the topic, the proposal and its revision after the professor's feedback, the division of the explanations, the report, and the
+          deployment of this page. Ilias led the development sessions and chose the structure of the site (an overview for the presentation, details in chapters).
+          Jomaa reviewed the site and pointed out that the simple-polygon assumption had to be stated on the overview page, which we added.
+        </p>
+        <p>
+          <b>Acknowledgements.</b> We thank our professor for the feedback on our proposal (keep the classical art gallery problem short, share the explanation of the
+          algorithm, illustrate the steps of the proof with widgets), and a fellow student for feedback on the course forum: the overview page had too many animations,
+          so they now play once, can be replayed, and can be switched off (⏸ in the top bar). The use of AI is acknowledged in Section R.6.
         </p>
       </Sub>
 

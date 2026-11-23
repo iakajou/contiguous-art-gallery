@@ -3,6 +3,9 @@ Projet INFO-F420 Computational Geometry - ULB 2026-2027
 Ilias Akajou (520466) & Jomaa Abdulrahman (583629)
 =====================================================================
 
+Page publique : https://iakajou.github.io/contiguous-art-gallery/
+Code (GitHub) : https://github.com/iakajou/contiguous-art-gallery
+
 1. VOIR LE SITE (aucune installation)
    Double-cliquer sur VOIR_LE_SITE.html : c'est tout le site dans un seul
    fichier, il fonctionne meme sans internet.
@@ -25,6 +28,10 @@ Ilias Akajou (520466) & Jomaa Abdulrahman (583629)
      E. les 11 figures interactives, une par une
      F. l'implementation et les tests
      G. comment continuer le projet
+   Contribution_Ilias_Akajou.pdf et Contribution_Jomaa_Abdulrahman.pdf :
+   une fiche par personne (ce qu'il explique, ce qu'il presente a l'oral,
+   le code dont il est responsable). Meme contenu que la section R.5 du
+   rapport (source : projet/scripts/docs/contribution.mjs).
 
 3. CONTINUER A TRAVAILLER SUR LE CODE (dossier projet/)
    - Installer Node.js 18 ou plus recent (https://nodejs.org)
@@ -59,10 +66,12 @@ Ilias Akajou (520466) & Jomaa Abdulrahman (583629)
 6. RESTE A FAIRE
    [ ] relire les chapitres face a l'article et preparer l'oral avec nos mots
    [ ] valider la repartition des explications (Ilias : ch. 1-2, Jomaa : ch. 3-5)
+   [ ] relire les deux fiches Contribution_*.pdf et les signer
    [ ] completer projet/docs/Work_split_EN_draft.pdf
        (source : projet/scripts/docs/admin.mjs, puis "npm run docs")
    [ ] completer le journal IA : projet/docs/AI_journal_EN_draft.pdf
-   [ ] publier sur GitHub Pages et ajouter le lien dans le rapport
    [ ] repeter l'oral en suivant la partie C du dossier
-   [ ] poster une version preliminaire sur le forum (deadline 11 novembre)
-   [ ] deposer le zip sur l'UV et le lien public (deadline 25 novembre)
+   [ ] remise sur l'UV (deadline 25 novembre) : le zip + le lien de la page
+       + le lien du depot GitHub dans le texte ; Ilias ET Jomaa deposent
+       chacun la meme remise
+   [ ] poster le lien du projet sur le forum

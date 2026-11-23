@@ -10,6 +10,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import katex from 'katex';
 import dossier from './docs/dossier.mjs';
 import comprendre from './docs/comprendre.mjs';
+import oralPerson from './docs/oral_person.mjs';
+import contribution from './docs/contribution.mjs';
 import { workSplit, aiJournal } from './docs/admin.mjs';
 import { Solver } from '../src/geometry/solver.js';
 import { randomPolygon } from '../src/geometry/generate.js';
@@ -18,6 +20,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outDir = path.join(root, 'docs');
 const htmlDir = path.join(outDir, 'html');
 fs.mkdirSync(htmlDir, { recursive: true });
+fs.mkdirSync(path.join(htmlDir, 'oral'), { recursive: true });
+fs.mkdirSync(path.join(outDir, 'oral'), { recursive: true });
 const katexCss = pathToFileURL(path.join(root, 'node_modules/katex/dist/katex.min.css')).href;
 
 function renderMath(html) {
@@ -127,7 +131,7 @@ function testLines(runTests) {
   return { checks, lemmas };
 }
 
-const runTests = !process.argv.includes('--no-tests') && !(process.argv.find((a) => a.startsWith('--only=Le_sujet')));
+const runTests = !process.argv.includes('--no-tests') && !(process.argv.find((a) => a.startsWith('--only=Le_sujet') || a.startsWith('--only=oral') || a.startsWith('--only=Contribution')));
 console.log('statistics…');
 const T = testLines(runTests);
 const stats = { perf: perfLine(), checks: T.checks, lemmas: T.lemmas };
@@ -135,8 +139,12 @@ const today = new Date().toISOString().slice(0, 10);
 
 const DOCS = [
   ['Le_sujet_explique_FR', 'Tout le sujet, expliqué simplement', () => comprendre()],
+  ['oral/Oral_Ilias_FR', 'Oral — Ilias', () => oralPerson('ilias')],
+  ['oral/Oral_Jomaa_FR', 'Oral — Jomaa', () => oralPerson('jomaa')],
   ['Guarding_Walls_Contiguously_Dossier_complet', 'Dossier complet', () => dossier(stats)],
-  ['Work_split_EN_draft', 'Work split', () => workSplit()],
+  ['Work_split_EN_draft', 'Work distribution', () => workSplit()],
+  ['Contribution_Ilias_Akajou', 'Individual contribution — Ilias Akajou', () => contribution('ilias')],
+  ['Contribution_Jomaa_Abdulrahman', 'Individual contribution — Jomaa Abdulrahman', () => contribution('jomaa')],
   ['AI_journal_EN_draft', 'AI journal', () => aiJournal({ date: today, checks: stats.checks })],
 ];
 const onlyArg = (process.argv.find((a) => a.startsWith('--only=')) || '').slice(7);

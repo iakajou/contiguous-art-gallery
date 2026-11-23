@@ -4,7 +4,7 @@ import React, { useMemo, useState } from 'react';
 import { link, sectionLink } from '../router.js';
 import { M, presetPolygon, solverFor, solutionFor } from '../components/ui.jsx';
 import { Cite } from '../sections/blocks.jsx';
-import { Reveal, CountUp, useInView } from '../anim/motion.jsx';
+import { Reveal, useInView } from '../anim/motion.jsx';
 import { SweepScene, BadGuardScene, DiscretizeScene, Lemma62Scene } from '../anim/scenes.jsx';
 import Playground from '../widgets/Playground.jsx';
 import { chainThrough } from '../geometry/visibility.js';
@@ -296,7 +296,7 @@ function Verified() {
         <div className="stats4">
           {stats.map((s, i) => (
             <Reveal key={i} delay={i * 90} className="stat">
-              <div className="stat-v"><CountUp to={s.v} format={s.f} />{s.s}</div>
+              <div className="stat-v">{s.f ? s.f(s.v) : s.v.toLocaleString('en-US')}{s.s}</div>
               <div className="stat-l">{s.label}</div>
             </Reveal>
           ))}

@@ -5,7 +5,7 @@ import React, { useMemo } from 'react';
 import { chainPoints } from '../geometry/visibility.js';
 import { mod } from '../geometry/polygon.js';
 import { sub, dist } from '../geometry/vec.js';
-import { useLoopClock, phase, clamp01, easeOut } from './motion.jsx';
+import { useLoopClock, phase, clamp01, easeOut, ReplayButton } from './motion.jsx';
 
 export const NEON = ['#60a5fa', '#34d399', '#f472b6', '#fbbf24', '#a78bfa', '#22d3ee', '#fb7185', '#a3e635'];
 export const INK = ['#4f46e5', '#059669', '#db2777', '#d97706', '#7c3aed', '#0891b2', '#e11d48', '#65a30d'];
@@ -42,7 +42,7 @@ export function SweepScene({ P, runs, dark = true, perGuard = 1.5, hold = 1.8, f
   const palette = dark ? NEON : INK;
   const durations = runs.map((r) => r.guards.length * perGuard + hold + fadeOut + 0.4);
   const cycle = durations.reduce((a, b) => a + b, 0);
-  const [ref, t] = useLoopClock(cycle, { still: durations[0] - fadeOut - 0.05 });
+  const [ref, t, replay] = useLoopClock(cycle, { still: cycle - fadeOut - 0.45 });
   let r = 0, lt = t;
   while (r < runs.length - 1 && lt >= durations[r]) { lt -= durations[r]; r++; }
   const run = runs[r];
@@ -54,6 +54,7 @@ export function SweepScene({ P, runs, dark = true, perGuard = 1.5, hold = 1.8, f
   const vb = useMemo(() => viewBox(P), [P]);
   return (
     <div ref={ref} className={`scene ${dark ? 'scene-dark' : ''} ${className}`}>
+      <ReplayButton onClick={replay} dark={dark} />
       <svg viewBox={vb} className="scene-svg" role="img" aria-label="contiguous guards sweeping the walls">
         <defs>
           <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -106,7 +107,7 @@ export function SweepScene({ P, runs, dark = true, perGuard = 1.5, hold = 1.8, f
  */
 export function DiscretizeScene({ P, S, res }) {
   const cycle = 9.5;
-  const [ref, t] = useLoopClock(cycle, { still: 7.6 });
+  const [ref, t, replay] = useLoopClock(cycle, { still: 7.6 });
   const arr = S.arrangement();
   const lines = useMemo(() => Array.from({ length: P.n }, (_, i) => {
     const [a, b] = P.edge(i); const d = sub(b, a); const L = Math.hypot(d.x, d.y) || 1; const R = P.diam * 2;
@@ -116,6 +117,7 @@ export function DiscretizeScene({ P, S, res }) {
   const vb = viewBox(P);
   return (
     <div ref={ref} className="scene">
+      <ReplayButton onClick={replay} />
       <svg viewBox={vb} className="scene-svg" role="img" aria-label="arrangement of supporting lines and candidate start points">
         <defs><clipPath id="dclip"><path d={D(P.pts, true)} /></clipPath></defs>
         <path d={D(P.pts, true)} fill="var(--poly-fill)" stroke="var(--ink)" strokeWidth={3} strokeLinejoin="round" />
@@ -153,7 +155,7 @@ export function DiscretizeScene({ P, S, res }) {
 /** Scene for Lemma 6.2: shortest paths, rays and the maximal visible chain. */
 export function Lemma62Scene({ P, L, g, m }) {
   const cycle = 8.5;
-  const [ref, t] = useLoopClock(cycle, { still: 6.4 });
+  const [ref, t, replay] = useLoopClock(cycle, { still: 6.4 });
   const out = 1 - phase(t, cycle - 0.6, 0.6);
   const vb = viewBox(P);
   if (!L || L.full) return null;
@@ -163,6 +165,7 @@ export function Lemma62Scene({ P, L, g, m }) {
   const ray = (r, p) => (r.hit ? [g, { x: g.x + (r.hit.p.x - g.x) * p, y: g.y + (r.hit.p.y - g.y) * p }] : []);
   return (
     <div ref={ref} className="scene">
+      <ReplayButton onClick={replay} />
       <svg viewBox={vb} className="scene-svg" role="img" aria-label="Lemma 6.2: two shortest paths and two rays">
         <path d={D(P.pts, true)} fill="var(--poly-fill)" stroke="var(--ink)" strokeWidth={3} strokeLinejoin="round" />
         <g style={{ opacity: out }}>
@@ -192,7 +195,7 @@ export function Lemma62Scene({ P, L, g, m }) {
 /** A bad guard: the beam sweeps more than half a turn around the obstacle. */
 export function BadGuardScene({ P, g, ch, angle }) {
   const cycle = 6;
-  const [ref, t] = useLoopClock(cycle, { still: 4.0 });
+  const [ref, t, replay] = useLoopClock(cycle, { still: 4.0 });
   const p = phase(t, 0.3, 3.2);
   const out = 1 - phase(t, cycle - 0.6, 0.6);
   const end = ch.a + (ch.b - ch.a) * p;
@@ -207,6 +210,7 @@ export function BadGuardScene({ P, g, ch, angle }) {
   for (let i = 0; i <= 48; i++) { const a = a0 + (sw * i) / 48; arc.push({ x: g.x + R * Math.cos(a), y: g.y + R * Math.sin(a) }); }
   return (
     <div ref={ref} className="scene">
+      <ReplayButton onClick={replay} />
       <svg viewBox={viewBox(P)} className="scene-svg" role="img" aria-label="a bad guard looking around a corner">
         <path d={D(P.pts, true)} fill="var(--poly-fill)" stroke="var(--ink)" strokeWidth={3} strokeLinejoin="round" />
         <g style={{ opacity: out }}>

@@ -420,13 +420,14 @@ Pour une démonstration, la figure 1 (bouger une caméra) et le jeu (page <em>Pl
 <tr><td>Quelque chose de créatif qui montre la compréhension</td><td>site didactique, animations, jeu</td><td class="ok">fait</td></tr>
 <tr><td>De la programmation en JavaScript qui tourne dans la page</td><td>le solveur, les 11 figures et le jeu</td><td class="ok">fait</td></tr>
 <tr><td>Un rapport avec une bibliographie en forme standard</td><td>page <em>Report</em>, section R.7</td><td class="ok">fait</td></tr>
-<tr><td>Contributions individuelles clairement indiquées</td><td>« Explained by » sur chaque chapitre, rapport R.5</td><td class="todo">répartition du code à préciser (document « Work split »)</td></tr>
+<tr><td>Note sur la répartition du travail et l'aide extérieure (humaine ou IA)</td><td>« Explained by » sur chaque chapitre ; rapport R.5 (qui explique quoi, qui est responsable de quel code, remerciements) et R.6 (IA)</td><td class="ok">fait</td></tr>
 <tr><td>Reconnaître l'aide de l'IA dans le rapport, citer ses sources</td><td>rapport R.6</td><td class="ok">fait</td></tr>
 <tr><td>Journal IA : outils, prompts, vérifications, décisions</td><td>docs/AI_journal_EN_draft.pdf, à fournir avec la remise finale</td><td class="todo">parties 4 et 5 à écrire nous-mêmes</td></tr>
 <tr><td>Une courte présentation</td><td>l'accueil sert de support ; plan dans le dossier complet (partie C)</td><td class="todo">à répéter</td></tr>
-<tr><td>Un lien public vers la page (ex. GitHub Pages)</td><td>workflow prêt dans le projet</td><td class="todo">à publier</td></tr>
-<tr><td>Un zip (contenu de la page + tout le code + instructions) sur l'UV</td><td>Guarding-Walls-Contiguously.zip</td><td class="todo">prêt, à déposer</td></tr>
-<tr><td>Participer à la discussion du forum</td><td>—</td><td class="todo">à faire</td></tr>
+<tr><td>Une page publique</td><td>iakajou.github.io/contiguous-art-gallery</td><td class="ok">fait</td></tr>
+<tr><td>Un lien vers un dépôt git public avec tout le code, sur la page</td><td>github.com/iakajou/contiguous-art-gallery (barre du haut, pied de page, rapport)</td><td class="ok">fait</td></tr>
+<tr><td>Remise sur l'UV : le zip, le lien de la page et le lien du dépôt dans le texte</td><td>Guarding-Walls-Contiguously.zip</td><td class="todo">prêt : chacun de nous deux dépose la même remise</td></tr>
+<tr><td>Poster le lien du projet sur le forum</td><td>—</td><td class="todo">à faire</td></tr>
 </tbody></table>
 <div class="warn"><b>Dates.</b> 11 novembre 2026 : poster une <b>version préliminaire</b> sur le forum pour avoir l'avis des autres étudiants.
 25 novembre 2026 : <b>rendu du projet</b>. Décembre 2026 : défense orale. Les délais sont stricts et chaque retard est pénalisé.</div>
