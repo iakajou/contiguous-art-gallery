@@ -72,7 +72,7 @@ Code (GitHub) : https://github.com/iakajou/contiguous-art-gallery
    [ ] relire les deux fiches Contribution_*.pdf et les signer
    [ ] completer projet/docs/Work_split_EN_draft.pdf
        (source : projet/scripts/docs/admin.mjs, puis "npm run docs")
-   [ ] completer le journal IA : projet/docs/AI_journal_EN_draft.pdf
+   [ ] relire le journal IA : projet/docs/AI_journal_EN.pdf
    [ ] repeter l'oral en suivant la partie C du dossier
    [ ] remise sur l'UV (deadline 25 novembre) : le zip + le lien de la page
        + le lien du depot GitHub dans le texte ; Ilias ET Jomaa deposent

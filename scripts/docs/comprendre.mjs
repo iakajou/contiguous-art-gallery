@@ -422,7 +422,7 @@ Pour une démonstration, la figure 1 (bouger une caméra) et le jeu (page <em>Pl
 <tr><td>Un rapport avec une bibliographie en forme standard</td><td>page <em>Report</em>, section R.7</td><td class="ok">fait</td></tr>
 <tr><td>Note sur la répartition du travail et l'aide extérieure (humaine ou IA)</td><td>« Explained by » sur chaque chapitre ; rapport R.5 « Team: who did what » (qui a fait chaque étape de la preuve, avec sa figure et son code ; les autres parties ; remerciements) et R.6 (IA) ; une fiche par personne</td><td class="ok">fait</td></tr>
 <tr><td>Reconnaître l'aide de l'IA dans le rapport, citer ses sources</td><td>rapport R.6</td><td class="ok">fait</td></tr>
-<tr><td>Journal IA : outils, prompts, vérifications, décisions</td><td>docs/AI_journal_EN_draft.pdf, à fournir avec la remise finale</td><td class="todo">parties 4 et 5 à écrire nous-mêmes</td></tr>
+<tr><td>Journal IA : outils, prompts, vérifications, décisions</td><td>docs/AI_journal_EN.pdf, à fournir avec la remise finale</td><td class="todo">parties 4 et 5 à écrire nous-mêmes</td></tr>
 <tr><td>Une courte présentation</td><td>l'accueil sert de support ; plan dans le dossier complet (partie C)</td><td class="todo">à répéter</td></tr>
 <tr><td>Suivre le retour du prof : partie 1 courte, tous les deux sur la partie 2, des widgets pour la preuve</td><td>accueil 01–02 court ; preuve partagée (Ilias 2.1–2.4, Jomaa 2.5–2.10) ; 11 figures interactives</td><td class="ok">fait</td></tr>
 <tr><td>Une page publique</td><td>iakajou.github.io/contiguous-art-gallery</td><td class="ok">fait</td></tr>

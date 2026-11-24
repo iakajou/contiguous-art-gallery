@@ -89,6 +89,8 @@ for (const f of tracked) {
 fs.copyFileSync(path.join(root, 'dist-single', 'index.html'), path.join(subDir, 'site-offline.html'));
 const reportPdf = path.join(root, 'report', 'main.pdf');
 if (fs.existsSync(reportPdf)) fs.copyFileSync(reportPdf, path.join(subDir, 'Report.pdf'));
+const journalPdf = path.join(root, 'docs', 'AI_journal_EN.pdf');
+if (fs.existsSync(journalPdf)) fs.copyFileSync(journalPdf, path.join(subDir, 'AI_journal.pdf'));
 fs.writeFileSync(path.join(subDir, 'HOW_TO_RUN.txt'), `Guarding Walls Contiguously - Ilias Akajou (520466) and Jomaa Abdulrahman (583629)
 INFO-F420 Computational Geometry, ULB, 2026-2027
 
@@ -100,7 +102,7 @@ INFO-F420 Computational Geometry, ULB, 2026-2027
 
 2. The report
    The report is the "Report" page of the website. Report.pdf is the same report as a
-   PDF, and report/main.tex is its LaTeX source.
+   PDF, and report/main.tex is its LaTeX source. AI_journal.pdf is our AI journal.
 
 3. The source code
    https://github.com/iakajou/contiguous-art-gallery (same files as this folder).

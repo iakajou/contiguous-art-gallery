@@ -1,0 +1,216 @@
+% Guarding Walls Contiguously -- AI journal
+% INFO-F420 Computational Geometry, Universite libre de Bruxelles, 2026-2027
+% Compile with pdfLaTeX (Overleaf: default settings). No image needed.
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[shortlabels]{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+
+\setlist{itemsep=3pt,topsep=4pt}
+\renewcommand{\arraystretch}{1.35}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{\textbf{AI Journal}\\[4pt]
+\large Guarding Walls Contiguously\\[2pt]
+\normalsize INFO-F420 Computational Geometry, Universit\'e libre de Bruxelles, 2026--2027}
+\author{Ilias Akajou (520466) \and Jomaa Abdulrahman (583629)}
+\date{November 2026}
+
+\begin{document}
+\maketitle
+
+%======================================================================
+\section{Tools, Environment, and Workflow}
+%======================================================================
+
+We used \textbf{Claude Code} (Anthropic, model \textbf{Claude Opus 5.5}) in its desktop application, between 7 and 24 November 2026, in work sessions
+led by Ilias.
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Interactive workspace:} the assistant had read/write access to the project folder. It could write and run the JavaScript code and the
+automated tests, and open the website in a browser.
+\item \textbf{How a session worked:} we stated what we wanted (a feature, an explanation, a check), the assistant produced it, and we reviewed the result in
+the browser or in the generated documents before asking for the next change.
+\item \textbf{Our rule:} every result we kept was checked, either by the automated tests or against the papers~\cite{deBerg2025,deBerg2026,Biniaz2025}, and each of
+us is responsible for understanding and defending his half of the proof at the oral (Section~\ref{sec:ours}).
+\end{itemize}
+
+%======================================================================
+\section{Our Work, Decisions, and Division of Labor}
+\label{sec:ours}
+%======================================================================
+
+\begin{tcolorbox}[breakable,colback=green!4,colframe=green!45!black,boxrule=0.5pt,arc=2mm,left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm]
+\begin{itemize}[leftmargin=*]
+\item \textbf{Topic selection and project proposal.} Together, we selected the Contiguous Art Gallery Problem, chose the main paper~\cite{deBerg2025}, and wrote
+our proposal (19 October), which structures the work into four parts with a bibliography. Following the professor's feedback, we revised the plan: Part~1
+kept short, both of us on the core algorithm in Part~2, and one interactive widget for each key step of the proof.
+\item \textbf{Architecture of the website.} The pedagogical structure is our decision. After reviewing a first version that felt too dense for a live
+presentation, Ilias asked for a streamlined \emph{Overview} page containing only what we present orally, with the proof chapters, the interactive figures and
+the game on separate pages.
+\item \textbf{The simple-polygon assumption.} Reviewing the site, Jomaa noticed that it did not state that the polygon must be \emph{simple} (no holes, no
+self-intersections), although the algorithm fails otherwise. We had this checked in the papers and explained on every page.
+\item \textbf{Peer feedback from the course forum.} We posted a preliminary version on the forum and acted on a classmate's remark: the animations of the
+overview now play once, can be replayed, and can be switched off.
+\item \textbf{Division of the proof, the code and the oral.} Following the professor's feedback, we split the proof into two halves:
+  \begin{itemize}[leftmargin=1.2em]
+  \item \textbf{Ilias (first half, Sections~2.1--2.4, Figures~2--5):} visibility cores, the greedy algorithm and its $k+1$ bound, good and bad guards, and
+  the replacement of guards by arrangement vertices; also the problem (overview and Figure~1) and the game.
+  \item \textbf{Jomaa (second half, Sections~2.5--2.10, Figures~6--11):} the candidate guards $G_P$ and starting points $U_P$, Theorem~5.4, maximal visible
+  chains (Lemma~6.2), one greedy step, the complete algorithm and the $\Theta(n\log n)$ algorithm~\cite{deBerg2026}; also the automated tests.
+  \end{itemize}
+\item \textbf{Publication and final checks.} Ilias created the public GitHub repository and published the site on GitHub Pages. We had the website and the
+report checked against the papers, the professor's feedback and the UV course page (Section~\ref{sec:checks}).
+\end{itemize}
+\end{tcolorbox}
+
+%======================================================================
+\section{What the AI Did, at Our Request}
+%======================================================================
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Understanding the papers:} the assistant read the papers~\cite{Biniaz2025,Merrild2024,Biniaz2024,Robson2024,deBerg2025,deBerg2026} and wrote
+explanations for us in French: the subject from scratch, the whole project in detail with questions to test ourselves, and one presentation guide per
+student with likely questions. We used them to learn the definitions and the logic of the proof, and to prepare the oral.
+\item \textbf{Building the website:} following the structure we chose, the assistant designed and built the website and implemented, in JavaScript, the
+algorithm of~\cite{deBerg2025}, the eleven interactive figures and the game. We reviewed each version and asked for changes (structure, animations,
+simple-polygon notice, phone layout).
+\item \textbf{Testing:} the assistant wrote automated tests that compare every step with slower brute-force computations, and used them to find and correct
+bugs (Section~\ref{sec:checks}).
+\item \textbf{Texts and compliance:} the assistant drafted the texts of the website and of the report, and its LaTeX version, and checked them against the
+papers and the course page.
+\end{itemize}
+
+%======================================================================
+\section{Significant Prompts and How We Used the Responses}
+\label{sec:prompts}
+%======================================================================
+
+Our main requests (written in French, summarised here), the response of the assistant, and how we used it.
+
+{\small
+\begin{longtable}{@{}L{2.7cm} L{5.8cm} L{7.2cm}@{}}
+\toprule
+Objective & What we asked & Response \& how we used it \\
+\midrule
+\endhead
+
+\textbf{Building}\newline 07/11/2026 &
+Implement the project of our proposal, following the professor's feedback, and give us documents that explain the papers. &
+A geometry library, the algorithm, the tests and a first website with 11 interactive figures and a game; explanations in French that we used to start
+understanding the proof. \\
+
+\textbf{Structure}\newline 09/11/2026 &
+Restructure the site: an overview with only what we will present orally, the details on other pages, and one document that explains everything. &
+The current structure (overview, five proof chapters, game, report) and a complete explanation document. The overview became the support of our
+presentation. \\
+
+\textbf{Understanding}\newline 11/11/2026 &
+Explain the subject to us from scratch, in French: we have to understand it in order to explain it ourselves. &
+A step-by-step explanation, from the basic definitions to the main theorem. We used it to learn the vocabulary (chains, visibility cores, good and bad
+guards) and the logic of the proof. \\
+
+\textbf{Verification}\newline 11/11/2026 &
+Jomaa's remark: the site does not say that the polygon must be simple, and the algorithm fails otherwise. Check it, and check the course requirements. &
+Confirmed in the papers: Merrild et al.~\cite{Merrild2024} state that their approach does not work with holes and that this case is open. The assumption
+is now explained on every page, with the reasons why it is needed. \\
+
+\textbf{Organisation}\newline 23/11/2026 &
+Who explains which part of the proof at the oral, and how: one guide per student. &
+A work-distribution section on the site and one presentation guide per student, with the text of each part and likely questions; we use them to
+rehearse. \\
+
+\textbf{Organisation}\newline 23/11/2026 &
+State precisely who did what, following the professor's feedback. &
+The team section of the report: for each step of the proof, its section, its figure, its code and who is responsible for it. \\
+
+\textbf{Understanding}\newline 24/11/2026 &
+Explain the whole project to us in detail, in French: the course requirements, every step of the proof, the code and the site. &
+A detailed document with, for each step, a one-sentence summary, an example and what to remember, and questions to test ourselves. \\
+
+\textbf{Verification}\newline 24/11/2026 &
+Check that nothing is wrong: compare the report with the papers, the professor's feedback, the site and the course page on the UV. &
+The corrections listed in Section~\ref{sec:checks}, a bibliography following the citation guidelines, and instructions to run the site from a local file. \\
+
+\bottomrule
+\end{longtable}
+}
+
+%======================================================================
+\section{How We Checked, Corrected, and Rejected AI Outputs}
+\label{sec:checks}
+%======================================================================
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Automated brute-force verification (1,541 / 1,541 checks passing):} visibility is compared with direct segment tests, $\mathrm{next}(u)$ with a
+dense grid of guard positions, and the optimum with the greedy algorithm started from 200 evenly spaced points (no run may use more than $k+1$ guards).
+Every construction of the proof was also checked on the guards of 60 random polygons: 8,647 good guards and 1,381 bad guards were replaced as the lemmas
+predict, Lemma~6.2 matched the direct computation in 5,014 cases, and Theorem~5.4 ended at a point of $U_P$ in 61 cases.
+\item \textbf{The Lemma~6.2 bug:} the first implementation took the intersection point closest to the guard~$g$ and disagreed with the direct computation in
+about 19\% of random cases. The proof of~\cite{deBerg2025} defines the point as the one closest to~$m$; with this rule, all tests pass. The result of the
+paper is correct, but its statement needs this precision when a chain winds around $g$ more than once.
+\item \textbf{Verification against the papers:} comparing the report with the papers corrected four errors: a running time wrongly attributed to Robson
+et al.~\cite{Robson2024}, the description of Biniaz et al.~\cite{Biniaz2024}, the page count of~\cite{deBerg2025}, and the statement of Lemma~6.8. On the
+website, it also corrected a wrong number on the overview and aligned the angle notation with the paper.
+\item \textbf{Course checklist and citation guidelines:} following the UV page on citations, the report now cites the journal version of Hershberger and Suri
+(1995) instead of the conference version (SODA 1993) and gives DOIs, which we checked; the submission explains how to run the site from a local file.
+\item \textbf{Rejected:}
+  \begin{itemize}[leftmargin=1.2em]
+  \item a claim in a figure (``being in the core and seeing both ends implies seeing the whole chain''), removed because it could not be justified in all cases;
+  \item an observation from our experiments (starting the greedy algorithm at the vertices was always enough in our tests), reported only as an observation,
+  since nothing in the papers guarantees it;
+  \item a reference to a workshop version of~\cite{deBerg2026}, not added because we could not verify its details.
+  \end{itemize}
+\end{itemize}
+
+%======================================================================
+\begin{thebibliography}{9}
+%======================================================================
+
+\bibitem{Biniaz2025}
+A.~Biniaz, A.~Maheshwari, M.~C.~R. Merrild, J.~S.~B. Mitchell, S.~Odak, V.~Polishchuk, E.~W. Robson, C.~M. Rysgaard, J.~K.~R. Schou, T.~Shermer,
+J.~Spalding-Jamieson, R.~Svenning, D.~W. Zheng.
+\newblock Polynomial-time algorithms for contiguous art gallery and related problems.
+\newblock In \emph{Proc.\ 41st International Symposium on Computational Geometry (SoCG 2025)}, volume 332 of LIPIcs, pages 20:1--20:21, 2025.
+\newblock \href{https://doi.org/10.4230/LIPIcs.SoCG.2025.20}{doi:10.4230/LIPIcs.SoCG.2025.20}.
+
+\bibitem{Merrild2024}
+M.~C.~R. Merrild, C.~M. Rysgaard, J.~K.~R. Schou, R.~Svenning.
+\newblock The contiguous art gallery problem is solvable in polynomial time.
+\newblock \href{https://arxiv.org/abs/2412.13938}{arXiv:2412.13938}, 2024 (v3, 2025). Merged into~\cite{Biniaz2025}; full version.
+
+\bibitem{Biniaz2024}
+A.~Biniaz, P.~Bose, A.~Maheshwari, J.~S.~B. Mitchell, S.~Odak, V.~Polishchuk, T.~C. Shermer.
+\newblock Contiguous boundary guarding.
+\newblock \href{https://arxiv.org/abs/2412.15053}{arXiv:2412.15053}, 2024 (v2, 2025). Merged into~\cite{Biniaz2025}; full version.
+
+\bibitem{Robson2024}
+E.~W. Robson, J.~Spalding-Jamieson, D.~W. Zheng.
+\newblock The analytic arc cover problem and its applications to contiguous art gallery, polygon separation, and shape carving.
+\newblock \href{https://arxiv.org/abs/2412.15567}{arXiv:2412.15567}, 2024 (v2, 2025). Merged into~\cite{Biniaz2025}; full version.
+
+\bibitem{deBerg2025}
+S.~de~Berg, J.~Conradi, I.~van~der~Hoog, F.~Staals.
+\newblock Simpler and faster contiguous art gallery.
+\newblock \href{https://arxiv.org/abs/2508.09734}{arXiv:2508.09734}, 2025.
+
+\bibitem{deBerg2026}
+S.~de~Berg, J.~Conradi, I.~van~der~Hoog, E.~Rotenberg.
+\newblock The contiguous art gallery problem is in $\Theta(n\log n)$.
+\newblock \href{https://arxiv.org/abs/2511.02960}{arXiv:2511.02960}, 2025 (v6, 2026).
+
+\end{thebibliography}
+
+\end{document}

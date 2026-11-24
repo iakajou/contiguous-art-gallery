@@ -17,6 +17,10 @@
 \usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
 
 \graphicspath{{figures/}}
+% \shot{width}{name}: the image figures/name.jpg, or a framed placeholder if that file was not uploaded
+\newcommand{\shot}[2]{\IfFileExists{figures/#2.jpg}{\includegraphics[width=#1]{#2}}{%
+  \fbox{\parbox[c][3.2cm][c]{\dimexpr #1-2\fboxsep-2\fboxrule\relax}{\centering\small
+  Image \texttt{figures/\detokenize{#2}.jpg} not found:\\ upload the \texttt{figures} folder next to \texttt{main.tex}.}}}}
 \setlist{itemsep=2pt,topsep=4pt}
 \renewcommand{\arraystretch}{1.25}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
@@ -86,7 +90,7 @@ star-shaped. Figure~\ref{fig:guard} shows the first widget of our webpage.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.78\linewidth]{fig01}
+\shot{0.78\linewidth}{fig01}
 \caption{Figure 1 of our webpage. The yellow region is what the point $g$ sees; the light blue pieces of the boundary are the maximal chains it sees.
 A contiguous guard keeps only one of them. The room is not star-shaped, so $k=2$.}
 \label{fig:guard}
@@ -197,7 +201,7 @@ the contribution of~\cite{deBerg2025} is a set $U_P$ of only $O(n^2)$ starting p
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.66\linewidth]{fig03}
+\shot{0.66\linewidth}{fig03}
 \caption{Figure 3 of our webpage: the greedy algorithm on the polygon \emph{Comb}. The strip at the bottom cuts the boundary open at the start point and
 compares the greedy chains with an optimal solution: the greedy always stays ahead.}
 \label{fig:greedy}
@@ -221,8 +225,8 @@ If $(g,[u,v])$ is bad, the shortest path from $u$ to $v$ is a convex chain that 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.48\linewidth]{fig04}\hfill
-\includegraphics[width=0.48\linewidth]{fig05}
+\shot{0.48\linewidth}{fig04}\hfill
+\shot{0.48\linewidth}{fig05}
 \caption{Left: Figure 4 of our webpage, a bad guard in a room with a notch; the four conditions of Definition~4.1 are evaluated live.
 Right: Figure 5, a good guard (red) replaced by a vertex of the arrangement (star), which sees the same chain.}
 \label{fig:goodbad}
@@ -283,7 +287,7 @@ Consequently, running the greedy algorithm from every point of $U_P$ and keeping
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\linewidth]{fig07}
+\shot{0.8\linewidth}{fig07}
 \caption{Figure 7 of our webpage: the proof of Theorem~5.4 applied step by step to an optimal solution made only of bad guards.}
 \label{fig:thm54}
 \end{figure}
@@ -312,7 +316,7 @@ With the data structures of~\cite{GuibasHershberger1989} and~\cite{HershbergerSu
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\linewidth]{fig08}
+\shot{0.8\linewidth}{fig08}
 \caption{Figure 8 of our webpage: Lemma~6.2 with the two shortest paths (red and blue), the two rays and the resulting maximal chain $[u,v]$ (green),
 checked against a direct visibility computation.}
 \label{fig:l62}
@@ -427,8 +431,8 @@ Figure & Section & What it shows & Explained by \\
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.48\linewidth]{fig10}\hfill
-\includegraphics[width=0.48\linewidth]{fig12_game}
+\shot{0.48\linewidth}{fig10}\hfill
+\shot{0.48\linewidth}{fig12_game}
 \caption{Left: Figure 10 of our webpage, the complete algorithm; every point of $U_P$ is coloured by the size of the greedy solution that starts there
 (green $=k$, orange $=k+1$). Right: the game.}
 \label{fig:game}

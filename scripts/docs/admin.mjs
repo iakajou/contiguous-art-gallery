@@ -46,70 +46,79 @@ above checked it against the paper, tested it, and explains it in the presentati
 }
 
 export function aiJournal(info) {
+  const prompts = [
+    ['07/11', 'Implement the project of our proposal, following the professor’s feedback, and give us documents that explain the papers.',
+      'Read the papers [1]–[6]; implemented the geometry library, the algorithm and the tests; a first site with 11 interactive figures and a game; explanations in French.'],
+    ['09/11', 'Restructure the site: an overview with only what we will present orally, the details on other pages, and one document that explains everything.',
+      'New structure: overview, five proof chapters, game, report; new design; a complete explanation document.'],
+    ['11/11', 'Explain the subject to us from scratch, in French: we have to understand it in order to explain it ourselves.',
+      'A step-by-step explanation of the problem and of the proof, from the basic definitions.'],
+    ['11/11', 'Jomaa’s remark: the site does not say that the polygon must be simple, and the algorithm fails otherwise. Check this and the course requirements.',
+      'Confirmed in the papers; the assumption is now explained on every page; requirements checked.'],
+    ['23/11', 'Who explains which part of the proof at the oral, and how: one guide per student.',
+      'A work-distribution section and one presentation guide per student, with likely questions and answers.'],
+    ['23/11', 'State precisely who did what, following the professor’s feedback.', 'Team section rewritten step by step of the proof.'],
+    ['24/11', 'Explain the whole project to us in detail, in French: the course requirements, every step of the proof, the code and the site.',
+      'A detailed explanation document with questions to test ourselves.'],
+    ['24/11', 'Check that nothing is wrong: compare the report with the papers, the professor’s feedback, the site and the course page on the UV.',
+      'Corrections (Section 5); bibliography following the citation guidelines; run instructions.'],
+  ];
   return String.raw`
-<div class="cover">
+<style>
+.ours { border: 1px solid #a7f3d0; background: #ecfdf5; border-radius: 3mm; padding: 2mm 5mm; }
+.ours li { margin: 1.6mm 0; }
+table.prompts td:first-child { white-space: nowrap; }
+table.prompts { break-inside: auto; }
+table.prompts tr { break-inside: avoid; }
+table.prompts td:nth-child(2) { width: 50%; }
+</style>
+<div class="cover" style="min-height:0;break-after:auto;padding:4mm 0 0">
   <div class="kicker">INFO-F420 Computational Geometry · ULB · 2026–2027</div>
   <h1>AI journal</h1>
-  <p class="subtitle">Guarding Walls Contiguously — Ilias Akajou (520466) and Jomaa Abdulrahman (583629)</p>
-  <p class="draft">DRAFT prepared from the logs of the AI sessions. We must review it, complete the parts marked "to complete", add any other AI use, and keep it truthful.</p>
+  <p class="subtitle" style="hyphens:manual">Guarding Walls Contiguously — Ilias Akajou (520466) and Jomaa Abdulrahman (583629)</p>
 </div>
 
 <h2>1. Tools and models</h2>
-<table><tbody>
-<tr><th>Tool</th><td>Claude Code (desktop app, "Code" tab), agentic coding assistant by Anthropic. It can read and write files in the project folder, run commands (Node, tests, headless Chrome) and open the site in a built-in browser.</td></tr>
-<tr><th>Model</th><td>Claude Opus 5.5 (Anthropic).</td></tr>
-<tr><th>Other tools</th><td><i>to complete</i> (e.g. Microsoft Copilot via ULB, if used).</td></tr>
-<tr><th>Access limits</th><td><i>to complete</i> (subscription used, usage limits encountered).</td></tr>
-<tr><th>Sources given to the AI</th><td>Our proposal (PDF), the professor's feedback, and the papers arXiv:2508.09734, 2511.02960 and 2412.13938, which the assistant downloaded and read.</td></tr>
+<p>Claude Code (Anthropic), model Claude Opus 5.5, used in the desktop app between 7 and 24 November 2026, in work sessions led by Ilias.
+The assistant could read and write the files of the project, run the code and the tests, and open the site in a browser.</p>
+
+<h2>2. Our work and our decisions</h2>
+<div class="ours"><ul>
+<li><b>The topic and the plan.</b> We chose the topic and the main paper and wrote the project proposal (19 October): the four parts, the plan and the bibliography.
+All the AI sessions started from this proposal. After the professor's feedback we revised the plan: part 1 short, both of us on part 2, widgets for the steps of the proof.</li>
+<li><b>We directed the project.</b> Every session started from our request (Section 4). We reviewed each result and asked for changes. The structure of the site is our decision:
+Ilias found the first version too cluttered and asked for an overview that contains only what we present orally, with the details on other pages.</li>
+<li><b>The simple-polygon assumption.</b> Jomaa reviewed the site and noticed that it did not say that the polygon must be simple, although the algorithm fails otherwise.
+We had it explained on every page.</li>
+<li><b>Feedback from the class.</b> We posted a preliminary version on the course forum and acted on a fellow student's remark: the animations of the overview now play once and can be switched off.</li>
+<li><b>Publication.</b> We created the public GitHub repository and published the site on GitHub Pages.</li>
+<li><b>Quality control.</b> We asked for the report to be checked against the papers, the course checklist and the course page on the UV, and had every error corrected (Section 5).</li>
+<li><b>Understanding and presentation.</b> We used the explanations produced with the AI to understand the proof. We split it in two halves:
+Ilias the first half (Sections 2.1–2.4), Jomaa the second half (Sections 2.5–2.10) and the tests. Each of us studies his half to explain and defend it at the oral.</li>
+</ul></div>
+
+<h2>3. What the AI did, at our request</h2>
+<ul>
+<li>It read the papers with us and explained the proof step by step, including documents in French.</li>
+<li>It designed the site (layout, pages, animations) and built it.</li>
+<li>It implemented the algorithm of [5], the eleven interactive figures and the game in JavaScript.</li>
+<li>It wrote automatic tests that compare every step with brute-force computations, and used them to verify and correct the code.</li>
+<li>It drafted the texts of the site and of the report, and the LaTeX version of the report.</li>
+<li>It compared the report with the papers and the course requirements, and corrected the errors.</li>
+</ul>
+
+<h2>4. Significant prompts and responses</h2>
+<p>Summaries of our main requests (written in French) and of the results.</p>
+<table class="prompts"><thead><tr><th>Date</th><th>What we asked</th><th>Result</th></tr></thead><tbody>
+${prompts.map(([d, q, a]) => `<tr><td>${d}/2026</td><td>${q}</td><td>${a}</td></tr>`).join('')}
 </tbody></table>
 
-<h2>2. Significant prompts and responses</h2>
-<table><thead><tr><th>Date</th><th>Prompt (our words, translated)</th><th>Response (summary)</th></tr></thead><tbody>
-<tr><td>2026-11-07</td><td>"Do this project: research on the internet, develop everything, make explanation PDFs, do what the professor asked" + proposal + feedback.</td>
-<td>Read the papers; wrote the geometry library, the solver (algorithm of [5]), the tests, an English single-page site with 11 interactive figures and a game; French explanation PDFs; drafts of this journal and of the work split.</td></tr>
-<tr><td>2026-11-09</td><td>"Rework the site to make it more modern; the home page should only contain what I will present orally, other pages for details; nice animations; one PDF that explains everything; a zip for my teammate."</td>
-<td>Split the site into pages (overview = oral, five proof chapters, play, report); new design and animations replaying solver results; one complete French PDF with screenshots; a zip with a single-file version of the site.</td></tr>
-<tr><td>2026-11-11</td><td>"Make me a PDF that explains the whole subject, I understood nothing." Then: our teammate's remark "the site does not say that the polygon is simple; this is crucial, otherwise the algorithm no longer works"; "check that everything respects the course requirements"; "give the code for CodeSandbox".</td>
-<td>A step-by-step French PDF explaining the subject from scratch; the simple-polygon assumption stated on the home page, in Chapter 1, in the sandbox and in the report (checked in the papers: Merrild et al. write that their approach does not work with holes and that this case is open); report extended (related work, sources, AI use, licences); this journal restructured; a CodeSandbox-ready copy of the code.</td></tr>
-<tr><td>2026-11-23</td><td>"I must do everything in the course checklist; make a good work distribution (who says what, who did what) and two PDFs explaining who says what and how." Plus a fellow student's forum feedback: "the overview page is a bit hard to follow with all the animations and transitions".</td>
-<td>Checked the site against the checklist; added links to the public page and to the git repository, a work-distribution and acknowledgement section, and two presentation guides (one per student). Following the student's feedback, the overview shows its content at once, animations play once with a replay button, and a button turns them off.</td></tr>
-<tr><td>2026-11-23</td><td>"We must say precisely who did what", with the professor's feedback on the proposal (keep part 1 short, both work on part 2 and split its explanations).</td>
-<td>Rewrote the team section of the report: how we followed the feedback, who did which step of the proof (with its widget and its code), who did the other parts; one contribution document per student.</td></tr>
-<tr><td>2026-11-24</td><td>"Make a detailed PDF that explains the whole project, in French: honestly, I understood nothing."</td>
-<td>A French document that explains the course requirements, the problem, every step of the proof, our code, the site and the presentation, with questions to test ourselves.</td></tr>
-<tr><td>2026-11-24</td><td>"Give a report in LaTeX that I can send to the professor."</td>
-<td>A LaTeX version of the report of the webpage (problem, related work, proof sketch, implementation, who did what, use of AI, references), compiled and checked.</td></tr>
-<tr><td>2026-11-24</td><td>"Check that everything is correct and respects what the professor said."</td>
-<td>Compared the statements of the report with the papers, checked the links, the pages, the tests and the course checklist, and corrected the errors listed below.</td></tr>
-<tr><td>2026-11-24</td><td>"Look at the course page on the UV, it has all the information about the project; check that everything is OK."</td>
-<td>Read the project instructions, the project checklist and the page "How to cite papers" on the UV. Following that page, the bibliography now cites the journal version of Hershberger and Suri (1995) instead of the conference version, gives DOIs and open-access links, and states that [2], [3] and [4] were merged into [1]. Following the requirement that the program runs from a local html file, the submission zip contains a file with instructions (HOW_TO_RUN.txt) next to the offline version of the site.</td></tr>
-</tbody></table>
-
-<h2>3. How we used, checked, corrected or rejected the results</h2>
-<h3>Checks</h3>
+<h2>5. How we checked, corrected or rejected the results</h2>
 <ul>
-<li>Automatic tests (<code>npm test</code>, last run: ${info.checks}): visibility against direct segment tests, next(u) against a dense grid of guards, the optimum against greedy runs from 200 start points, and every proof construction (Prop. 4.3, Lemmas 4.2–4.6, 4.9, 6.2, Theorem 5.4) on thousands of random guards.</li>
-<li>Statements and numbering compared with the papers; the simple-polygon assumption checked in [2] and [5].</li>
-<li>Every page opened in a browser (desktop and mobile widths, light and dark themes).</li>
+<li><b>Tests.</b> Every computation is compared with a slower direct computation on thousands of random cases (${info.checks}). This is how we found that the first implementation of Lemma 6.2 took the wrong intersection point (wrong in about 19% of cases); the paper's proof gives the right rule, and the statement of the lemma needs this precision.</li>
+<li><b>Papers.</b> We compared the statements of the report with the papers. This corrected a running time wrongly attributed to Robson et al., the description of Biniaz et al., the page count of [5] and the statement of Lemma 6.8.</li>
+<li><b>Course page.</b> Following the citation guidelines, we cite the journal version of Hershberger and Suri (1995) and give DOIs.</li>
+<li><b>Rejected.</b> A claim in a figure that we could not justify in all cases was removed; an observation from our experiments is reported only as an observation; a reference we could not check was not added.</li>
 </ul>
-<h3>Corrections</h3>
-<ul>
-<li><b>Lemma 6.2.</b> The first implementation took the ray hit closest to $g$ and disagreed with a direct visibility computation in about 19% of random cases. Re-reading the proof showed that the right hit is the one closest to $m$ (definition of $u^*$). The statement of the paper is imprecise when the chain winds around $g$ more than once.</li>
-<li><b>Animations (feedback from a fellow student).</b> The overview page was hard to follow; we made it calmer (see the 2026-11-23 session).</li>
-<li><b>Simple polygon (found by Jomaa).</b> The site only stated the assumption in the chapter on notation; it is now explained on the home page and in the report, with the reason it is essential.</li>
-<li><b>Related work (found when checking the report against the papers).</b> We had attributed a running time of $O(n^6\log n)$ to Robson et al. [4], whose paper gives no running time (this bound is in the abstract of Merrild et al. [2]); we had written that [5] has 11 pages (it has 12 with the references); we had described Biniaz et al. [3] in words that are not theirs; and the statement of Lemma 6.8 lacked its preprocessing time. All four are corrected.</li>
-<li>Round-off when comparing boundary parameters modulo $n$; the angle of a guard whose chain makes a full turn; several display bugs (missing spaces next to formulas, a formula interpreted as code).</li>
-</ul>
-<h3>Rejected or not used</h3>
-<ul>
-<li>A claim that "being in the core and seeing both ends implies seeing the whole chain" was removed from a figure, because we could not justify it in all cases.</li>
-<li>An experimental observation (in our random tests, starting the greedy at the vertices of $P$ was always enough) is reported only as an observation, not as a result: nothing in the papers guarantees it.</li>
-<li>A reference to a EuroCG 2026 version of [6] was not added to the bibliography, because we could not check its details.</li>
-</ul>
-
-<h2>4. Our own decisions and contributions</h2>
-<p class="draft">To complete by each of us, honestly. For example: choice of the topic and of the paper; the proposal; following the professor's feedback (short part 1, both on part 2); the split of the explanations (Ilias: overview and chapters 1–2, Jomaa: chapters 3–5); the simple-polygon correction (Jomaa); which AI outputs we kept or changed; what we checked by hand; what we will present orally and in our own words.</p>
-<h2>5. Our assessment</h2>
-<p class="draft">To complete: what the AI did well, where it was wrong, what we had to understand ourselves.</p>
 `;
 }

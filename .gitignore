@@ -11,3 +11,4 @@ report/*.aux
 report/*.log
 report/*.out
 report/*.toc
+report/ai_journal.pdf
