@@ -154,7 +154,7 @@ from real algebraic geometry; they showed that $\nextop$ is a piecewise function
 \item \textbf{Our paper.} De Berg, Conradi, van der Hoog and Staals~\cite{deBerg2025} show that $O(n^2)$ starting points suffice and that one greedy step
 costs $O(\log^2 n)$, hence $O(kn^2\log^2 n)$. Their paper is short (12 pages including references) and almost self-contained, which is why we chose it.
 \item \textbf{Optimal bound.} De Berg, Conradi, van der Hoog and Rotenberg~\cite{deBerg2026} use $O(n)$ starting points and a function $\nextop$ made of $O(n)$
-M\"obius pieces, which gives $O(n\log n)$ time, with a matching $\Omega(n\log n)$ lower bound by a reduction from set disjointness.
+M\"obius pieces, which gives $O(n\log n)$ time, with a matching $\Omega(n\log n)$ lower bound in the real RAM model, by a reduction from set disjointness.
 \item \textbf{Tools.} Shortest-path queries in $O(\log n)$ after linear preprocessing (Guibas and Hershberger~\cite{GuibasHershberger1989},
 Guibas et al.~\cite{Guibas1987}), and ray shooting in $O(\log n)$ (Hershberger and Suri~\cite{HershbergerSuri1995}).
 \end{itemize}
@@ -345,7 +345,7 @@ $O(\log^2 n)$ time per step.
 
 The follow-up paper~\cite{deBerg2026} reduces the starting points to $O(n)$ with dominating guards, computes $\nextop$ for all starting points at once with a
 sliding window, and represents $\nextop$ with $O(n)$ pieces that are constant or M\"obius transformations $x\mapsto\frac{A+Bx}{C+Dx}$, which removes the factor $k$.
-A reduction from set disjointness gives a matching $\Omega(n\log n)$ lower bound. We explain these ideas on the webpage but did not implement them.
+A reduction from set disjointness gives a matching $\Omega(n\log n)$ lower bound in the real RAM model. We explain these ideas on the webpage but did not implement them.
 
 %======================================================================
 \section{Implementation and results}

@@ -54,9 +54,9 @@ export default function Report() {
               <tr><td>Visibility cores (Obs. 2.1, 2.2)</td><td>A guard that sees a chain lies in the visibility core of its edges; one guard suffices if and only if <M>P</M> is star-shaped, which is tested in <M>O(n)</M> <Cite k="13" />.</td><td>2.1, Figure 2</td></tr>
               <tr><td>Greedy algorithm</td><td>From any start <M>u</M>, the greedy algorithm uses at most <M>k+1</M> guards, and exactly <M>k</M> if an optimal chain starts at <M>u</M>.</td><td>2.2, Figure 3</td></tr>
               <tr><td>Good and bad guards (Def. 4.1, Obs. 4.8)</td><td>A guard is bad if its open chain contains a vertex, <M>{'g\\neq u,v'}</M>, it sees its chain under an angle larger than <M>\pi</M>, and <M>u</M> does not see <M>v</M>; for a bad guard the shortest path from <M>u</M> to <M>v</M> turns left.</td><td>2.3, Figure 4</td></tr>
-              <tr><td>Replacement (Prop. 4.3, Cor. 4.7, Lemma 4.9)</td><td>A good guard can be replaced by a vertex of the arrangement of the supporting lines; a bad guard by the first or last point of the line <M>{'\\ell_u'}</M> inside the visibility core.</td><td>2.4, Figure 5</td></tr>
+              <tr><td>Replacement (Prop. 4.3, Cor. 4.7, Lemma 4.9)</td><td>A good guard can be replaced by a vertex of the arrangement of the supporting lines; a bad guard by a vertex of the visibility core or by the first or last point of the line <M>{'\\ell_u'}</M> inside it.</td><td>2.4, Figure 5</td></tr>
               <tr><td>Candidates (Def. 5.1, 5.2)</td><td>The candidate guards <M>G_P</M> and the starting points <M>U_P</M> both have size <M>O(n^2)</M>.</td><td>2.5, Figure 6</td></tr>
-              <tr><td>Theorem 5.4</td><td>Some optimal solution has a chain that starts at a point of <M>U_P</M>.</td><td>2.6, Figure 7</td></tr>
+              <tr><td>Theorem 5.4</td><td>If <M>k&gt;1</M>, some optimal solution has a chain that starts at a point of <M>U_P</M>.</td><td>2.6, Figure 7</td></tr>
               <tr><td>Lemma 6.2</td><td>The maximal chain seen by <M>g</M> around <M>m</M> is given by two shortest paths and two rays (taking the hit closest to <M>m</M>).</td><td>2.7, Figure 8</td></tr>
               <tr><td>Lemma 6.8</td><td>After <M>O(n^2\log n)</M> preprocessing and with <M>O(n^2)</M> space, <M>{'\\mathrm{next}(u)'}</M> is computed in <M>O(\log^2 n)</M>.</td><td>2.8, Figure 9</td></tr>
               <tr><td>Theorem 7.1</td><td>The problem is solved in <M>O(kn^2\log^2 n)</M> time and <M>O(n^2)</M> space.</td><td>2.9, Figure 10</td></tr>
@@ -106,7 +106,7 @@ export default function Report() {
       </Sub>
 
       <Sub id="literature" num="R.3" title="Related work: the main results">
-        <p>We read the five papers on the problem itself ([1]–[6]) and the classical results they build on. Their main statements, in short:</p>
+        <p>We read the papers on the problem itself ([1]–[6]) and the classical results they build on. Their main statements, in short:</p>
         <ul>
           <li><b>Art gallery problems.</b> Chvátal <Cite k="7" />: <M>{'\\lfloor n/3 \\rfloor'}</M> point guards always suffice to see a simple polygon, and are sometimes necessary.
             Lee and Lin <Cite k="8" />: minimising the number of guards is NP-hard, already when guards must be placed at vertices. Abrahamsen, Adamaszek and Miltzow <Cite k="9" />: the art gallery problem is <M>{'\\exists\\mathbb{R}'}</M>-complete.
@@ -114,11 +114,11 @@ export default function Report() {
           <li><b>One guard.</b> Lee and Preparata <Cite k="13" />: the kernel of a polygon (the points that see all of it) can be computed in <M>O(n)</M> time; this decides whether <M>k = 1</M>.</li>
           <li><b>First polynomial algorithms (2024–2025).</b> Merrild, Rysgaard, Schou and Svenning <Cite k="2" />: the greedy algorithm uses at most <M>k+1</M> guards; restarting it <M>O(kn^3)</M> times gives an
             optimal solution in <M>O(kn^5\log n)</M> time; their approach does not extend to polygons with holes, for which the complexity is open.
-            Biniaz et al. <Cite k="3" />: an exact algorithm that computes <M>O(n^4)</M> candidate guard locations and combines them; they also show that <M>{'\\lfloor (n-2)/2 \\rfloor'}</M> contiguous guards always suffice. Robson, Spalding-Jamieson and Zheng <Cite k="4" />: a reduction to the
+            Biniaz et al. <Cite k="3" />: an exact algorithm that computes <M>O(n^4)</M> candidate guard locations and combines them; they also show that <M>{'\\lfloor (n-2)/2 \\rfloor'}</M> contiguous guards always suffice. Robson, Spalding-Jamieson and Zheng <Cite k="4" />: a reduction to the{' '}
             <em>analytic arc cover problem</em>, solved with tools from real algebraic geometry; they showed that <M>{'\\mathrm{next}'}</M> is a piecewise function with <M>O(n^3)</M> pieces <Cite k="6" />. The three works were merged at SoCG 2025 <Cite k="1" />.</li>
           <li><b>Our paper.</b> de Berg, Conradi, van der Hoog and Staals <Cite k="5" />: <M>O(n^2)</M> starting points suffice and one greedy step costs <M>O(\log^2 n)</M>, hence <M>O(kn^2\log^2 n)</M>.</li>
-          <li><b>Optimal bound.</b> de Berg, Conradi, van der Hoog and Rotenberg <Cite k="6" />: <M>O(n)</M> starting points, <M>{'\\mathrm{next}'}</M> with <M>O(n)</M> Möbius pieces, an <M>O(n\log n)</M>
-            algorithm, and a matching <M>\Omega(n\log n)</M> lower bound by reduction from set disjointness.</li>
+          <li><b>Optimal bound.</b> de Berg, Conradi, van der Hoog and Rotenberg <Cite k="6" />: <M>O(n)</M> starting points, <M>{'\\mathrm{next}'}</M> with <M>O(n)</M> Möbius pieces, an <M>O(n\log n)</M>{' '}
+            algorithm, and a matching <M>\Omega(n\log n)</M> lower bound in the real RAM model, by reduction from set disjointness.</li>
           <li><b>Tools.</b> Guibas and Hershberger <Cite k="11" />: shortest-path queries in a simple polygon in <M>O(\log n)</M> after linear preprocessing. Guibas et al. <Cite k="12" />: visibility and
             shortest-path trees in linear time in a triangulated simple polygon. Hershberger and Suri <Cite k="14" />: ray shooting in <M>O(\log n)</M>.</li>
         </ul>
@@ -150,7 +150,7 @@ export default function Report() {
           <b>Simplifications.</b> Shortest paths are computed on the visibility graph of the vertices (Floyd–Warshall); the arrangement is computed by
           intersecting all pairs of supporting lines; the search for bad guards scans the edges after <M>u</M> one by one instead of a binary search,
           maintaining the visibility core incrementally and stopping as soon as it becomes empty. The algorithm is the same; only the speed of the
-          subroutines changes. The solver also stops early: if the first greedy run uses <M>m</M> guards, then <M>{'k\\ge m-1'}</M>, so a run with
+          subroutines changes. The solver also stops early: if the first greedy run uses <M>m</M> guards, then <M>{'k\\ge m-1'}</M>, so a run with{' '}
           <M>m-1</M> guards is optimal. On random polygons the full algorithm takes about 10&nbsp;ms for <M>n=12</M>, 26&nbsp;ms for <M>n=20</M>,
           121&nbsp;ms for <M>n=30</M> and 0.3–0.4&nbsp;s for <M>n=40</M>.
         </p>
@@ -185,7 +185,7 @@ export default function Report() {
             </tbody>
           </table>
         </div>
-        <p>In the game (page <a href={link('/play')}>Play</a>), the page generates a random simple polygon, the player places guards and chooses their chains, and the
+        <p>The game (page <a href={link('/play')}>Play</a>) generates a random simple polygon; the player places guards and chooses their chains, and the
           game checks the solution and compares it with the optimum computed by our solver.</p>
       </Sub>
 
@@ -239,13 +239,13 @@ export default function Report() {
         <p>
           <b>Ilias Akajou.</b> The first half of the proof (Sections 2.1–2.4, Figures 2–5: visibility cores, the greedy algorithm and its <M>k+1</M> bound,
           good and bad guards, replacement of guards); the validation (automatic tests against brute force, with the precision found on Lemma 6.2); the problem
-          (overview and Figure 1), the game, the geometry basics of the code, and the structure and design of the site; leading the development sessions.
+          (overview and Figure 1), the game, the geometry basics of the code, and the structure and design of the site. Ilias also led the development sessions.
           At the oral: 0:00–5:15 and 10:00–11:15.
         </p>
         <p>
           <b>Jomaa Abdulrahman.</b> The second half of the proof (Sections 2.5–2.10, Figures 6–11: <M>G_P</M> and <M>U_P</M>, Theorem 5.4, Lemma 6.2, one greedy
           step, the complete algorithm and the <M>\Theta(n\log n)</M> algorithm); the report sections on related work and implementation; the review of the site,
-          which found that the simple-polygon assumption was missing. At the oral: 5:15–10:00, then the game and the conclusion (11:15–12:00).
+          in which Jomaa noticed that the simple-polygon assumption was missing. At the oral: 5:15–10:00, then the game and the conclusion (11:15–12:00).
         </p>
         <p>
           <b>Together:</b> the choice of the topic, the proposal and its revision, the division of the work, Sections R.5–R.7 of the report, and the AI journal.

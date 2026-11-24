@@ -80,13 +80,13 @@ function Surprise() {
   const cards = [
     { tag: 'Classical art gallery', what: 'point guards must see the whole polygon', verdict: 'NP-hard, even ∃ℝ-complete', cls: 'hard', refs: 'Lee–Lin 1986 · Abrahamsen et al. 2018' },
     { tag: 'Guard only the walls', what: 'point guards must see the whole boundary', verdict: '∃ℝ-hard', cls: 'hard', refs: 'Stade, SoCG 2025' },
-    { tag: 'Contiguous walls', what: 'each guard covers one stretch of boundary', verdict: 'polynomial, even Θ(n log n)', cls: 'easy', refs: 'SoCG 2025 → 2026' },
+    { tag: 'Contiguous walls', what: 'each guard covers one stretch of boundary', verdict: 'polynomial, even Θ(n log n)', cls: 'easy', refs: 'SoCG 2025 → 2025–26' },
   ];
   const milestones = [
     { y: '2024', t: 'Open problem', d: 'posed by T. Shermer at CCCG', c: 'open' },
     { y: '2025', t: 'O(k n⁵ log n)', d: 'three independent teams, SoCG', c: '' },
     { y: '2025', t: 'O(k n² log² n)', d: 'de Berg, Conradi, van der Hoog, Staals', c: 'focus' },
-    { y: '2026', t: 'Θ(n log n)', d: 'optimal, with a lower bound', c: '' },
+    { y: '2025–26', t: 'Θ(n log n)', d: 'optimal, with a lower bound', c: '' },
   ];
   const [ref, inView] = useInView();
   return (
@@ -198,7 +198,7 @@ function Algorithm() {
           links={[[link('/proof/2'), 'Chapter 2: good and bad guards'], [link('/proof/3'), 'Chapter 3: Theorem 5.4']]}
         >
           <p>
-            A guard is <b>bad</b> if it looks around a corner (it sees its stretch under more than 180°), and <b>good</b> otherwise. A good guard can slide to a
+            Roughly, a guard is <b>bad</b> if it looks around a corner (it sees its stretch under more than 180°), and <b>good</b> otherwise. A good guard can slide to a
             crossing point of the lines through the edges without losing anything; a solution made only of bad guards can be reshaped to contain a good one.
           </p>
           <p>
@@ -232,7 +232,7 @@ function ComplexityRace() {
   const rows = [
     { name: 'SoCG 2025 (best of three)', f: 'O(k n⁵ log n)', v: k * n ** 5 * lg, c: '#f43f5e' },
     { name: 'de Berg et al. 2025 — our paper', f: 'O(k n² log² n)', v: k * n * n * lg * lg, c: '#6366f1', focus: true },
-    { name: 'de Berg et al. 2026', f: 'Θ(n log n)', v: n * lg, c: '#10b981' },
+    { name: 'de Berg et al. 2025–26', f: 'Θ(n log n)', v: n * lg, c: '#10b981' },
   ];
   const max = Math.log10(rows[0].v) + 0.5;
   const [ref, inView] = useInView();
@@ -281,7 +281,7 @@ function Result() {
 
 function Verified() {
   const stats = [
-    { v: 11, s: '', label: 'interactive figures, one per step of the proof' },
+    { v: 11, s: '', label: 'interactive figures: the problem and each step of the proof' },
     { v: 10028, s: '', label: 'random guards on which the replacement lemmas were checked' },
     { v: 1541, s: '', label: 'automatic checks against brute force, all passing' },
     { v: 0.4, s: ' s', label: 'or less to solve a 40-vertex gallery in the browser', f: (x) => x.toFixed(1) },
