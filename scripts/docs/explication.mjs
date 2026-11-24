@@ -251,18 +251,18 @@ en $O(n\log n)$ si un $x$ fait le tour avec $k'-1$ gardiens.</li>
 <div class="figrow"><figure>${np.f}<figcaption>Graphe de $x\mapsto\mathrm{next}(x)$ (peigne, $k=${np.k}$), axes en fraction du périmètre ; pointillés : $y=x$ et $y=x+1$. Les paliers viennent de gardiens fixes, les parties courbes de gardiens qui bougent avec $x$.
 Bande : taille du glouton depuis $x$ (vert $=k$, orange $=k+1$) ; traits : $U_P$, qui tombent bien dans les zones vertes.</figcaption></figure></div>
 
-<h2>8. Répartition proposée des explications de la partie 2</h2>
-<p>Suivant la remarque du professeur, nous travaillons tous les deux sur la partie 2 et nous répartissons les explications. Proposition (modifiable dans
-<code>src/sections/blocks.jsx</code> et dans les attributs <code>author</code> de <code>src/sections/Part2.jsx</code>) :</p>
+<h2>8. Répartition des explications de la partie 2</h2>
+<p>Suivant la remarque du professeur, nous travaillons tous les deux sur la partie 2 et nous répartissons les explications (détail dans la section R.5 du rapport) :</p>
 <table><thead><tr><th>Section</th><th>Contenu</th><th>Explique</th></tr></thead><tbody>
 <tr><td>1</td><td>Le problème (bref)</td><td>Ilias</td></tr>
 <tr><td>2.1, 2.2</td><td>Noyaux, glouton, borne $k+1$</td><td>Ilias</td></tr>
 <tr><td>2.3, 2.4</td><td>Bons/mauvais gardiens, lemmes de remplacement, lemme 4.9</td><td>Ilias</td></tr>
 <tr><td>2.5, 2.6</td><td>$G_P$, $U_P$, théorème 5.4</td><td>Jomaa</td></tr>
 <tr><td>2.7, 2.8</td><td>Lemme 6.2, structure de données du lemme 6.8</td><td>Jomaa</td></tr>
-<tr><td>2.9</td><td>Algorithme complet, complexité</td><td>Ilias</td></tr>
+<tr><td>2.9</td><td>Algorithme complet, complexité</td><td>Jomaa</td></tr>
 <tr><td>2.10</td><td>Algorithme optimal $\Theta(n\log n)$</td><td>Jomaa</td></tr>
-<tr><td>3, 4</td><td>Jeu, bac à sable, rapport</td><td>les deux</td></tr>
+<tr><td>Validation</td><td>Tests, découverte sur le lemme 6.2 (accueil 05)</td><td>Ilias</td></tr>
+<tr><td>Jeu</td><td>Code du jeu (Ilias) ; démo et conclusion à l'oral (Jomaa)</td><td>les deux</td></tr>
 </tbody></table>
 
 <h2>Glossaire français – anglais</h2>

@@ -82,7 +82,7 @@ Le détail étape par étape, avec le widget et le code de chaque étape, est da
 <tr><td>2. Algorithme, 1<sup>re</sup> moitié</td><td>Sections 2.1–2.4, figures 2–5 : noyaux, glouton, bons/mauvais gardiens, remplacement</td><td>Ilias</td></tr>
 <tr><td>2. Algorithme, 2<sup>e</sup> moitié</td><td>Sections 2.5–2.10, figures 6–11 : $G_P$, $U_P$, théorème 5.4, lemme 6.2, pas glouton, algorithme complet, $\Theta(n\log n)$</td><td>Jomaa</td></tr>
 <tr><td>3. Le jeu</td><td>Jeu, bac à sable, polygones aléatoires</td><td>Ilias</td></tr>
-<tr><td>Validation</td><td>Tests automatiques, accueil 05</td><td>Jomaa</td></tr>
+<tr><td>Validation</td><td>Tests automatiques, découverte sur le lemme 6.2, accueil 05</td><td>Ilias</td></tr>
 <tr><td>4. Le rapport</td><td>R.1–R.2 / R.3–R.4 / R.5–R.7</td><td>Ilias / Jomaa / les deux</td></tr>
 </tbody></table>
 <p class="remark">Les noms affichés sur le site se changent dans <code>src/sections/blocks.jsx</code> (noms) et dans <code>src/pages/ChapterPage.jsx</code> / <code>src/sections/chapters.jsx</code> (attributs <code>author</code>).</p>
@@ -128,8 +128,8 @@ ${part('C', 'La présentation orale', 'L\'accueil du site est le support : on le
 <tr><td>5:15–7:00</td><td>Jomaa</td><td>03 Idée 2 (fin)</td><td>Arrangement, $G_P$, $U_P$, théorème 5.4 (option : figure 7 du chapitre 3).</td></tr>
 <tr><td>7:00–8:45</td><td>Jomaa</td><td>03 Idée 3</td><td>Lemme 6.2 (deux plus courts chemins, deux rayons), lemme 6.8 : $O(\log^2 n)$ par pas.</td></tr>
 <tr><td>8:45–10:00</td><td>Jomaa</td><td>04 Le résultat</td><td>$O(kn^2\log^2 n)$ ; puis $\Theta(n\log n)$ et la borne inférieure.</td></tr>
-<tr><td>10:00–11:15</td><td>Jomaa</td><td>05 Construit et vérifié</td><td>Implémentation, tests, remarque sur le lemme 6.2. Passe la parole.</td></tr>
-<tr><td>11:15–12:00</td><td>Ilias</td><td>06 + page Play</td><td>Démo du jeu, conclusion, usage de l'IA, remerciements.</td></tr>
+<tr><td>10:00–11:15</td><td>Ilias</td><td>05 Construit et vérifié</td><td>Implémentation, tests, notre découverte sur le lemme 6.2. Passe la parole à Jomaa.</td></tr>
+<tr><td>11:15–12:00</td><td>Jomaa</td><td>06 + page Play</td><td>Démo du jeu, conclusion, usage de l'IA, remerciements.</td></tr>
 </tbody></table>
 <h2>C.2 Questions probables et réponses</h2>
 ${qa}

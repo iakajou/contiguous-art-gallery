@@ -143,10 +143,10 @@ export default function Report() {
               <tr><td>1. The problem (kept short)</td><td>Overview 01–02 and Figure 1: the problem, the simple-polygon assumption, why the problem is surprising</td><td>Pointed out that the simple-polygon assumption had to be stated on the overview</td></tr>
               <tr><td>Geometry basics</td><td><code>vec.js</code>, <code>polygon.js</code> (visibility test, simplicity test)</td><td></td></tr>
               <tr><td>3. Game and sandbox</td><td>The game and the sandbox (<code>GameWidget.jsx</code>), random simple polygons (<code>generate.js</code>)</td><td></td></tr>
-              <tr><td>Validation</td><td></td><td>Automatic tests (<code>tests/</code>) and overview section 05</td></tr>
+              <tr><td>Validation</td><td>Automatic tests against brute force (<code>tests/</code>), the precision found on Lemma 6.2, overview section 05</td><td></td></tr>
               <tr><td>4. Report</td><td>R.1 Summary, R.2 Context</td><td>R.3 Related work, R.4 Implementation</td></tr>
               <tr><td>Site</td><td>Structure, design and animations, deployment on GitHub Pages</td><td>Review of the site</td></tr>
-              <tr><td>Presentation (12 min)</td><td>0:00–5:15 and 11:15–12:00</td><td>5:15–11:15</td></tr>
+              <tr><td>Presentation (12 min)</td><td>0:00–5:15 and 10:00–11:15</td><td>5:15–10:00 and 11:15–12:00 (game, conclusion)</td></tr>
             </tbody>
           </table>
         </div>

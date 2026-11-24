@@ -204,15 +204,15 @@ Jomaa la partie 2, et les deux les parties 3 et 4. Le prof a répondu trois chos
 <tr><td>1. Le problème (court)</td><td>Accueil 01–02 et figure 1</td><td>A signalé que l'hypothèse « polygone simple » manquait</td></tr>
 <tr><td>2. L'algorithme, 1<sup>re</sup> moitié</td><td>Noyaux, glouton, bons/mauvais gardiens, remplacement (2.1–2.4, figures 2–5)</td><td></td></tr>
 <tr><td>2. L'algorithme, 2<sup>e</sup> moitié</td><td></td><td>$G_P$, $U_P$, théorème 5.4, lemme 6.2, pas glouton, algorithme complet, $\Theta(n\log n)$ (2.5–2.10, figures 6–11)</td></tr>
-<tr><td>Code</td><td>Bases de géométrie, glouton, solveur, jeu, structure et design du site</td><td>Plus courts chemins, arrangement, candidats, mauvais gardiens, constructions des preuves, tests</td></tr>
+<tr><td>Code</td><td>Bases de géométrie, glouton, solveur, jeu, tests et validation (découverte sur le lemme 6.2), structure et design du site</td><td>Plus courts chemins, arrangement, candidats, mauvais gardiens, constructions des preuves</td></tr>
 <tr><td>4. Rapport</td><td>R.1, R.2</td><td>R.3, R.4 (ensemble : R.5–R.7)</td></tr>
-<tr><td>Oral (12 min)</td><td>0:00–5:15 et 11:15–12:00</td><td>5:15–11:15</td></tr>
+<tr><td>Oral (12 min)</td><td>0:00–5:15 et 10:00–11:15</td><td>5:15–10:00 et 11:15–12:00</td></tr>
 </tbody></table>
 <p>Le code, les figures et les premiers jets des textes ont été produits avec un assistant IA (Claude), dans des séances menées par Ilias. Pour chaque partie, la personne nommée
 l'a vérifiée face à l'article, testée, et c'est elle qui l'explique. C'est écrit tel quel dans le rapport (R.5, R.6) : il faut pouvoir l'assumer à l'oral.</p>
 ${keep(['Le cours veut : une page web publique, un dépôt git public, un rapport sur la page, qui a fait quoi, l’aide IA déclarée, une bibliographie, un journal IA, un oral.',
     'Le prof voulait : partie 1 courte, tous les deux sur la partie 2, des widgets pour la preuve. C’est ce que nous avons fait.',
-    'Ilias = la première moitié de la preuve (+ le problème, le jeu, le site) ; Jomaa = la seconde moitié (+ les tests).'])}
+    'Ilias = la première moitié de la preuve (+ le problème, la validation et la découverte sur le lemme 6.2, le jeu, le site) ; Jomaa = la seconde moitié (+ le polygone simple, la démo du jeu et la conclusion).'])}
 
 ${part('2', 'Les bases, depuis zéro', 'Tout le vocabulaire nécessaire, avec des dessins. Aucune connaissance préalable n’est supposée.')}
 
@@ -581,7 +581,7 @@ des versions plus simples, polynomiales, qui suffisent pour des galeries de quel
 ├── src/widgets/         les 11 figures interactives et le jeu
 ├── src/pages/           les pages du site (accueil, preuve, jeu, rapport)
 ├── src/anim/            les animations de l'accueil
-├── tests/               les tests automatiques                             (Jomaa)
+├── tests/               les tests automatiques                             (Ilias)
 ├── scripts/             fabrication des PDF, du zip, des captures d'écran
 └── docs/                les PDF (dont celui-ci)</div>
 
@@ -628,7 +628,7 @@ plus courtes distances entre sommets (algorithme de Floyd–Warshall). Pour deux
 <p><b>L'arrêt anticipé</b> vient directement de la section 4.4 : si le premier glouton donne $m$ caméras, on sait que $k\ge m-1$. Dès qu'un départ donne $m-1$, c'est forcément l'optimum, on s'arrête.</p>
 <p>Temps mesurés sur des galeries aléatoires : ${stats.perf}.</p>
 
-<h2>5.6 Les tests : comment on sait que c'est juste <span class="ref">(Jomaa)</span></h2>
+<h2>5.6 Les tests : comment on sait que c'est juste <span class="ref">(Ilias)</span></h2>
 ${one('Nous comparons chaque calcul à un calcul indépendant, plus lent mais évident, sur des milliers de galeries aléatoires.')}
 <table><thead><tr><th>Ce qu'on teste</th><th>Contre quoi</th></tr></thead><tbody>
 <tr><td>La visibilité</td><td>un test direct, segment par segment</td></tr>
@@ -699,8 +699,8 @@ ${part('7', 'L’oral', 'Le déroulé en 12 minutes, ce qu’il faut dire, et le
 <tr><td>5:15–7:00</td><td>Jomaa</td><td>03 Idée 2 (fin)</td><td>Croisements, $G_P$, $U_P$, théorème 5.4</td><td>4.9, 4.10</td></tr>
 <tr><td>7:00–8:45</td><td>Jomaa</td><td>03 Idée 3</td><td>Lemme 6.2, un pas glouton en $O(\log^2 n)$</td><td>4.11, 4.12</td></tr>
 <tr><td>8:45–10:00</td><td>Jomaa</td><td>04 Le résultat</td><td>$O(kn^2\log^2 n)$, puis $\Theta(n\log n)$</td><td>4.12, 4.13</td></tr>
-<tr><td>10:00–11:15</td><td>Jomaa</td><td>05 Construit et vérifié</td><td>Implémentation, tests, notre remarque sur le lemme 6.2</td><td>5</td></tr>
-<tr><td>11:15–12:00</td><td>Ilias</td><td>06 et page Play</td><td>Démo du jeu, conclusion, remerciements</td><td>6</td></tr>
+<tr><td>10:00–11:15</td><td>Ilias</td><td>05 Construit et vérifié</td><td>Implémentation, tests, notre remarque sur le lemme 6.2</td><td>5</td></tr>
+<tr><td>11:15–12:00</td><td>Jomaa</td><td>06 et page Play</td><td>Démo du jeu, conclusion, remerciements</td><td>6</td></tr>
 </tbody></table>
 
 <h2>7.2 Le sujet en 30 secondes (à savoir par cœur, tous les deux)</h2>
@@ -720,7 +720,7 @@ ${ask([
     ['Pourquoi votre code est-il plus lent que l’article ?', 'Nous avons remplacé les structures de données en $O(\\log n)$ par des versions plus simples, comme annoncé dans la proposition. L’algorithme est le même.'],
     ['Comment savez-vous que votre code est juste ?', 'Chaque calcul est comparé à un calcul direct plus lent, sur des milliers de cas aléatoires : ' + stats.checks + '.'],
     ['Comment avez-vous utilisé l’IA ?', 'Nous avons utilisé un assistant IA (Claude) pour comprendre les articles, écrire et tester le code et rédiger les textes, dans des séances menées par Ilias. Nous avons vérifié les résultats face à l’article et par les tests. Le journal IA détaille tout.'],
-    ['Qui a fait quoi ?', 'Comme le prof l’a demandé, nous avons travaillé tous les deux sur l’algorithme : Ilias la première moitié (noyaux, glouton, bonnes/mauvaises caméras), Jomaa la seconde (candidats, théorème 5.4, lemme 6.2, complexité) et les tests. Le détail est dans la section R.5 du rapport.'],
+    ['Qui a fait quoi ?', 'Comme le prof l’a demandé, nous avons travaillé tous les deux sur l’algorithme : Ilias la première moitié (noyaux, glouton, bonnes/mauvaises caméras) et la validation, avec notre découverte sur le lemme 6.2 ; Jomaa la seconde moitié (candidats, théorème 5.4, lemme 6.2, complexité, $\\Theta(n\\log n)$) et la remarque sur le polygone simple. Le détail est dans la section R.5 du rapport.'],
   ])}
 
 <h2>7.4 Les pièges à éviter</h2>

@@ -31,10 +31,10 @@ each of us doing one half, with one interactive widget per step.</p>
 <tr><td>1. The problem (kept short)</td><td>Overview 01–02 and Figure 1</td><td>Pointed out that the simple-polygon assumption had to be stated on the overview</td></tr>
 <tr><td>Geometry basics</td><td><code>vec.js</code>, <code>polygon.js</code></td><td></td></tr>
 <tr><td>3. Game and sandbox</td><td><code>GameWidget.jsx</code>, <code>generate.js</code></td><td></td></tr>
-<tr><td>Validation</td><td></td><td>Automatic tests (<code>tests/</code>), overview section 05</td></tr>
+<tr><td>Validation</td><td>Automatic tests (<code>tests/</code>), the precision found on Lemma 6.2, overview section 05</td><td></td></tr>
 <tr><td>4. Report</td><td>R.1 Summary, R.2 Context</td><td>R.3 Related work, R.4 Implementation</td></tr>
 <tr><td>Site</td><td>Structure, design, animations, deployment</td><td>Review of the site</td></tr>
-<tr><td>Presentation (12 min)</td><td>0:00–5:15 and 11:15–12:00</td><td>5:15–11:15</td></tr>
+<tr><td>Presentation (12 min)</td><td>0:00–5:15 and 10:00–11:15</td><td>5:15–10:00 and 11:15–12:00</td></tr>
 </tbody></table>
 <h2>4. Together, and how we worked</h2>
 <p>Together: the choice of the topic, the proposal and its revision, the division of the work, Sections R.5–R.7 of the report, and the AI journal.</p>
@@ -94,7 +94,7 @@ We had it explained on every page.</li>
 <li><b>Publication.</b> We created the public GitHub repository and published the site on GitHub Pages.</li>
 <li><b>Quality control.</b> We asked for the report to be checked against the papers, the course checklist and the course page on the UV, and had every error corrected (Section 5).</li>
 <li><b>Understanding and presentation.</b> We used the explanations produced with the AI to understand the proof. We split it in two halves:
-Ilias the first half (Sections 2.1–2.4), Jomaa the second half (Sections 2.5–2.10) and the tests. Each of us studies his half to explain and defend it at the oral.</li>
+Ilias the first half (Sections 2.1–2.4) and the tests, Jomaa the second half (Sections 2.5–2.10). Each of us studies his half to explain and defend it at the oral.</li>
 </ul></div>
 
 <h2>3. What the AI did, at our request</h2>

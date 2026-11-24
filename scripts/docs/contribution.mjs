@@ -5,8 +5,9 @@ const PEOPLE = {
   ilias: {
     name: 'Ilias Akajou', id: '520466', other: 'Jomaa Abdulrahman',
     summary: 'I did the first half of part 2, the algorithm of [5]: visibility cores, the greedy algorithm and its $k+1$ bound, good and bad guards, and the '
-      + 'replacement of guards by arrangement vertices (Sections 2.1–2.4, Figures 2–5). I also did part 1, kept short as the professor asked, the game, '
-      + 'the geometry basics of the code, the structure and design of the site, and I led the development sessions.',
+      + 'replacement of guards by arrangement vertices (Sections 2.1–2.4, Figures 2–5). I also did the validation (automatic tests against brute force, '
+      + 'with the precision we found on Lemma 6.2), part 1, kept short as the professor asked, the game, the geometry basics of the code, '
+      + 'the structure and design of the site, and I led the development sessions.',
     steps: [
       ['Visibility cores; one guard is enough if and only if $P$ is star-shaped (Obs. 2.1, 2.2)', '2.1, Fig. 2', '<code>core.js</code>, <code>visibility.js</code>'],
       ['The greedy algorithm: at most $k+1$ guards, and $k$ from the right start', '2.2, Fig. 3', '<code>solver.js</code>: <code>next</code>, <code>greedy</code>, <code>solve</code>'],
@@ -17,6 +18,7 @@ const PEOPLE = {
       ['1. The problem (kept short)', 'Overview 01–02 and Figure 1: the problem, the simple-polygon assumption, why the problem is surprising'],
       ['Geometry basics', '<code>vec.js</code>, <code>polygon.js</code> (visibility test, simplicity test)'],
       ['3. Game and sandbox', 'The game and the sandbox (<code>GameWidget.jsx</code>), random simple polygons (<code>generate.js</code>)'],
+      ['Validation', 'Automatic tests against brute force (<code>tests/</code>), the precision found on Lemma 6.2, overview section 05'],
       ['4. Report', 'R.1 Summary, R.2 Context'],
       ['Site', 'Structure, design and animations, deployment on GitHub Pages; development sessions with the AI assistant'],
     ],
@@ -26,15 +28,15 @@ const PEOPLE = {
       ['1:45–2:30', '02 Why it is surprising', 'The other variants are hard; the 2024–2026 timeline'],
       ['2:30–4:15', '03 Idea 1', 'The greedy algorithm: at most $k+1$ guards, and $k$ from the right start'],
       ['4:15–5:15', '03 Idea 2 (first half)', 'Good and bad guards; a good guard slides to a crossing of wall lines'],
-      ['11:15–12:00', '06 and Play', 'Demo of the game, conclusion, acknowledgements'],
+      ['10:00–11:15', '05 Built and verified', 'Implementation, tests, our finding on Lemma 6.2'],
     ],
   },
   jomaa: {
     name: 'Jomaa Abdulrahman', id: '583629', other: 'Ilias Akajou',
     summary: 'I did the second half of part 2, the algorithm of [5]: the candidate guards $G_P$ and start points $U_P$, Theorem 5.4, the maximal visible chain '
       + '(Lemma 6.2), one greedy step (Lemma 6.8), the complete algorithm (Theorem 7.1) and the optimal $\\Theta(n\\log n)$ algorithm of [6] '
-      + '(Sections 2.5–2.10, Figures 6–11). I also did the validation (automatic tests), the report sections on related work and implementation, '
-      + 'and I found that the simple-polygon assumption was missing from the overview.',
+      + '(Sections 2.5–2.10, Figures 6–11). I also wrote the report sections on related work and implementation, present the game and the conclusion '
+      + 'at the oral, and I found that the simple-polygon assumption was missing from the overview.',
     steps: [
       ['The arrangement, candidate guards $G_P$ and start points $U_P$ (Def. 5.1, 5.2, Lemma 5.3)', '2.5, Fig. 6', '<code>arrangement.js</code>; <code>solver.js</code>: <code>candidateGuards</code>, <code>startPoints</code>'],
       ['Theorem 5.4: an optimal solution starts in $U_P$', '2.6, Fig. 7', '<code>proofs.js</code>: <code>theorem54</code>'],
@@ -45,7 +47,6 @@ const PEOPLE = {
     ],
     more: [
       ['1. The problem (kept short)', 'Pointed out that the simple-polygon assumption had to be stated on the overview, because the algorithm does not work otherwise'],
-      ['Validation', 'Automatic tests (<code>tests/</code>) and overview section 05'],
       ['4. Report', 'R.3 Related work, R.4 Implementation'],
       ['Site', 'Review of the site'],
     ],
@@ -53,7 +54,7 @@ const PEOPLE = {
       ['5:15–7:00', '03 Idea 2 (second half)', 'Crossings, $G_P$, $U_P$, Theorem 5.4'],
       ['7:00–8:45', '03 Idea 3', 'Lemma 6.2 (two shortest paths and two rays), one greedy step in $O(\\log^2 n)$'],
       ['8:45–10:00', '04 The result', '$O(kn^2\\log^2 n)$, then $\\Theta(n\\log n)$'],
-      ['10:00–11:15', '05 Built and verified', 'Implementation, tests, our remark on Lemma 6.2'],
+      ['11:15–12:00', '06 and Play', 'Demo of the game, conclusion, acknowledgements'],
     ],
   },
 };

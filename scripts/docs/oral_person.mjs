@@ -16,8 +16,8 @@ const TIMELINE = [
   ['5:15', '7:00', 'jomaa', '03 Idée 2 (fin)', 'Croisements, $G_P$, $U_P$, théorème 5.4'],
   ['7:00', '8:45', 'jomaa', '03 Idée 3', 'Lemme 6.2 (2 chemins + 2 rayons), pas glouton en $O(\\log^2 n)$'],
   ['8:45', '10:00', 'jomaa', '04 Le résultat', '$O(kn^2\\log^2 n)$, puis $\\Theta(n\\log n)$'],
-  ['10:00', '11:15', 'jomaa', '05 Construit et vérifié', 'Implémentation, tests, notre remarque sur le lemme 6.2'],
-  ['11:15', '12:00', 'ilias', '06 + page Play', 'Démo du jeu, conclusion, remerciements'],
+  ['10:00', '11:15', 'ilias', '05 Construit et vérifié', 'Implémentation, tests, notre remarque sur le lemme 6.2'],
+  ['11:15', '12:00', 'jomaa', '06 + page Play', 'Démo du jeu, conclusion, remerciements'],
 ];
 
 const NAMES = { ilias: 'Ilias Akajou', jomaa: 'Jomaa Abdulrahman' };
@@ -42,7 +42,7 @@ const qa = (list) => `<div class="qa">${list.map(([q, a]) => `<p class="q">${q}<
 
 const COMMON_QA = [
   ['Comment avez-vous utilisé l\'IA ?', 'Nous avons utilisé un assistant IA (Claude, d\'Anthropic) pour comprendre les articles et pour implémenter et tester le code du site. Nous avons relu, testé et corrigé ses résultats : par exemple, un premier choix faux dans le lemme 6.2 a été corrigé grâce aux tests, et l\'hypothèse « polygone simple » a été ajoutée sur l\'accueil après la relecture de Jomaa. Notre journal IA détaille les outils, les prompts importants, ce qu\'on a vérifié et nos décisions.'],
-  ['Qui a fait quoi ?', 'Comme le prof l\'a demandé, la partie 1 (le problème) est courte et nous avons tous les deux travaillé sur la partie 2, l\'algorithme, en la coupant en deux moitiés de la preuve. Ilias a fait la première moitié (noyaux, glouton, bons et mauvais gardiens, remplacement : sections 2.1–2.4, figures 2–5), plus la partie 1, le jeu et la structure du site. Jomaa a fait la deuxième moitié ($G_P$, $U_P$, théorème 5.4, lemme 6.2, pas glouton, algorithme complet, $\\Theta(n\\log n)$ : sections 2.5–2.10, figures 6–11), plus les tests. Le détail, étape par étape avec le code, est dans la section R.5 du rapport.'],
+  ['Qui a fait quoi ?', 'Comme le prof l\'a demandé, la partie 1 (le problème) est courte et nous avons tous les deux travaillé sur la partie 2, l\'algorithme, en la coupant en deux moitiés de la preuve. Ilias a fait la première moitié (noyaux, glouton, bons et mauvais gardiens, remplacement : sections 2.1–2.4), la validation par les tests avec notre découverte sur le lemme 6.2, la structure du site et le jeu. Jomaa a fait la seconde moitié ($G_P$, $U_P$, théorème 5.4, lemme 6.2, pas glouton, algorithme complet, $\\Theta(n\\log n)$ : sections 2.5–2.10) et a repéré l\'hypothèse manquante du polygone simple. Le détail est dans la section R.5 du rapport.'],
 ];
 
 const CHECK = `<ul class="check">
@@ -104,15 +104,16 @@ Il est <b>mauvais</b> s'il regarde autour d'un obstacle : angle de plus de 180°
     keys: 'good guard · bad guard · angle > 180° · supporting lines · arrangement vertex',
     handover: '« Mais un mauvais gardien ne peut pas toujours glisser ainsi. Jomaa va vous montrer comment l\'article s\'en sort, et comment on obtient la liste des points de départ. »',
   })}
-${seg({
-    time: '11:15 – 12:00', title: '06 — Le jeu et la conclusion', img: 'fig12_game',
-    screen: 'Page <em>Play</em> (niveau Easy).',
-    demo: 'Cliquer dans la galerie pour poser une caméra, cliquer un mur (la portion vue se sélectionne), poser une deuxième caméra, puis « Check ». Si c\'est optimal : confettis. Sinon cocher « show optimal ».',
-    say: String.raw`<p>« Pour finir, le jeu : on place des caméras, on choisit leur mur, et le jeu vérifie que chaque caméra voit toute sa portion et que tout est couvert, puis compare avec l'optimum calculé par l'algorithme. »</p>
-<p>« À retenir : la contiguïté transforme le problème en couverture d'une boucle par des arcs ; le glouton est presque parfait ; et l'article montre qu'il suffit d'essayer $O(n^2)$ départs, avec des pas rapides. Le tout pour un polygone simple. »</p>
-<p>« Nous avons utilisé un assistant IA pour comprendre les articles et pour implémenter et tester le code, que nous avons relu et corrigé ; c'est détaillé dans notre rapport et notre journal IA. Merci, nous sommes prêts pour vos questions. »</p>`,
-  })}
 
+${seg({
+    time: '10:00 – 11:15', title: '05 — Construit et vérifié', img: '09_home_verified',
+    screen: 'Les quatre chiffres (figures, gardiens testés, vérifications, temps de calcul).',
+    say: String.raw`<p>« Nous avons implémenté l'algorithme en JavaScript : il tourne dans la page et calcule toutes les figures. À la place des structures en $O(\log n)$, nous utilisons des méthodes plus simples (graphe de visibilité, parcours linéaire), largement assez rapides : moins d'une demi-seconde pour 40 sommets. »</p>
+<p>« Nous avons testé contre des calculs en force brute : une grille dense de caméras ne bat jamais notre $\mathrm{next}(u)$, et le glouton depuis 200 départs ne trouve jamais mieux que notre optimum. Chaque lemme a été vérifié sur des milliers de gardiens aléatoires. »</p>
+<p>« Une trouvaille : l'énoncé du lemme 6.2 est imprécis quand la chaîne fait plus d'un tour autour de la caméra, car un rayon peut alors toucher la chaîne deux fois. La preuve dit qu'il faut prendre le point le plus proche de $m$ : notre première version prenait le plus proche de $g$, et se trompait dans environ 19 % des cas. Enfin, le solveur refuse un polygone non simple. »</p>`,
+    keys: 'brute force · tests · Lemma 6.2 precision · simple polygon enforced',
+    handover: '« Jomaa va maintenant vous montrer le jeu et conclure. »',
+  })}
 <h2>4. Comprendre ta partie en profondeur</h2>
 <h3>Polygone simple et visibilité</h3>
 <p>Un polygone simple : contour fermé, segments qui ne se croisent pas, pas de trou. On parcourt le bord dans le sens anti-horaire : l'intérieur est toujours <b>à gauche</b> de chaque arête.
@@ -129,6 +130,9 @@ Après $k+1$ étapes on a fait le tour. Si $u$ est le début d'une chaîne optim
 <h3>Remplacer un bon gardien (prop. 4.3, lemmes 4.2, 4.4–4.6, cor. 4.7)</h3>
 <p>$P_g$ = le polygone formé par $gu$, la chaîne et $vg$. <b>Prop. 4.3</b> : un sommet du noyau $P_E$ est dans $P_g$, ou un sommet de la chaîne est dans $P_E$. Ce point est à gauche de tous les murs de la chaîne ; si en plus il est à gauche de $gu$ et $vg$, il est dans le noyau de $P_g$ et voit toute la chaîne.
 C'est exactement ce que donne chaque condition qui échoue : 4.2 (chaîne dans une arête : une extrémité de l'arête suffit), 4.4 ($g=u$), 4.5 (angle $\le\pi$), 4.6 ($u$ voit $v$). <b>Cor. 4.7</b> : tout bon gardien peut être remplacé par un sommet de l'arrangement des droites des murs.</p>
+<h3>La validation et notre découverte sur le lemme 6.2 (ta section 05)</h3>
+<p>Chaque calcul est comparé à un calcul direct plus lent : la visibilité à un test segment par segment, $\mathrm{next}(u)$ à une grille dense de positions de caméra, l'optimum au glouton lancé depuis 200 départs (aucun ne fait mieux, aucun n'utilise plus de $k+1$ caméras), et chaque construction de la preuve à des milliers de gardiens aléatoires : 1541 vérifications passent.
+Le lemme 6.2 trouve la bande visible avec deux plus courts chemins et deux rayons. Quand la bande fait plus d'un tour autour de $g$, un rayon touche la bande <b>deux fois</b> ; l'énoncé ne dit pas lequel prendre. La preuve définit le bon point comme celui <b>le plus proche de $m$</b>. Notre première version prenait le plus proche de $g$ et se trompait dans environ 19 % des cas ; les tests l'ont montré, et avec la règle de la preuve tout concorde. Le résultat de l'article reste vrai : c'est l'énoncé qui manque de précision.</p>
 
 <h2>5. Le code dont tu es responsable</h2>
 <table><thead><tr><th>Fichier</th><th>Ce qu'il fait</th><th>Comment l'expliquer</th></tr></thead><tbody>
@@ -139,6 +143,7 @@ C'est exactement ce que donne chaque condition qui échoue : 4.2 (chaîne dans u
 <tr><td><code>geometry/solver.js</code> : <code>next</code>, <code>greedy</code>, <code>solve</code></td><td>le glouton et l'optimum</td><td>« <code>next(u)</code> prend le meilleur entre les candidats bons et la recherche des mauvais ; <code>greedy</code> applique <code>next</code> jusqu'au tour complet ; <code>solve</code> essaie chaque départ de $U_P$ et s'arrête dès qu'il trouve une solution avec une caméra de moins que le premier essai, car c'est forcément l'optimum. Il refuse un polygone non simple. »</td></tr>
 <tr><td><code>widgets/</code> figures 1 à 5</td><td>gardien contigu, noyau, glouton, bon/mauvais, remplacement</td><td>« Chaque figure appelle les mêmes fonctions que le solveur et redessine en direct. »</td></tr>
 <tr><td><code>App.jsx</code>, <code>pages/</code>, <code>anim/</code>, <code>styles.css</code></td><td>structure du site, design, animations</td><td>« Routage par <code>#/…</code> (marche sur GitHub Pages) ; les animations rejouent des résultats du solveur, se jouent une fois et peuvent être coupées. »</td></tr>
+<tr><td><code>tests/</code></td><td>tests automatiques (<code>npm test</code>)</td><td>« Visibilité contre un test direct ; $\mathrm{next}(u)$ contre une grille de caméras ; l'optimum contre 200 départs ; chaque lemme sur des milliers de cas aléatoires. 1541 vérifications passent. C'est ainsi qu'on a trouvé l'imprécision du lemme 6.2. »</td></tr>
 <tr><td><code>GameWidget.jsx</code>, <code>generate.js</code></td><td>le jeu, les polygones aléatoires</td><td>« Points aléatoires reliés, puis on décroise les arêtes (2-opt) jusqu'à avoir un polygone simple ; on rejette les formes trop pointues et les polygones étoilés. »</td></tr>
 </tbody></table>
 
@@ -152,6 +157,9 @@ ${qa([
     ['Qu\'est-ce qu\'un mauvais gardien, et pourquoi est-ce gênant ?', 'Il voit sa chaîne sous plus de 180° en regardant autour d\'un obstacle, et $u$ ne voit pas $v$. Le point trouvé par la proposition 4.3 peut alors être caché de $u$ par l\'obstacle : on ne peut pas le faire glisser vers un croisement fixe.'],
     ['Pourquoi les croisements de droites ?', 'La zone où un gardien peut voir sa chaîne est une intersection de demi-plans (convexe) ; ses coins sont des croisements de droites prolongeant des murs. Un bon gardien peut glisser jusqu\'à un tel coin sans rien perdre.'],
     ['Comment le jeu vérifie-t-il une solution ?', 'Pour chaque caméra, on calcule exactement ce qu\'elle voit et on vérifie que sa chaîne est incluse dedans ; puis on vérifie que l\'union des chaînes fait tout le tour du bord. On compare avec le $k$ du solveur.'],
+    ['Comment avez-vous testé ?', 'Contre des calculs indépendants en force brute (grille de caméras, glouton depuis 200 départs, test direct de visibilité) et en vérifiant chaque lemme sur des milliers de gardiens aléatoires : 1541 vérifications passent.'],
+    ['Qu\'avez-vous trouvé sur le lemme 6.2 ?', 'Quand la chaîne fait plus d\'un tour autour de $g$, un rayon peut toucher $[s,t]$ deux fois ; l\'énoncé est ambigu, la preuve dit de prendre le point le plus proche de $m$. Notre première version prenait le plus proche de $g$ et se trompait dans environ 19 % des tests.'],
+    ['Vos tests prouvent-ils que le solveur est optimal ?', 'Non : ils le confirment sur des milliers de cas, mais seule la théorie (théorème 5.4 et borne $k+1$) le prouve. Un test plus fort serait une grille de caméras suivie d\'une couverture exacte du cercle ; nous ne l\'avons pas implémenté.'],
     ...COMMON_QA,
   ])}
 
@@ -193,17 +201,17 @@ ${seg({
     say: String.raw`<p>« En tout : $O(n^2)$ départs, fois $O(k)$ pas de glouton, fois $O(\log^2 n)$ par pas : $O(k\,n^2\log^2 n)$, au lieu de $O(kn^5\log n)$ avant. Pour $n=100$, on passe d'environ $10^{11}$ à $10^6$ opérations. »</p>
 <p>« Quelques mois plus tard, trois des mêmes auteurs, avec Eva Rotenberg, ont obtenu $\Theta(n\log n)$ : seulement $O(n)$ départs, une fenêtre glissante pour calculer $\mathrm{next}$ partout en $O(n\log n)$, et $\mathrm{next}$ décrite par $O(n)$ morceaux simples, des transformations de Möbius. Ils montrent aussi qu'on ne peut pas faire mieux, par une réduction depuis le problème des ensembles disjoints. »</p>`,
     keys: 'Theorem 7.1 · $O(kn^2\\log^2 n)$ · $\\Theta(n\\log n)$ · lower bound',
-  })}
-${seg({
-    time: '10:00 – 11:15', title: '05 — Construit et vérifié', img: '09_home_verified',
-    screen: 'Les quatre chiffres (figures, gardiens testés, vérifications, temps de calcul).',
-    say: String.raw`<p>« Nous avons implémenté l'algorithme en JavaScript : il tourne dans la page et calcule toutes les figures. À la place des structures en $O(\log n)$, nous utilisons des méthodes plus simples (graphe de visibilité, parcours linéaire), largement assez rapides : moins d'une demi-seconde pour 40 sommets. »</p>
-<p>« Nous avons testé contre des calculs en force brute : une grille dense de caméras ne bat jamais notre $\mathrm{next}(u)$, et le glouton depuis 200 départs ne trouve jamais mieux que notre optimum. Chaque lemme a été vérifié sur des milliers de gardiens aléatoires. »</p>
-<p>« Une trouvaille : l'énoncé du lemme 6.2 est imprécis quand la chaîne fait plus d'un tour autour de la caméra, car un rayon peut alors toucher la chaîne deux fois. La preuve dit qu'il faut prendre le point le plus proche de $m$ : notre première version prenait le plus proche de $g$, et se trompait dans environ 19 % des cas. Enfin, le solveur refuse un polygone non simple. »</p>`,
-    keys: 'brute force · tests · Lemma 6.2 precision · simple polygon enforced',
-    handover: '« Ilias va maintenant vous montrer le jeu. »',
+    handover: '« Ilias va maintenant vous montrer comment nous avons construit et vérifié tout cela. »',
   })}
 
+${seg({
+    time: '11:15 – 12:00', title: '06 — Le jeu et la conclusion', img: 'fig12_game',
+    screen: 'Page <em>Play</em> (niveau Easy).',
+    demo: 'Cliquer dans la galerie pour poser une caméra, cliquer un mur (la portion vue se sélectionne), poser une deuxième caméra, puis « Check ». Si c\'est optimal : confettis. Sinon cocher « show optimal ».',
+    say: String.raw`<p>« Pour finir, le jeu, que vous pouvez essayer sur la page <em>Play</em> : on place des caméras, on choisit leur mur, et le jeu vérifie que chaque caméra voit toute sa portion et que tout est couvert, puis compare avec l'optimum calculé par l'algorithme. »</p>
+<p>« À retenir : la contiguïté transforme le problème en couverture d'une boucle par des arcs ; le glouton est presque parfait ; et l'article montre qu'il suffit d'essayer $O(n^2)$ départs, avec des pas rapides. Le tout pour un polygone simple. »</p>
+<p>« Nous avons utilisé un assistant IA pour comprendre les articles et pour implémenter et tester le code, que nous avons relu et corrigé ; c'est détaillé dans notre rapport et notre journal IA. Merci, nous sommes prêts pour vos questions. »</p>`,
+  })}
 <h2>4. Comprendre ta partie en profondeur</h2>
 <h3>Arrangement, $G_P$ et $U_P$ (définitions 5.1, 5.2)</h3>
 <p>L'arrangement $C_P$ est formé par les $n$ droites qui prolongent les murs ; il a $O(n^2)$ sommets. Pour chaque sommet $c$, défini par les murs $ab$ et $ef$, et chaque extrémité $x\in\{a,b,e,f\}$ que $c$ voit, on prend <b>l'unique</b> chaîne maximale vue par $c$ qui contient $x$ (unique car ce que voit un point fixe est fixe). Ces gardiens forment $G_P$ ; $U_P$ = tous les sommets de $P$ + les débuts des chaînes de $G_P$.</p>
@@ -227,7 +235,6 @@ ${seg({
 <tr><td><code>geometry/solver.js</code> : <code>candidateGuards</code>, <code>startPoints</code>, <code>nextBad</code></td><td>$G_P$, $U_P$, et la recherche des mauvais gardiens</td><td>« <code>nextBad</code> parcourt les arêtes après $u$ (au lieu d'une dichotomie), ajoute un demi-plan au noyau à chaque arête, s'arrête si le noyau devient vide, teste si le chemin tourne à gauche, coupe la droite $\ell_u$ avec le noyau et teste ses deux extrémités. »</td></tr>
 <tr><td><code>geometry/proofs.js</code></td><td>les constructions des preuves</td><td>« Lemme 6.2 avec la bonne règle (point le plus proche de $m$), le théorème 5.4 étape par étape, le lemme 4.9 : ce sont les fonctions utilisées par les figures 5, 7 et 8. »</td></tr>
 <tr><td><code>widgets/</code> figures 6 à 11</td><td>arrangement, théorème 5.4, lemme 6.2, pas glouton, algorithme complet, fonction next</td><td>« Chaque figure appelle le solveur et affiche les objets de la preuve. »</td></tr>
-<tr><td><code>tests/</code></td><td>tests automatiques (<code>npm test</code>)</td><td>« Visibilité contre un test direct ; $\mathrm{next}(u)$ contre une grille de caméras ; l'optimum contre 200 départs ; chaque lemme sur des milliers de cas aléatoires. 1541 vérifications passent. »</td></tr>
 </tbody></table>
 
 <h2>6. Questions probables sur ta partie</h2>
@@ -240,7 +247,7 @@ ${qa([
     ['Comment calcule-t-on $\\mathrm{next}(u)$ quand le meilleur gardien est mauvais ?', 'Le lemme 4.9 dit qu\'il se trouve (ou un gardien aussi bon) au premier ou au dernier point de la droite $\\ell_u$ dans le noyau des murs concernés ; $\\ell_u$ est la droite du premier segment du plus court chemin depuis $u$. On teste ces deux points.'],
     ['Pourquoi votre implémentation est-elle plus lente que l\'article ?', 'Nous n\'avons pas implémenté les structures en $O(\\log n)$ (Guibas–Hershberger, Hershberger–Suri) ; nous utilisons des versions polynomiales plus simples, comme annoncé dans la proposition. Cela suffit pour illustrer l\'algorithme sur des galeries de quelques dizaines de sommets.'],
     ['Qu\'apporte l\'article $\\Theta(n\\log n)$ ?', '$O(n)$ départs au lieu de $O(n^2)$, une fenêtre glissante pour calculer $\\mathrm{next}$ sur tous les départs à la fois, et $\\mathrm{next}$ en $O(n)$ morceaux de Möbius pour éviter le facteur $k$ ; plus une borne inférieure qui montre que c\'est optimal.'],
-    ['Comment avez-vous testé ?', 'Contre des calculs indépendants en force brute (grille de caméras, glouton depuis 200 départs, test direct de visibilité) et en vérifiant chaque lemme sur des milliers de gardiens aléatoires.'],
+    ['Comment le jeu vérifie-t-il une solution ?', 'Pour chaque caméra, il calcule exactement ce qu\'elle voit et vérifie que sa portion est incluse dedans ; puis il vérifie que l\'union des portions fait tout le tour du bord, et compare le nombre de caméras avec l\'optimum calculé par notre solveur.'],
     ...COMMON_QA,
   ])}
 
@@ -256,7 +263,7 @@ ${qa([
 export default function oralPerson(who) {
   const other = who === 'ilias' ? 'jomaa' : 'ilias';
   const body = who === 'ilias' ? ilias() : jomaa();
-  const minutes = who === 'ilias' ? '6 minutes (début et fin)' : '6 minutes (milieu)';
+  const minutes = who === 'ilias' ? '6 min 30 (le début, puis la section 05)' : '5 min 30 (le milieu, puis la fin)';
   return String.raw`
 <style>
 .tl tr.me td { background: #eef2ff; font-weight: 600; }
@@ -290,9 +297,9 @@ export default function oralPerson(who) {
 <h2>1. Ton rôle en bref</h2>
 <div class="role">
 <p><b>Tu parles environ ${minutes}.</b> ${who === 'ilias'
-    ? 'Tu ouvres la présentation (sujet, problème, polygone simple, pourquoi c\'est surprenant), tu expliques le glouton et les bons/mauvais gardiens, puis tu passes la parole à Jomaa. Tu reprends à la fin pour la démo du jeu et la conclusion.'
-    : 'Tu prends la parole après Ilias, au milieu de l\'idée 2 : points de départ $U_P$ et théorème 5.4, puis le calcul rapide (lemmes 6.2 et 6.8), le résultat, l\'algorithme optimal et la validation. Tu rends la parole à Ilias pour le jeu.'}</p>
-<p><b>Dans le rapport et le site</b>, tu es indiqué comme celui qui explique ${who === 'ilias' ? 'l\'accueil 01–02, les chapitres 1 et 2, et le jeu' : 'les chapitres 3, 4 et 5 et la section « implémentation et validation »'}.</p>
+    ? 'Tu ouvres la présentation (sujet, problème, polygone simple, pourquoi c\'est surprenant), tu expliques le glouton et les bons/mauvais gardiens, puis tu passes la parole à Jomaa. Tu reprends à 10:00 pour la section 05 : comment nous avons construit et vérifié le projet, avec notre découverte sur le lemme 6.2. Tu rends ensuite la parole à Jomaa pour le jeu et la conclusion.'
+    : 'Tu prends la parole après Ilias, au milieu de l\'idée 2 : points de départ $U_P$ et théorème 5.4, puis le calcul rapide (lemmes 6.2 et 6.8), le résultat et l\'algorithme optimal. Tu passes la parole à Ilias pour la section 05, puis tu reprends à la fin pour la démo du jeu et la conclusion.'}</p>
+<p><b>Dans le rapport et le site</b>, tu es indiqué comme celui qui explique ${who === 'ilias' ? 'l\'accueil 01–02, les chapitres 1 et 2, la validation (tests et découverte sur le lemme 6.2) et le code du jeu' : 'les chapitres 3, 4 et 5, et la démo du jeu à l\'oral'}.</p>
 <p><b>Ton binôme</b> : ${NAMES[other]}. Vous devez tous les deux pouvoir répondre aux questions générales (polygone simple, glouton, résultat principal, usage de l'IA).</p>
 </div>
 
