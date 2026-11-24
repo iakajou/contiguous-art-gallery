@@ -74,47 +74,51 @@ execFileSync('zip', ['-r', '-q', '-X', sbOut, sbName], { cwd: sbStage });
 fs.rmSync(sbStage, { recursive: true, force: true });
 console.log(`✓ ${sbOut} (${(fs.statSync(sbOut).size / 1e6).toFixed(1)} MB)`);
 
-// Third archive: the submission. Exactly the files of the git repository (what `git add -A` would
-// commit: no drafts, no presentation notes, no build files), plus the offline site and the report PDF.
+// Third archive: the submission, with only what the course asks for: the content of the webpage
+// (site-offline.html), all the code of the program (sources and tests, with what is needed to run them),
+// instructions to run it, and the AI journal. No explanation documents, screenshots or drafts.
 const subName = `${name}-Submission`;
 const subOut = path.resolve(root, '..', `${subName}.zip`);
 const subStage = fs.mkdtempSync(path.join(os.tmpdir(), 'cag-sub-'));
 const subDir = path.join(subStage, subName);
+const keepTop = ['index.html', 'package.json', 'package-lock.json', 'vite.config.js', 'vite.single.config.js'];
+const keepDirs = ['src/', 'tests/', 'public/'];
 const tracked = execFileSync('git', ['ls-files', '-co', '--exclude-standard'], { cwd: root, encoding: 'utf8' })
-  .split('\n').filter((f) => f && fs.existsSync(path.join(root, f)));
+  .split('\n').filter((f) => f && fs.existsSync(path.join(root, f)))
+  .filter((f) => keepTop.includes(f) || keepDirs.some((d) => f.startsWith(d)));
+const codeDir = path.join(subDir, 'code');
 for (const f of tracked) {
-  fs.mkdirSync(path.dirname(path.join(subDir, f)), { recursive: true });
-  fs.copyFileSync(path.join(root, f), path.join(subDir, f));
+  fs.mkdirSync(path.dirname(path.join(codeDir, f)), { recursive: true });
+  fs.copyFileSync(path.join(root, f), path.join(codeDir, f));
 }
-fs.copyFileSync(path.join(root, 'dist-single', 'index.html'), path.join(subDir, 'site-offline.html'));
-const reportPdf = path.join(root, 'report', 'main.pdf');
-if (fs.existsSync(reportPdf)) fs.copyFileSync(reportPdf, path.join(subDir, 'Report.pdf'));
+// the index.html at the root of the archive is the whole website in one file: it opens with a double-click
+fs.copyFileSync(path.join(root, 'dist-single', 'index.html'), path.join(subDir, 'index.html'));
 const journalPdf = path.join(root, 'docs', 'AI_journal_EN.pdf');
 if (fs.existsSync(journalPdf)) fs.copyFileSync(journalPdf, path.join(subDir, 'AI_journal.pdf'));
 fs.writeFileSync(path.join(subDir, 'HOW_TO_RUN.txt'), `Guarding Walls Contiguously - Ilias Akajou (520466) and Jomaa Abdulrahman (583629)
 INFO-F420 Computational Geometry, ULB, 2026-2027
 
-1. View the project (no installation)
-   Open site-offline.html in a standard browser (double-click it). It is the whole
-   website in one file: overview, the five proof chapters with their interactive
-   figures, the game and the report. It works offline.
-   The same site is online at https://iakajou.github.io/contiguous-art-gallery/
+Public webpage:   https://iakajou.github.io/contiguous-art-gallery/
+Git repository:   https://github.com/iakajou/contiguous-art-gallery
 
-2. The report
-   The report is the "Report" page of the website. Report.pdf is the same report as a
-   PDF, and report/main.tex is its LaTeX source. AI_journal.pdf is our AI journal.
+Content of this archive
+  index.html       the whole webpage in one file (report, interactive figures, game)
+  AI_journal.pdf   our AI journal
+  code/            all the code of the program (sources and tests)
 
-3. The source code
-   https://github.com/iakajou/contiguous-art-gallery (same files as this folder).
-   With Node.js 18 or later:
+1. View the webpage (no installation)
+   Open index.html (this folder) in a standard browser: double-click it. It works offline.
+   The report is the "Report" page of the website; it includes the work distribution
+   ("Team: who did what"), the acknowledgements and the references.
+
+2. Run the code (Node.js 18 or later), in the folder code/
      npm install      install the dependencies (once)
      npm run dev      run the site locally and open the address it prints
      npm test         run the automatic tests
-     npm run build    build the site into dist/
-   Note: index.html at the root is the development entry point; it needs "npm run dev".
-   To view the site without Node.js, use site-offline.html.
+     npm run build    build the site into code/dist/
+   code/index.html is the development entry point: it only works with "npm run dev".
 `);
 if (fs.existsSync(subOut)) fs.rmSync(subOut);
 execFileSync('zip', ['-r', '-q', '-X', subOut, subName], { cwd: subStage });
 fs.rmSync(subStage, { recursive: true, force: true });
-console.log(`✓ ${subOut} (${(fs.statSync(subOut).size / 1e6).toFixed(1)} MB, ${tracked.length} files from the repository)`);
+console.log(`✓ ${subOut} (${(fs.statSync(subOut).size / 1e6).toFixed(1)} MB, ${tracked.length} code files in code/ + index.html (the site), AI_journal.pdf, HOW_TO_RUN.txt)`);

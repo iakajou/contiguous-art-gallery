@@ -8,7 +8,16 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M6 54 L18 10 L34 30 L46 8 L58 54 Z' fill='%23eef2ff' stroke='%231e3a8a' stroke-width='4' stroke-linejoin='round'/><circle cx='32' cy='42' r='6' fill='%23dc2626'/></svg>" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><div id="dev-hint" style="display:none;font:16px/1.6 system-ui,-apple-system,sans-serif;max-width:640px;margin:80px auto;padding:0 16px;color:#1f2937">
+      <h1 style="font-size:22px">Guarding Walls Contiguously</h1>
+      <p>This <code>index.html</code> is the development entry point of the source code: it only works with <code>npm run dev</code>.</p>
+      <p>To view the website without installing anything, open the <b>index.html</b> at the root of the submitted archive (the whole site in one file),
+      or the public page <a href="https://iakajou.github.io/contiguous-art-gallery/">iakajou.github.io/contiguous-art-gallery</a>.</p>
+    </div></div>
+    <script>
+      // opened directly from the disk without the build: explain what to open instead
+      if (location.protocol === 'file:') setTimeout(function () { var h = document.getElementById('dev-hint'); if (h) h.style.display = 'block'; }, 800);
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

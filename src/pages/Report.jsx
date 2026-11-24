@@ -38,6 +38,47 @@ export default function Report() {
           The reason the problem is easy, while classical art gallery variants are not, is the one-dimensional structure created by contiguity: once the start
           of one chain is known, the greedy algorithm is optimal, so the search space collapses to a set of starting points on the boundary.
         </p>
+        <Aside title="The simple-polygon assumption is essential.">
+          All the papers on this problem assume that <M>P</M> is simple (one boundary, no self-intersection, no hole), and the method fails without it:
+          (i) the boundary must be a single cycle, which is what the greedy argument covers with intervals; (ii) every closed curve in <M>P</M> encloses only
+          points of <M>P</M>, which all the proofs use, and shortest paths are unique; (iii) with a hole, a guard can see both endpoints of an edge without seeing
+          its middle. Merrild et al. <Cite k="2" /> note that their approach does not extend to polygons with holes and that this case is open. Our solver
+          rejects non-simple polygons.
+        </Aside>
+
+        <h3 className="tbl-title">The steps of the proof, in one table</h3>
+        <div className="tbl-scroll">
+          <table className="tbl">
+            <thead><tr><th>Step</th><th>Main statement</th><th>Where</th></tr></thead>
+            <tbody>
+              <tr><td>Visibility cores (Obs. 2.1, 2.2)</td><td>A guard that sees a chain lies in the visibility core of its edges; one guard suffices if and only if <M>P</M> is star-shaped, which is tested in <M>O(n)</M> <Cite k="13" />.</td><td>2.1, Figure 2</td></tr>
+              <tr><td>Greedy algorithm</td><td>From any start <M>u</M>, the greedy algorithm uses at most <M>k+1</M> guards, and exactly <M>k</M> if an optimal chain starts at <M>u</M>.</td><td>2.2, Figure 3</td></tr>
+              <tr><td>Good and bad guards (Def. 4.1, Obs. 4.8)</td><td>A guard is bad if its open chain contains a vertex, <M>{'g\\neq u,v'}</M>, it sees its chain under an angle larger than <M>\pi</M>, and <M>u</M> does not see <M>v</M>; for a bad guard the shortest path from <M>u</M> to <M>v</M> turns left.</td><td>2.3, Figure 4</td></tr>
+              <tr><td>Replacement (Prop. 4.3, Cor. 4.7, Lemma 4.9)</td><td>A good guard can be replaced by a vertex of the arrangement of the supporting lines; a bad guard by the first or last point of the line <M>{'\\ell_u'}</M> inside the visibility core.</td><td>2.4, Figure 5</td></tr>
+              <tr><td>Candidates (Def. 5.1, 5.2)</td><td>The candidate guards <M>G_P</M> and the starting points <M>U_P</M> both have size <M>O(n^2)</M>.</td><td>2.5, Figure 6</td></tr>
+              <tr><td>Theorem 5.4</td><td>Some optimal solution has a chain that starts at a point of <M>U_P</M>.</td><td>2.6, Figure 7</td></tr>
+              <tr><td>Lemma 6.2</td><td>The maximal chain seen by <M>g</M> around <M>m</M> is given by two shortest paths and two rays (taking the hit closest to <M>m</M>).</td><td>2.7, Figure 8</td></tr>
+              <tr><td>Lemma 6.8</td><td>After <M>O(n^2\log n)</M> preprocessing and with <M>O(n^2)</M> space, <M>{'\\mathrm{next}(u)'}</M> is computed in <M>O(\log^2 n)</M>.</td><td>2.8, Figure 9</td></tr>
+              <tr><td>Theorem 7.1</td><td>The problem is solved in <M>O(kn^2\log^2 n)</M> time and <M>O(n^2)</M> space.</td><td>2.9, Figure 10</td></tr>
+              <tr><td>Optimal bound <Cite k="6" /></td><td><M>\Theta(n\log n)</M>, with a matching lower bound.</td><td>2.10, Figure 11</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className="tbl-title">Our contribution</h3>
+        <ul>
+          <li>An interactive webpage: a short overview used for the presentation, five chapters that follow the proof of <Cite k="5" /> step by step with eleven interactive figures, a game, and this report.</li>
+          <li>A complete implementation of the algorithm in JavaScript, running in the browser, with simpler polynomial-time subroutines instead of the polylogarithmic data structures of the paper (Section R.4).</li>
+          <li>Automatic tests that check the implementation and every construction of the proof against independent brute-force computations (Section R.4).</li>
+          <li>A precision on Lemma 6.2 of <Cite k="5" />, found with these tests: when a chain winds around the guard more than once, a ray can hit the chain twice and the right point is the one closest to <M>m</M> (<a href={link('/proof/4', { s: 'lemma62' })}>Section 2.7</a>).</li>
+        </ul>
+        <p>
+          <b>Conclusion.</b> The Contiguous Art Gallery Problem is a rare art gallery problem that can be solved in polynomial time, because contiguity turns
+          it into covering a cycle with intervals: once the start of one optimal chain is known, the greedy algorithm is optimal. The paper of de Berg et al.
+          shows that <M>O(n^2)</M> starting points, built from the arrangement of the supporting lines, always contain such a start. Implementing every step of
+          the proof and testing it on random polygons helped us understand it in detail, and revealed that the statement of Lemma 6.2 needs a precision.
+          The case of polygons with holes remains open.
+        </p>
       </Sub>
 
       <Sub id="context" num="R.2" title="Context: why this problem is surprising">
@@ -90,6 +131,29 @@ export default function Report() {
           (<code>arrangement.js</code>), the algorithm (<code>solver.js</code>) and the constructions used in the proofs (<code>proofs.js</code>).
           As announced in our proposal, we replaced the polylogarithmic data structures by simpler polynomial-time routines, which are fast enough for a few dozen vertices.
         </p>
+        <div className="tbl-scroll">
+          <table className="tbl">
+            <thead><tr><th>File</th><th>Content</th></tr></thead>
+            <tbody>
+              <tr><td><code>vec.js</code>, <code>polygon.js</code></td><td>vectors, orientation test, boundary parameter, visibility test of a segment, simplicity test</td></tr>
+              <tr><td><code>visibility.js</code></td><td>maximal chains seen by a point</td></tr>
+              <tr><td><code>core.js</code></td><td>visibility cores (intersection of half-planes)</td></tr>
+              <tr><td><code>shortestPath.js</code></td><td>shortest paths inside <M>P</M></td></tr>
+              <tr><td><code>arrangement.js</code></td><td>vertices of the arrangement of the supporting lines inside <M>P</M></td></tr>
+              <tr><td><code>solver.js</code></td><td><M>G_P</M>, <M>U_P</M>, <M>{'\\mathrm{next}'}</M>, the greedy algorithm, the full algorithm</td></tr>
+              <tr><td><code>proofs.js</code></td><td>the constructions of the proofs, used by the figures and the tests</td></tr>
+              <tr><td><code>generate.js</code></td><td>random simple polygons for the game</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          <b>Simplifications.</b> Shortest paths are computed on the visibility graph of the vertices (Floyd–Warshall); the arrangement is computed by
+          intersecting all pairs of supporting lines; the search for bad guards scans the edges after <M>u</M> one by one instead of a binary search,
+          maintaining the visibility core incrementally and stopping as soon as it becomes empty. The algorithm is the same; only the speed of the
+          subroutines changes. The solver also stops early: if the first greedy run uses <M>m</M> guards, then <M>{'k\\ge m-1'}</M>, so a run with
+          <M>m-1</M> guards is optimal. On random polygons the full algorithm takes about 10&nbsp;ms for <M>n=12</M>, 26&nbsp;ms for <M>n=20</M>,
+          121&nbsp;ms for <M>n=30</M> and 0.3–0.4&nbsp;s for <M>n=40</M>.
+        </p>
         <p>We tested the implementation against independent brute-force computations (<code>npm test</code>, <code>tests/</code>):</p>
         <ul>
           <li>visibility chains agree with direct segment tests on random points;</li>
@@ -102,6 +166,27 @@ export default function Report() {
           reflex vertices. We therefore treat <M>P</M> as a closed set, test visibility by splitting a segment at all its contacts with the boundary, and use small
           tolerances. The example polygons are slightly perturbed so that they are in general position, as assumed in the paper.
         </Aside>
+        <h3 className="tbl-title">The interactive figures</h3>
+        <div className="tbl-scroll">
+          <table className="tbl">
+            <thead><tr><th>Figure</th><th>Section</th><th>What it shows</th><th>Explained by</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Overview</td><td>a contiguous guard, the maximal chains it sees, an optimal solution</td><td>Ilias</td></tr>
+              <tr><td>2</td><td>2.1</td><td>the visibility core of a chain</td><td>Ilias</td></tr>
+              <tr><td>3</td><td>2.2</td><td>the greedy algorithm and the <M>k+1</M> bound</td><td>Ilias</td></tr>
+              <tr><td>4</td><td>2.3</td><td>good and bad guards (Definition 4.1)</td><td>Ilias</td></tr>
+              <tr><td>5</td><td>2.4</td><td>replacement of good guards (Corollary 4.7) and bad guards (Lemma 4.9)</td><td>Ilias</td></tr>
+              <tr><td>6</td><td>2.5</td><td>the arrangement, <M>G_P</M> and <M>U_P</M></td><td>Jomaa</td></tr>
+              <tr><td>7</td><td>2.6</td><td>Theorem 5.4 step by step</td><td>Jomaa</td></tr>
+              <tr><td>8</td><td>2.7</td><td>Lemma 6.2</td><td>Jomaa</td></tr>
+              <tr><td>9</td><td>2.8</td><td>one greedy step (Lemma 6.8)</td><td>Jomaa</td></tr>
+              <tr><td>10</td><td>2.9</td><td>the complete algorithm (Theorem 7.1)</td><td>Jomaa</td></tr>
+              <tr><td>11</td><td>2.10</td><td>the function <M>{'\\mathrm{next}'}</M>, basis of the <M>\Theta(n\log n)</M> algorithm</td><td>Jomaa</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>In the game (page <a href={link('/play')}>Play</a>), the page generates a random simple polygon, the player places guards and chooses their chains, and the
+          game checks the solution and compares it with the optimum computed by our solver.</p>
       </Sub>
 
       <Sub id="team" num="R.5" title="Team: who did what">
@@ -150,6 +235,18 @@ export default function Report() {
             </tbody>
           </table>
         </div>
+        <h3 className="tbl-title">Individual contributions, in short</h3>
+        <p>
+          <b>Ilias Akajou.</b> The first half of the proof (Sections 2.1–2.4, Figures 2–5: visibility cores, the greedy algorithm and its <M>k+1</M> bound,
+          good and bad guards, replacement of guards); the validation (automatic tests against brute force, with the precision found on Lemma 6.2); the problem
+          (overview and Figure 1), the game, the geometry basics of the code, and the structure and design of the site; he led the development sessions.
+          At the oral: 0:00–5:15 and 10:00–11:15.
+        </p>
+        <p>
+          <b>Jomaa Abdulrahman.</b> The second half of the proof (Sections 2.5–2.10, Figures 6–11: <M>G_P</M> and <M>U_P</M>, Theorem 5.4, Lemma 6.2, one greedy
+          step, the complete algorithm and the <M>\Theta(n\log n)</M> algorithm); the report sections on related work and implementation; the review of the site,
+          where he found that the simple-polygon assumption was missing. At the oral: 5:15–10:00, then the game and the conclusion (11:15–12:00).
+        </p>
         <p>
           <b>Together:</b> the choice of the topic, the proposal and its revision, the division of the work, Sections R.5–R.7 of the report, and the AI journal.
         </p>
@@ -170,8 +267,10 @@ export default function Report() {
           they are computed by our implementation, and no figure was copied from the papers.
         </p>
         <p>
-          <b>Use of AI.</b> We used an AI assistant (Claude, by Anthropic) to help us understand the papers, to implement and test the code, and to draft the texts of this site.
-          We reviewed, tested and corrected its results. Our AI journal, which describes this use in detail, will be provided with the final submission.
+          <b>Use of AI.</b> We used an AI assistant (Claude Code by Anthropic, model Claude Opus 5.5) as a tool: at our request it explained the papers,
+          implemented and tested the code, and drafted the texts of this site. We decided what to build, what to keep and what to change, and we checked the
+          results with the automated tests and against the papers (Section R.4). Our AI journal, provided with the submission, describes this use, the access
+          limits we met, and how we checked, corrected or rejected the results.
         </p>
         <p>
           <b>Software.</b> The site uses React and Vite (MIT licence), KaTeX (MIT) for formulas, vite-plugin-singlefile (MIT) for the offline version, and the fonts Inter,

@@ -349,6 +349,7 @@ A reduction from set disjointness gives a matching $\Omega(n\log n)$ lower bound
 
 %======================================================================
 \section{Implementation and results}
+\label{sec:impl}
 %======================================================================
 
 \subsection{Architecture}
@@ -513,9 +514,10 @@ of the algorithm, illustrate the steps of the proof with widgets), and a fellow 
 \paragraph{Sources.} All definitions, lemmas and theorems of Section~\ref{sec:algo} are paraphrased from~\cite{deBerg2025} and keep its numbering; Section~\ref{sec:optimal} summarises
 \cite{deBerg2026}. All figures are computed by our implementation; no figure was copied from the papers.
 
-\paragraph{Use of AI.} We used an AI assistant (Claude, by Anthropic) to help us understand the papers, to implement and test the code, and to draft the texts
-of the webpage and of this report. We reviewed, tested and corrected its results; for example, the wrong choice of ray hit in our first implementation of Lemma~6.2 was found by our tests.
-Our AI journal, which describes this use in detail, is provided with the submission.
+\paragraph{Use of AI.} We used an AI assistant (Claude Code, by Anthropic) as a tool: at our request it explained the papers, implemented and tested the code,
+and drafted the texts of the webpage and of this report. We decided what to build, what to keep and what to change, and we checked the results with the automated tests
+and against the papers (Section~\ref{sec:impl}); for example, the wrong choice of ray hit in our first implementation of Lemma~6.2 was found by our tests.
+Our AI journal, provided with the submission, describes this use, the access limits we met, and how we checked, corrected or rejected the results.
 
 \paragraph{Software.} React and Vite (MIT licence), KaTeX (MIT), vite-plugin-singlefile (MIT), and the fonts Inter, Instrument Serif and JetBrains Mono
 (SIL Open Font License). No other code was reused.
