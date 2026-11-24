@@ -77,7 +77,8 @@ console.log(`✓ ${sbOut} (${(fs.statSync(sbOut).size / 1e6).toFixed(1)} MB)`);
 // Third archive: the submission, with only what the course asks for: the content of the webpage
 // (site-offline.html), all the code of the program (sources and tests, with what is needed to run them),
 // instructions to run it, and the AI journal. No explanation documents, screenshots or drafts.
-const subName = `${name}-Submission`;
+// named after the course, the students and their student numbers
+const subName = 'INFO-F420_Ilias-Akajou_520466_Jomaa-Abdulrahman_583629';
 const subOut = path.resolve(root, '..', `${subName}.zip`);
 const subStage = fs.mkdtempSync(path.join(os.tmpdir(), 'cag-sub-'));
 const subDir = path.join(subStage, subName);

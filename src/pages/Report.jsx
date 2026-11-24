@@ -239,13 +239,13 @@ export default function Report() {
         <p>
           <b>Ilias Akajou.</b> The first half of the proof (Sections 2.1–2.4, Figures 2–5: visibility cores, the greedy algorithm and its <M>k+1</M> bound,
           good and bad guards, replacement of guards); the validation (automatic tests against brute force, with the precision found on Lemma 6.2); the problem
-          (overview and Figure 1), the game, the geometry basics of the code, and the structure and design of the site; he led the development sessions.
+          (overview and Figure 1), the game, the geometry basics of the code, and the structure and design of the site; leading the development sessions.
           At the oral: 0:00–5:15 and 10:00–11:15.
         </p>
         <p>
           <b>Jomaa Abdulrahman.</b> The second half of the proof (Sections 2.5–2.10, Figures 6–11: <M>G_P</M> and <M>U_P</M>, Theorem 5.4, Lemma 6.2, one greedy
           step, the complete algorithm and the <M>\Theta(n\log n)</M> algorithm); the report sections on related work and implementation; the review of the site,
-          where he found that the simple-polygon assumption was missing. At the oral: 5:15–10:00, then the game and the conclusion (11:15–12:00).
+          which found that the simple-polygon assumption was missing. At the oral: 5:15–10:00, then the game and the conclusion (11:15–12:00).
         </p>
         <p>
           <b>Together:</b> the choice of the topic, the proposal and its revision, the division of the work, Sections R.5–R.7 of the report, and the AI journal.

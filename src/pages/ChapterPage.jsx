@@ -7,31 +7,31 @@ import { Reveal } from '../anim/motion.jsx';
 
 export const CHAPTERS = [
   {
-    id: 1, short: 'Greedy', title: 'The greedy algorithm is almost optimal', author: 'ilias', comp: Chapter1, hue: 'indigo',
+    id: 1, short: 'Greedy', title: 'The greedy algorithm is almost optimal', author: 'ilias', comp: Chapter1, src: 5, hue: 'indigo',
     lead: 'Visibility cores tell us when one guard is enough. The greedy algorithm is never more than one guard away from the optimum, and it is optimal when it starts at the right place.',
     sections: [['notation', 'Notation'], ['cores', '2.1 Visibility cores'], ['greedy', '2.2 The greedy algorithm']],
     refs: 'Observations 2.1, 2.2 · proof of Theorem 7.1',
   },
   {
-    id: 2, short: 'Good & bad guards', title: 'Good guards, bad guards', author: 'ilias', comp: Chapter2, hue: 'rose',
+    id: 2, short: 'Good & bad guards', title: 'Good guards, bad guards', author: 'ilias', comp: Chapter2, src: 5, hue: 'rose',
     lead: 'A guard is bad when it looks around a corner. Good guards can always be slid onto a vertex of the arrangement of the supporting lines; bad guards need more care.',
     sections: [['goodbad', '2.3 Good and bad guards'], ['replace', '2.4 Replacing guards']],
     refs: 'Definition 4.1 · Proposition 4.3 · Lemmas 4.2–4.6, 4.9 · Corollary 4.7',
   },
   {
-    id: 3, short: 'Few starting points', title: 'Only O(n²) starting points matter', author: 'jomaa', comp: Chapter3, hue: 'emerald',
+    id: 3, short: 'Few starting points', title: 'Only O(n²) starting points matter', author: 'jomaa', comp: Chapter3, src: 5, hue: 'emerald',
     lead: <>The candidate guards <M>G_P</M> and the start points <M>U_P</M> form finite sets of size <M>O(n^2)</M>. Theorem 5.4 shows that some optimal solution has a chain that starts in <M>U_P</M>, even when all its guards are bad.</>,
     sections: [['discrete', '2.5 Candidates and start points'], ['thm54', '2.6 Theorem 5.4']],
     refs: 'Definitions 5.1, 5.2 · Lemma 5.3 · Theorem 5.4 · Lemma 6.6',
   },
   {
-    id: 4, short: 'Fast greedy steps', title: 'One greedy step in O(log² n)', author: 'jomaa', comp: Chapter4, hue: 'amber',
+    id: 4, short: 'Fast greedy steps', title: 'One greedy step in O(log² n)', author: 'jomaa', comp: Chapter4, src: 5, hue: 'amber',
     lead: 'Two shortest paths and two rays give the maximal chain a point sees. With a few precomputed structures, each greedy step costs O(log² n), and the whole algorithm O(k n² log² n).',
     sections: [['lemma62', '2.7 Maximal visible chains'], ['nextstep', '2.8 One greedy step'], ['full', '2.9 The complete algorithm']],
     refs: 'Definition 6.1 · Lemmas 6.2, 6.5, 6.8 · Theorem 7.1',
   },
   {
-    id: 5, short: 'Θ(n log n)', title: 'Towards the optimal Θ(n log n)', author: 'jomaa', comp: Chapter5, hue: 'cyan',
+    id: 5, short: 'Θ(n log n)', title: 'Towards the optimal Θ(n log n)', author: 'jomaa', comp: Chapter5, src: 6, hue: 'cyan',
     lead: 'A few months later three of the same authors, with E. Rotenberg, reached Θ(n log n): linear-size start sets, a sliding window, and the function next as O(n) Möbius pieces, with a matching lower bound.',
     sections: [['optimal', '2.10 The optimal algorithm']],
     refs: 'de Berg, Conradi, van der Hoog, Rotenberg (arXiv:2511.02960)',
@@ -78,6 +78,7 @@ export default function ChapterPage({ id }) {
           <div className="chapter-meta">
             <span className="pill">Explained by {AUTHORS[ch.author]}</span>
             <span className="pill pill-soft">{ch.refs}</span>
+            <span className="pill pill-soft">Statements paraphrased from <Cite k={ch.src} />, with its numbering</span>
           </div>
         </div>
       </section>
