@@ -89,6 +89,29 @@ for (const f of tracked) {
 fs.copyFileSync(path.join(root, 'dist-single', 'index.html'), path.join(subDir, 'site-offline.html'));
 const reportPdf = path.join(root, 'report', 'main.pdf');
 if (fs.existsSync(reportPdf)) fs.copyFileSync(reportPdf, path.join(subDir, 'Report.pdf'));
+fs.writeFileSync(path.join(subDir, 'HOW_TO_RUN.txt'), `Guarding Walls Contiguously - Ilias Akajou (520466) and Jomaa Abdulrahman (583629)
+INFO-F420 Computational Geometry, ULB, 2026-2027
+
+1. View the project (no installation)
+   Open site-offline.html in a standard browser (double-click it). It is the whole
+   website in one file: overview, the five proof chapters with their interactive
+   figures, the game and the report. It works offline.
+   The same site is online at https://iakajou.github.io/contiguous-art-gallery/
+
+2. The report
+   The report is the "Report" page of the website. Report.pdf is the same report as a
+   PDF, and report/main.tex is its LaTeX source.
+
+3. The source code
+   https://github.com/iakajou/contiguous-art-gallery (same files as this folder).
+   With Node.js 18 or later:
+     npm install      install the dependencies (once)
+     npm run dev      run the site locally and open the address it prints
+     npm test         run the automatic tests
+     npm run build    build the site into dist/
+   Note: index.html at the root is the development entry point; it needs "npm run dev".
+   To view the site without Node.js, use site-offline.html.
+`);
 if (fs.existsSync(subOut)) fs.rmSync(subOut);
 execFileSync('zip', ['-r', '-q', '-X', subOut, subName], { cwd: subStage });
 fs.rmSync(subStage, { recursive: true, force: true });

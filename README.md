@@ -83,6 +83,12 @@ The repository contains `.codesandbox/tasks.json`: CodeSandbox installs the depe
 
 Without GitHub: create a new Devbox, upload the files of the zip, then run `npm install` and `npm run dev -- --host` in its terminal.
 
+## Running
+
+- **Without installing anything:** open `site-offline.html` (in the submitted zip, or build it with `npm run build:single`, which writes `dist-single/index.html`) in a standard browser. It is the whole site in one file and works offline.
+- **Online:** https://iakajou.github.io/contiguous-art-gallery/
+- **From the sources:** `npm install`, then `npm run dev` and open the address it prints. The `index.html` at the root is the development entry point and does not work when opened directly.
+
 ## Report in LaTeX
 
 `report/main.tex` (with `report/figures/`) is the written report as a LaTeX document, with the same content as the Report page.

@@ -81,6 +81,8 @@ export function aiJournal(info) {
 <td>A LaTeX version of the report of the webpage (problem, related work, proof sketch, implementation, who did what, use of AI, references), compiled and checked.</td></tr>
 <tr><td>2026-11-24</td><td>"Check that everything is correct and respects what the professor said."</td>
 <td>Compared the statements of the report with the papers, checked the links, the pages, the tests and the course checklist, and corrected the errors listed below.</td></tr>
+<tr><td>2026-11-24</td><td>"Look at the course page on the UV, it has all the information about the project; check that everything is OK."</td>
+<td>Read the project instructions, the project checklist and the page "How to cite papers" on the UV. Following that page, the bibliography now cites the journal version of Hershberger and Suri (1995) instead of the conference version, gives DOIs and open-access links, and states that [2], [3] and [4] were merged into [1]. Following the requirement that the program runs from a local html file, the submission zip contains a file with instructions (HOW_TO_RUN.txt) next to the offline version of the site.</td></tr>
 </tbody></table>
 
 <h2>3. How we used, checked, corrected or rejected the results</h2>

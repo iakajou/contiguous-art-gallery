@@ -152,7 +152,7 @@ costs $O(\log^2 n)$, hence $O(kn^2\log^2 n)$. Their paper is short (12 pages inc
 \item \textbf{Optimal bound.} De Berg, Conradi, van der Hoog and Rotenberg~\cite{deBerg2026} use $O(n)$ starting points and a function $\nextop$ made of $O(n)$
 M\"obius pieces, which gives $O(n\log n)$ time, with a matching $\Omega(n\log n)$ lower bound by a reduction from set disjointness.
 \item \textbf{Tools.} Shortest-path queries in $O(\log n)$ after linear preprocessing (Guibas and Hershberger~\cite{GuibasHershberger1989},
-Guibas et al.~\cite{Guibas1987}), and ray shooting in $O(\log n)$ (Hershberger and Suri~\cite{HershbergerSuri1993}).
+Guibas et al.~\cite{Guibas1987}), and ray shooting in $O(\log n)$ (Hershberger and Suri~\cite{HershbergerSuri1995}).
 \end{itemize}
 
 %======================================================================
@@ -308,7 +308,7 @@ and symmetrically for $v$. Our first implementation took the hit closest to $g$ 
 with the rule of the proof, it agrees in all our tests. The result of the paper is correct; only the statement needs this precision.
 \end{remark}
 
-With the data structures of~\cite{GuibasHershberger1989} and~\cite{HershbergerSuri1993}, the construction costs $O(\log n)$ (Lemma~6.5).
+With the data structures of~\cite{GuibasHershberger1989} and~\cite{HershbergerSuri1995}, the construction costs $O(\log n)$ (Lemma~6.5).
 
 \begin{figure}[ht]
 \centering
@@ -524,23 +524,23 @@ Our AI journal, which describes this use in detail, is provided with the submiss
 A.~Biniaz, A.~Maheshwari, M.~C.~R. Merrild, J.~S.~B. Mitchell, S.~Odak, V.~Polishchuk, E.~W. Robson, C.~M. Rysgaard, J.~K.~R. Schou, T.~Shermer,
 J.~Spalding-Jamieson, R.~Svenning, D.~W. Zheng.
 \newblock Polynomial-time algorithms for contiguous art gallery and related problems.
-\newblock In \emph{Proc.\ 41st International Symposium on Computational Geometry (SoCG 2025)}, LIPIcs 332, 20:1--20:21, 2025.
+\newblock In \emph{Proc.\ 41st International Symposium on Computational Geometry (SoCG 2025)}, volume 332 of LIPIcs, pages 20:1--20:21, 2025.
 \newblock \href{https://doi.org/10.4230/LIPIcs.SoCG.2025.20}{doi:10.4230/LIPIcs.SoCG.2025.20}.
 
 \bibitem{Merrild2024}
 M.~C.~R. Merrild, C.~M. Rysgaard, J.~K.~R. Schou, R.~Svenning.
 \newblock The contiguous art gallery problem is solvable in polynomial time.
-\newblock \href{https://arxiv.org/abs/2412.13938}{arXiv:2412.13938}, 2024.
+\newblock \href{https://arxiv.org/abs/2412.13938}{arXiv:2412.13938}, 2024 (v3, 2025). Merged into~\cite{Biniaz2025}; full version.
 
 \bibitem{Biniaz2024}
 A.~Biniaz, P.~Bose, A.~Maheshwari, J.~S.~B. Mitchell, S.~Odak, V.~Polishchuk, T.~C. Shermer.
 \newblock Contiguous boundary guarding.
-\newblock \href{https://arxiv.org/abs/2412.15053}{arXiv:2412.15053}, 2024.
+\newblock \href{https://arxiv.org/abs/2412.15053}{arXiv:2412.15053}, 2024 (v2, 2025). Merged into~\cite{Biniaz2025}; full version.
 
 \bibitem{Robson2024}
 E.~W. Robson, J.~Spalding-Jamieson, D.~W. Zheng.
 \newblock The analytic arc cover problem and its applications to contiguous art gallery, polygon separation, and shape carving.
-\newblock \href{https://arxiv.org/abs/2412.15567}{arXiv:2412.15567}, 2024.
+\newblock \href{https://arxiv.org/abs/2412.15567}{arXiv:2412.15567}, 2024 (v2, 2025). Merged into~\cite{Biniaz2025}; full version.
 
 \bibitem{deBerg2025}
 S.~de~Berg, J.~Conradi, I.~van~der~Hoog, F.~Staals.
@@ -550,48 +550,57 @@ S.~de~Berg, J.~Conradi, I.~van~der~Hoog, F.~Staals.
 \bibitem{deBerg2026}
 S.~de~Berg, J.~Conradi, I.~van~der~Hoog, E.~Rotenberg.
 \newblock The contiguous art gallery problem is in $\Theta(n\log n)$.
-\newblock \href{https://arxiv.org/abs/2511.02960}{arXiv:2511.02960}, 2025--2026.
+\newblock \href{https://arxiv.org/abs/2511.02960}{arXiv:2511.02960}, 2025 (v6, 2026).
 
 \bibitem{Chvatal1975}
 V.~Chv\'atal.
 \newblock A combinatorial theorem in plane geometry.
 \newblock \emph{Journal of Combinatorial Theory, Series B}, 18(1):39--41, 1975.
+\newblock \href{https://doi.org/10.1016/0095-8956(75)90061-1}{doi:10.1016/0095-8956(75)90061-1}.
 
 \bibitem{LeeLin1986}
 D.~T. Lee, A.~K. Lin.
 \newblock Computational complexity of art gallery problems.
 \newblock \emph{IEEE Transactions on Information Theory}, 32(2):276--282, 1986.
+\newblock \href{https://doi.org/10.1109/TIT.1986.1057165}{doi:10.1109/TIT.1986.1057165}.
 
 \bibitem{Abrahamsen2022}
 M.~Abrahamsen, A.~Adamaszek, T.~Miltzow.
 \newblock The art gallery problem is $\exists\mathbb{R}$-complete.
 \newblock \emph{Journal of the ACM}, 69(1):4:1--4:70, 2022.
-\newblock \href{https://arxiv.org/abs/1704.06969}{arXiv:1704.06969}.
+\newblock \href{https://doi.org/10.1145/3486220}{doi:10.1145/3486220}.
+\newblock Preliminary version in STOC 2018. Open access: \href{https://arxiv.org/abs/1704.06969}{arXiv:1704.06969}.
 
 \bibitem{Stade2025}
 J.~Stade.
 \newblock The point-boundary art gallery problem is $\exists\mathbb{R}$-hard.
-\newblock In \emph{Proc.\ 41st International Symposium on Computational Geometry (SoCG 2025)}, LIPIcs 332, 74:1--74:23, 2025.
+\newblock In \emph{Proc.\ 41st International Symposium on Computational Geometry (SoCG 2025)}, volume 332 of LIPIcs, pages 74:1--74:23, 2025.
+\newblock \href{https://doi.org/10.4230/LIPIcs.SoCG.2025.74}{doi:10.4230/LIPIcs.SoCG.2025.74}.
 
 \bibitem{GuibasHershberger1989}
 L.~J. Guibas, J.~Hershberger.
 \newblock Optimal shortest path queries in a simple polygon.
 \newblock \emph{Journal of Computer and System Sciences}, 39(2):126--152, 1989.
+\newblock \href{https://doi.org/10.1016/0022-0000(89)90041-X}{doi:10.1016/0022-0000(89)90041-X}.
 
 \bibitem{Guibas1987}
 L.~J. Guibas, J.~Hershberger, D.~Leven, M.~Sharir, R.~E. Tarjan.
 \newblock Linear-time algorithms for visibility and shortest path problems inside triangulated simple polygons.
 \newblock \emph{Algorithmica}, 2:209--233, 1987.
+\newblock \href{https://doi.org/10.1007/BF01840360}{doi:10.1007/BF01840360}.
 
 \bibitem{LeePreparata1979}
 D.~T. Lee, F.~P. Preparata.
 \newblock An optimal algorithm for finding the kernel of a polygon.
 \newblock \emph{Journal of the ACM}, 26(3):415--421, 1979.
+\newblock \href{https://doi.org/10.1145/322139.322142}{doi:10.1145/322139.322142}.
 
-\bibitem{HershbergerSuri1993}
+\bibitem{HershbergerSuri1995}
 J.~Hershberger, S.~Suri.
 \newblock A pedestrian approach to ray shooting: shoot a ray, take a walk.
-\newblock In \emph{Proc.\ 4th ACM-SIAM Symposium on Discrete Algorithms (SODA 1993)}, 54--63, 1993.
+\newblock \emph{Journal of Algorithms}, 18(3):403--431, 1995.
+\newblock \href{https://doi.org/10.1006/jagm.1995.1017}{doi:10.1006/jagm.1995.1017}.
+\newblock Preliminary version in \emph{Proc.\ 4th ACM-SIAM Symposium on Discrete Algorithms (SODA 1993)}, 54--63.
 
 \end{thebibliography}
 

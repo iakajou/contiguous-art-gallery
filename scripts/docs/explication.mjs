@@ -289,7 +289,7 @@ Bande : taille du glouton depuis $x$ (vert $=k$, orange $=k+1$) ; traits : $U_P$
 <li>Guibas, Hershberger. Optimal shortest path queries in a simple polygon. JCSS 1989.</li>
 <li>Guibas, Hershberger, Leven, Sharir, Tarjan. Linear-time algorithms for visibility and shortest path problems… Algorithmica 1987.</li>
 <li>Lee, Preparata. An optimal algorithm for finding the kernel of a polygon. J. ACM 1979.</li>
-<li>Hershberger, Suri. A pedestrian approach to ray shooting. SODA 1993.</li>
+<li>Hershberger, Suri. A pedestrian approach to ray shooting: shoot a ray, take a walk. <i>Journal of Algorithms</i> 18(3):403–431, 1995 (version préliminaire : SODA 1993).</li>
 </ol>
 `;
 }
