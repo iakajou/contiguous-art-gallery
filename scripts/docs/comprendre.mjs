@@ -12,7 +12,7 @@ const COLORS = ['#2563eb', '#16a34a', '#9333ea', '#d97706', '#0891b2', '#db2777'
 const poly = (id) => polygonFromArray(PRESETS[id].points);
 
 // ---------------------------------------------------------------- small figures
-function figBasics() {
+export function figBasics() {
   const P = poly('ushape');
   const mid = (a, b) => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
   return figure(P, [
@@ -27,7 +27,7 @@ function figBasics() {
   ], { width: 400 });
 }
 
-function figSee() {
+export function figSee() {
   const P = poly('ushape');
   const g = { x: 250, y: 200 };
   const r = P.v(4); // the reflex corner
@@ -48,7 +48,7 @@ function figSee() {
 }
 
 /** The boundary drawn as a loop, with the chains of a solution as coloured arcs. */
-function figLoop(P, guards, size = 240) {
+export function figLoop(P, guards, size = 240) {
   const L = P.perimeterLength();
   const R = 80, c = 110;
   const arc = (a, b, color, w) => {
@@ -71,7 +71,7 @@ function figLoop(P, guards, size = 240) {
 }
 
 /** Two rows of intervals on the boundary cut open at u: greedy vs optimal. */
-function figStrip(P, u, greedy, opt) {
+export function figStrip(P, u, greedy, opt) {
   const L = P.perimeterLength();
   const W = 520, x0 = 90, rowH = 30;
   const X = (t) => (mod(P.arcLength(t) - P.arcLength(u), L) / L) * W;
@@ -94,7 +94,7 @@ function figStrip(P, u, greedy, opt) {
   return `${s}</svg>`;
 }
 
-function complexityBars() {
+export function complexityBars() {
   const n = 100, k = 5, lg = Math.log2(n);
   const rows = [
     ['SoCG 2025 (3 équipes)', 'O(k n⁵ log n)', k * n ** 5 * lg, '#f43f5e'],
@@ -118,7 +118,7 @@ function panel(polys, extras = '', { w = 150, box = [0, 0, 400, 300], title = ''
   return `<figure class="mini">${s}<figcaption><b style="color:${ok ? '#059669' : '#dc2626'}">${ok ? '✓' : '✗'}</b> ${title}</figcaption></figure>`;
 }
 
-function figSimple() {
+export function figSimple() {
   const simple = panel([{ pts: [[0, 0], [400, 0], [400, 300], [250, 300], [250, 140], [150, 140], [150, 300], [0, 300]] }], '', { title: 'simple : un seul contour, pas de croisement, pas de trou' });
   const cross = panel([{ pts: [[0, 0], [400, 300], [400, 0], [0, 300]], fill: '#fee2e2' }], '', { title: 'pas simple : le contour se croise', ok: false });
   const hole = panel([{ pts: [[0, 0], [400, 0], [400, 300], [0, 300]], holes: [[[150, 100], [150, 200], [250, 200], [250, 100]]], fill: '#fee2e2' }], '', { title: 'pas simple : il y a un trou', ok: false });
@@ -126,7 +126,7 @@ function figSimple() {
 }
 
 /** With a hole, a point can see both ends of a wall without seeing its middle. */
-function figHoleShadow() {
+export function figHoleShadow() {
   const g = [200, 250];
   const L = 146.4, R = 253.6; // shadow of the hole on the bottom wall
   const extras = `
@@ -374,11 +374,11 @@ Si $n$ double, un algorithme en $O(n^2)$ fait environ 4 fois plus de travail ; e
 <p style="text-align:center" class="big">$O(n^2)$ départs $\times$ $O(k)$ étapes $\times$ $O(\log^2 n)$ par étape $=$ $\mathbf{O(k\,n^2\log^2 n)}$</p>
 <p>Pour une galerie de $n=100$ coins et $k=5$ caméras, voici l'ordre de grandeur du nombre d'opérations (échelle logarithmique) :</p>
 ${complexityBars()}
-<p><b>Et après ?</b> Quelques mois plus tard, les mêmes auteurs ont trouvé l'algorithme le plus rapide possible, en $\Theta(n\log n)$ : une liste de départs de taille $n$
+<p><b>Et après ?</b> Quelques mois plus tard, trois des mêmes auteurs, avec E. Rotenberg, ont trouvé l'algorithme le plus rapide possible, en $\Theta(n\log n)$ : une liste de départs de taille $n$
 seulement, et une façon astucieuse de calculer $\mathrm{next}$ pour tous les départs à la fois. Ils montrent aussi qu'on ne peut pas faire mieux. À l'oral, une phrase suffit.</p>
 
 <h2>11. Comment l'article est construit</h2>
-<p>L'article (arXiv:2508.09734, 11 pages) suit exactement les idées ci-dessus. Voici où trouver chaque morceau :</p>
+<p>L'article (arXiv:2508.09734, 12 pages avec les références) suit exactement les idées ci-dessus. Voici où trouver chaque morceau :</p>
 <table><thead><tr><th>Section de l'article</th><th>Ce qu'elle fait</th><th>Ici</th><th>Sur le site</th></tr></thead><tbody>
 <tr><td>2. Préliminaires</td><td>polygone simple, chaînes, noyau de visibilité ; une caméra suffit ssi la galerie est étoilée (obs. 2.1, 2.2)</td><td>§2, §3, §5</td><td>chapitre 1</td></tr>
 <tr><td>3. Vue d'ensemble</td><td>le plan de la preuve en une page</td><td>§1</td><td>page « The proof »</td></tr>
@@ -420,10 +420,11 @@ Pour une démonstration, la figure 1 (bouger une caméra) et le jeu (page <em>Pl
 <tr><td>Quelque chose de créatif qui montre la compréhension</td><td>site didactique, animations, jeu</td><td class="ok">fait</td></tr>
 <tr><td>De la programmation en JavaScript qui tourne dans la page</td><td>le solveur, les 11 figures et le jeu</td><td class="ok">fait</td></tr>
 <tr><td>Un rapport avec une bibliographie en forme standard</td><td>page <em>Report</em>, section R.7</td><td class="ok">fait</td></tr>
-<tr><td>Note sur la répartition du travail et l'aide extérieure (humaine ou IA)</td><td>« Explained by » sur chaque chapitre ; rapport R.5 (qui explique quoi, qui est responsable de quel code, remerciements) et R.6 (IA)</td><td class="ok">fait</td></tr>
+<tr><td>Note sur la répartition du travail et l'aide extérieure (humaine ou IA)</td><td>« Explained by » sur chaque chapitre ; rapport R.5 « Team: who did what » (qui a fait chaque étape de la preuve, avec sa figure et son code ; les autres parties ; remerciements) et R.6 (IA) ; une fiche par personne</td><td class="ok">fait</td></tr>
 <tr><td>Reconnaître l'aide de l'IA dans le rapport, citer ses sources</td><td>rapport R.6</td><td class="ok">fait</td></tr>
 <tr><td>Journal IA : outils, prompts, vérifications, décisions</td><td>docs/AI_journal_EN_draft.pdf, à fournir avec la remise finale</td><td class="todo">parties 4 et 5 à écrire nous-mêmes</td></tr>
 <tr><td>Une courte présentation</td><td>l'accueil sert de support ; plan dans le dossier complet (partie C)</td><td class="todo">à répéter</td></tr>
+<tr><td>Suivre le retour du prof : partie 1 courte, tous les deux sur la partie 2, des widgets pour la preuve</td><td>accueil 01–02 court ; preuve partagée (Ilias 2.1–2.4, Jomaa 2.5–2.10) ; 11 figures interactives</td><td class="ok">fait</td></tr>
 <tr><td>Une page publique</td><td>iakajou.github.io/contiguous-art-gallery</td><td class="ok">fait</td></tr>
 <tr><td>Un lien vers un dépôt git public avec tout le code, sur la page</td><td>github.com/iakajou/contiguous-art-gallery (barre du haut, pied de page, rapport)</td><td class="ok">fait</td></tr>
 <tr><td>Remise sur l'UV : le zip, le lien de la page et le lien du dépôt dans le texte</td><td>Guarding-Walls-Contiguously.zip</td><td class="todo">prêt : chacun de nous deux dépose la même remise</td></tr>

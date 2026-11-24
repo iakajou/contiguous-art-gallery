@@ -61,7 +61,7 @@ contiguïté semblait rendre le problème plus dur, mais c'est l'inverse : chaqu
 et couvrir un cercle par des intervalles est facile dès qu'on sait quels intervalles utiliser. C'est exactement ce que le glouton exploite.</p>
 <table><thead><tr><th>Année</th><th>Référence</th><th>Idée</th><th>Temps</th></tr></thead><tbody>
 <tr><td>2024</td><td>Shermer (CCCG)</td><td>problème posé</td><td>ouvert</td></tr>
-<tr><td>2024–25</td><td>[2], [3], [4] → [1] (SoCG 2025)</td><td>glouton répété / $O(n^4)$ candidats / arcs analytiques</td><td>$O(kn^5\log n)$, $O(n^6\log n)$</td></tr>
+<tr><td>2024–25</td><td>[2], [3], [4] → [1] (SoCG 2025)</td><td>glouton répété / $O(n^4)$ candidats / arcs analytiques</td><td>$O(kn^5\log n)$</td></tr>
 <tr class="hl"><td>2025</td><td>[5] de Berg, Conradi, van der Hoog, Staals</td><td>glouton depuis $O(n^2)$ départs</td><td>$O(kn^2\log^2 n)$</td></tr>
 <tr><td>2025–26</td><td>[6] de Berg, Conradi, van der Hoog, Rotenberg</td><td>dominateurs, fenêtre glissante, Möbius</td><td>$\Theta(n\log n)$</td></tr>
 </tbody></table>

@@ -55,7 +55,7 @@ export default function GoodBadWidget() {
       controls={<PresetPicker value={preset} onChange={setPreset} ids={['notch', 'badpair', 'ushape', 'comb', 'gallery']} />}
       caption={<>
         A contiguous guard <M>(g,[u,v])</M> is <strong>bad</strong> when it satisfies the four conditions of Definition 4.1,
-        and <strong>good</strong> otherwise. The orange arc is the angle <M>\angle(u,g,v)</M> swept counter-clockwise from{' '}
+        and <strong>good</strong> otherwise. The orange arc is the angle <M>\angle(v,g,u)</M> under which <M>g</M> sees its chain, swept counter-clockwise from{' '}
         <M>u</M> to <M>v</M>; the purple dashed path is the shortest path from <M>u</M> to <M>v</M> inside <M>P</M>.
         A bad guard looks "around a corner": it sees more than a half-turn of boundary while <M>u</M> and <M>v</M> cannot
         see each other.
@@ -81,7 +81,7 @@ export default function GoodBadWidget() {
       <ul className="checks">
         <Check ok={cls.I}>(I) the open chain <M>(u,v)</M> contains a vertex of <M>P</M> ({inner.length} {inner.length === 1 ? 'vertex' : 'vertices'})</Check>
         <Check ok={cls.II}>(II) <M>{'u \\neq g'}</M> and <M>{'v \\neq g'}</M></Check>
-        <Check ok={cls.III}>(III) <M>{'\\angle(u,g,v) > \\pi'}</M> (here {cls.angle !== null ? deg(cls.angle) : '–'})</Check>
+        <Check ok={cls.III}>(III) <M>{'\\angle(v,g,u) > \\pi'}</M> (here {cls.angle !== null ? deg(cls.angle) : '–'})</Check>
         <Check ok={cls.IV}>(IV) the shortest path from <M>u</M> to <M>v</M> is not a single segment {path ? `(${path.pts.length - 1} segment${path.pts.length > 2 ? 's' : ''})` : ''}</Check>
       </ul>
     </Widget>

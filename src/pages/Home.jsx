@@ -271,7 +271,7 @@ function Result() {
         </Reveal>
         <Reveal><ComplexityRace /></Reveal>
         <Reveal className="note-row">
-          A few months later, the same group reached the optimal <M>{'\\Theta(n\\log n)'}</M>: only <M>O(n)</M> starting points, and the function{' '}
+          A few months later, three of the same authors, with E. Rotenberg, reached the optimal <M>{'\\Theta(n\\log n)'}</M>: only <M>O(n)</M> starting points, and the function{' '}
           <M>{'\\mathrm{next}'}</M> described by <M>O(n)</M> simple pieces. <a className="arrow-link" href={link('/proof/5')}>Chapter 5 →</a>
         </Reveal>
       </div>
@@ -282,9 +282,9 @@ function Result() {
 function Verified() {
   const stats = [
     { v: 11, s: '', label: 'interactive figures, one per step of the proof' },
-    { v: 13082, s: '', label: 'random guards on which every replacement lemma was checked' },
+    { v: 10028, s: '', label: 'random guards on which the replacement lemmas were checked' },
     { v: 1541, s: '', label: 'automatic checks against brute force, all passing' },
-    { v: 0.4, s: ' s', label: 'to solve a 40-vertex gallery in the browser', f: (x) => x.toFixed(1) },
+    { v: 0.4, s: ' s', label: 'or less to solve a 40-vertex gallery in the browser', f: (x) => x.toFixed(1) },
   ];
   return (
     <section id="verified" className="home-sec">

@@ -58,7 +58,7 @@ ${part('A', 'Le projet en un coup d\'œil', 'Ce qui a été fait, et comment les
 <p>Le <em>Contiguous Art Gallery Problem</em> : dans une galerie (un polygone simple $P$ à $n$ sommets), chaque caméra filme <strong>une seule portion continue de mur</strong>.
 Combien faut-il de caméras, au minimum, pour filmer tous les murs ? Contrairement à presque toutes les variantes de la galerie d'art (NP-difficiles ou $\exists\mathbb{R}$-complètes),
 ce problème se résout en temps polynomial. Notre projet explique l'algorithme de de Berg, Conradi, van der Hoog et Staals [5] en $O(kn^2\log^2 n)$, et résume l'algorithme optimal
-en $\Theta(n\log n)$ des mêmes auteurs [6].</p>
+en $\Theta(n\log n)$ de trois des mêmes auteurs avec E. Rotenberg [6].</p>
 <p class="remark"><b>Hypothèse essentielle : $P$ est un polygone simple</b> (un seul contour qui ne se croise pas, sans trou). Le bord est alors une seule boucle, les plus courts chemins sont uniques et toute courbe fermée dans $P$ n'entoure que des points de $P$ : toutes les preuves en dépendent. Avec des trous, la méthode de Merrild et al. échoue et la complexité du problème est ouverte. Le site le dit sur l'accueil, au chapitre 1 et dans le rapport ; le solveur refuse un polygone non simple.</p>
 <h2>A.2 Les demandes du professeur et ce que nous avons fait</h2>
 <table><thead><tr><th>Remarque</th><th>Ce qui est fait</th></tr></thead><tbody>
@@ -74,17 +74,18 @@ en $\Theta(n\log n)$ des mêmes auteurs [6].</p>
 <li><strong>Ce dossier</strong>, plus deux brouillons à compléter : la répartition du travail et le journal IA (docs/).</li>
 <li><strong>L'archive</strong> à envoyer : sources, aperçu du site en un seul fichier HTML, documents.</li>
 </ul>
-<h2>A.4 Répartition des explications</h2>
-<table><thead><tr><th>Partie</th><th>Contenu</th><th>Explique</th></tr></thead><tbody>
-<tr><td>Accueil 01–02</td><td>Le problème, pourquoi c'est surprenant</td><td>Ilias</td></tr>
-<tr><td>Chapitre 1</td><td>Noyaux de visibilité, glouton, borne $k+1$</td><td>Ilias</td></tr>
-<tr><td>Chapitre 2</td><td>Bons/mauvais gardiens, lemmes de remplacement</td><td>Ilias</td></tr>
-<tr><td>Chapitre 3</td><td>$G_P$, $U_P$, théorème 5.4</td><td>Jomaa</td></tr>
-<tr><td>Chapitre 4</td><td>Lemme 6.2, lemme 6.8, algorithme complet</td><td>Jomaa</td></tr>
-<tr><td>Chapitre 5</td><td>Algorithme optimal $\Theta(n\log n)$</td><td>Jomaa</td></tr>
-<tr><td>Jeu, rapport</td><td>—</td><td>les deux</td></tr>
+<h2>A.4 Qui a fait quoi</h2>
+<p>Comme le prof l'a demandé : la partie 1 (le problème) est courte, et nous travaillons tous les deux sur la partie 2, l'algorithme, coupée en deux moitiés de la preuve.
+Le détail étape par étape, avec le widget et le code de chaque étape, est dans la section R.5 du rapport et dans les deux fiches <code>Contribution_*.pdf</code>.</p>
+<table><thead><tr><th>Partie</th><th>Contenu</th><th>Qui</th></tr></thead><tbody>
+<tr><td>1. Le problème (court)</td><td>Accueil 01–02, figure 1, polygone simple</td><td>Ilias (Jomaa a signalé l'hypothèse manquante)</td></tr>
+<tr><td>2. Algorithme, 1<sup>re</sup> moitié</td><td>Sections 2.1–2.4, figures 2–5 : noyaux, glouton, bons/mauvais gardiens, remplacement</td><td>Ilias</td></tr>
+<tr><td>2. Algorithme, 2<sup>e</sup> moitié</td><td>Sections 2.5–2.10, figures 6–11 : $G_P$, $U_P$, théorème 5.4, lemme 6.2, pas glouton, algorithme complet, $\Theta(n\log n)$</td><td>Jomaa</td></tr>
+<tr><td>3. Le jeu</td><td>Jeu, bac à sable, polygones aléatoires</td><td>Ilias</td></tr>
+<tr><td>Validation</td><td>Tests automatiques, accueil 05</td><td>Jomaa</td></tr>
+<tr><td>4. Le rapport</td><td>R.1–R.2 / R.3–R.4 / R.5–R.7</td><td>Ilias / Jomaa / les deux</td></tr>
 </tbody></table>
-<p class="remark">Cette répartition est une proposition : elle se change dans <code>src/sections/blocks.jsx</code> (noms) et dans <code>src/pages/ChapterPage.jsx</code> / <code>src/sections/chapters.jsx</code> (attributs <code>author</code>).</p>
+<p class="remark">Les noms affichés sur le site se changent dans <code>src/sections/blocks.jsx</code> (noms) et dans <code>src/pages/ChapterPage.jsx</code> / <code>src/sections/chapters.jsx</code> (attributs <code>author</code>).</p>
 
 ${part('B', 'Visite du site', 'Une page d\'accueil courte pour l\'oral, et des pages de détail pour tout le reste.')}
 <h2>B.1 Plan du site</h2>

@@ -17,7 +17,7 @@ const START = {
 const LEMMA_TEXT = {
   '4.2': <>Condition (I) fails: <M>(u,v)</M> lies inside one edge <M>e</M>. Either endpoint of <M>e</M> sees the whole edge (Lemma 4.2).</>,
   '4.4': <>Condition (II) fails: <M>g = u</M>. Then <M>P_g</M> is the polygon bounded by <M>[u,v]</M> and <M>vu</M> (Lemma 4.4).</>,
-  '4.5': <>Condition (III) fails: <M>{'\\angle(u,g,v) \\le \\pi'}</M>. The polygon <M>P_g</M> (grey) lies left of <M>gu</M> and <M>vg</M>,
+  '4.5': <>Condition (III) fails: <M>{'\\angle(v,g,u) \\le \\pi'}</M>. The polygon <M>P_g</M> (grey) lies left of <M>gu</M> and <M>vg</M>,
     so any point of <M>{'P_E \\cap P_g'}</M> is in the kernel of <M>P_g</M> and sees all of <M>[u,v]</M> (Lemma 4.5).</>,
   '4.6': <>Condition (IV) fails: <M>u</M> sees <M>v</M>. Then <M>{'P_g \\subseteq P\''}</M>, the polygon bounded by <M>[u,v]</M> and
     the segment <M>vu</M>, and the same argument works inside <M>P'</M> (Lemma 4.6).</>,

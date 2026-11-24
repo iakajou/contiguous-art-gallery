@@ -18,6 +18,9 @@ Code (GitHub) : https://github.com/iakajou/contiguous-art-gallery
    Commencer par Le_sujet_explique.pdf : tout le sujet explique simplement,
    depuis zero (14 pages), avec l'oral en 30 s et en 2 min, et ce que le
    cours demande.
+   Puis Le_projet_explique_en_detail.pdf (38 pages) : tout le projet en
+   detail, depuis zero (le cours, le probleme, chaque etape de l'algorithme,
+   notre code, le site, l'oral, des questions pour se tester).
    Ensuite :
    Dossier_complet.pdf explique tout :
      A. le projet en un coup d'oeil (et les demandes du prof)
@@ -65,7 +68,7 @@ Code (GitHub) : https://github.com/iakajou/contiguous-art-gallery
 
 6. RESTE A FAIRE
    [ ] relire les chapitres face a l'article et preparer l'oral avec nos mots
-   [ ] valider la repartition des explications (Ilias : ch. 1-2, Jomaa : ch. 3-5)
+   [ ] valider "qui a fait quoi" (rapport R.5 : Ilias sections 2.1-2.4, Jomaa 2.5-2.10)
    [ ] relire les deux fiches Contribution_*.pdf et les signer
    [ ] completer projet/docs/Work_split_EN_draft.pdf
        (source : projet/scripts/docs/admin.mjs, puis "npm run docs")

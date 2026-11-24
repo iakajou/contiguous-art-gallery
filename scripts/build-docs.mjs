@@ -12,6 +12,7 @@ import dossier from './docs/dossier.mjs';
 import comprendre from './docs/comprendre.mjs';
 import oralPerson from './docs/oral_person.mjs';
 import contribution from './docs/contribution.mjs';
+import projetDetaille from './docs/projet_detaille.mjs';
 import { workSplit, aiJournal } from './docs/admin.mjs';
 import { Solver } from '../src/geometry/solver.js';
 import { randomPolygon } from '../src/geometry/generate.js';
@@ -139,6 +140,7 @@ const today = new Date().toISOString().slice(0, 10);
 
 const DOCS = [
   ['Le_sujet_explique_FR', 'Tout le sujet, expliqué simplement', () => comprendre()],
+  ['Le_projet_explique_en_detail_FR', 'Le projet expliqué en détail', () => projetDetaille(stats)],
   ['oral/Oral_Ilias_FR', 'Oral — Ilias', () => oralPerson('ilias')],
   ['oral/Oral_Jomaa_FR', 'Oral — Jomaa', () => oralPerson('jomaa')],
   ['Guarding_Walls_Contiguously_Dossier_complet', 'Dossier complet', () => dossier(stats)],

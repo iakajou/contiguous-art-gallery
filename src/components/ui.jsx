@@ -112,7 +112,7 @@ export function Stepper({ steps, step, setStep }) {
 }
 
 export function Check({ ok, children }) {
-  return <li className={ok ? 'ok' : 'no'}><span className="mark">{ok ? '✓' : '✗'}</span> {children}</li>;
+  return <li className={ok ? 'ok' : 'no'}><span className="mark">{ok ? '✓' : '✗'}</span><span className="check-text">{children}</span></li>;
 }
 
 export function Badge({ kind, children }) {

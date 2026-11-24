@@ -5,3 +5,9 @@ docs/html/
 .DS_Store
 docs/*_draft.pdf
 docs/oral/
+
+# LaTeX build files
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc

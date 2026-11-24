@@ -42,7 +42,7 @@ const qa = (list) => `<div class="qa">${list.map(([q, a]) => `<p class="q">${q}<
 
 const COMMON_QA = [
   ['Comment avez-vous utilisé l\'IA ?', 'Nous avons utilisé un assistant IA (Claude, d\'Anthropic) pour comprendre les articles et pour implémenter et tester le code du site. Nous avons relu, testé et corrigé ses résultats : par exemple, un premier choix faux dans le lemme 6.2 a été corrigé grâce aux tests, et l\'hypothèse « polygone simple » a été ajoutée sur l\'accueil après la relecture de Jomaa. Notre journal IA détaille les outils, les prompts importants, ce qu\'on a vérifié et nos décisions.'],
-  ['Qui a fait quoi ?', 'Ilias explique l\'introduction, le glouton et les bons/mauvais gardiens (chapitres 1–2) ; Jomaa explique les points de départ, le théorème 5.4, le calcul rapide et l\'algorithme optimal (chapitres 3–5) et la validation. Chacun est responsable de la partie du code liée à ses chapitres (tableau de la section R.5 du rapport).'],
+  ['Qui a fait quoi ?', 'Comme le prof l\'a demandé, la partie 1 (le problème) est courte et nous avons tous les deux travaillé sur la partie 2, l\'algorithme, en la coupant en deux moitiés de la preuve. Ilias a fait la première moitié (noyaux, glouton, bons et mauvais gardiens, remplacement : sections 2.1–2.4, figures 2–5), plus la partie 1, le jeu et la structure du site. Jomaa a fait la deuxième moitié ($G_P$, $U_P$, théorème 5.4, lemme 6.2, pas glouton, algorithme complet, $\\Theta(n\\log n)$ : sections 2.5–2.10, figures 6–11), plus les tests. Le détail, étape par étape avec le code, est dans la section R.5 du rapport.'],
 ];
 
 const CHECK = `<ul class="check">
@@ -191,7 +191,7 @@ ${seg({
     screen: 'La formule et la « course » des complexités ; bouger le curseur $n$.',
     demo: 'Faire glisser le curseur $n$ de 100 à 1000 : les écarts entre les barres augmentent.',
     say: String.raw`<p>« En tout : $O(n^2)$ départs, fois $O(k)$ pas de glouton, fois $O(\log^2 n)$ par pas : $O(k\,n^2\log^2 n)$, au lieu de $O(kn^5\log n)$ avant. Pour $n=100$, on passe d'environ $10^{11}$ à $10^6$ opérations. »</p>
-<p>« Quelques mois plus tard, les mêmes auteurs ont obtenu $\Theta(n\log n)$ : seulement $O(n)$ départs, une fenêtre glissante pour calculer $\mathrm{next}$ partout en $O(n\log n)$, et $\mathrm{next}$ décrite par $O(n)$ morceaux simples, des transformations de Möbius. Ils montrent aussi qu'on ne peut pas faire mieux, par une réduction depuis le problème des ensembles disjoints. »</p>`,
+<p>« Quelques mois plus tard, trois des mêmes auteurs, avec Eva Rotenberg, ont obtenu $\Theta(n\log n)$ : seulement $O(n)$ départs, une fenêtre glissante pour calculer $\mathrm{next}$ partout en $O(n\log n)$, et $\mathrm{next}$ décrite par $O(n)$ morceaux simples, des transformations de Möbius. Ils montrent aussi qu'on ne peut pas faire mieux, par une réduction depuis le problème des ensembles disjoints. »</p>`,
     keys: 'Theorem 7.1 · $O(kn^2\\log^2 n)$ · $\\Theta(n\\log n)$ · lower bound',
   })}
 ${seg({

@@ -22,7 +22,7 @@ export default function Report() {
       <div className="links-box">
         <div><b>Public page</b><a href={SITE_URL}>{SITE_URL.replace('https://', '')}</a></div>
         <div><b>Source code</b><a href={REPO_URL}>{REPO_URL.replace('https://', '')}</a></div>
-        <div><b>Authors</b>Ilias Akajou (520466) · Jomaa Abdulrahman (583629)</div>
+        <div><b>Authors</b>Ilias Akajou (520466) · Jomaa Abdulrahman (583629) · <a href={link('/report', { s: 'team' })}>who did what</a></div>
       </div>
       <Sub id="summary" num="R.1" title="Summary of the results">
         <Thm kind="Theorem" name="de Berg, Conradi, van der Hoog, Staals 2025">
@@ -47,15 +47,17 @@ export default function Report() {
           well <Cite k="10" />. Adding the contiguity constraint looks like it should make things harder, but it does the opposite: every guard covers a single
           interval of a one-dimensional object, the boundary, and covering a circle with intervals is easy once we know which intervals to use.
         </p>
-        <table className="tbl tbl-wide">
-          <thead><tr><th>Year</th><th>Reference</th><th>Main idea</th><th>Running time</th></tr></thead>
-          <tbody>
-            <tr><td>2024</td><td>Shermer (CCCG open problem)</td><td>problem posed</td><td>open</td></tr>
-            <tr><td>2024–25</td><td><Cite k="2" /> <Cite k="3" /> <Cite k="4" /> → <Cite k="1" /> (SoCG 2025)</td><td>repeated greedy / <M>O(n^4)</M> candidates / analytic arc cover</td><td><M>O(kn^5\log n)</M>, <M>O(n^6 \log n)</M></td></tr>
-            <tr className="hl"><td>2025</td><td>de Berg, Conradi, van der Hoog, Staals <Cite k="5" /></td><td>greedy from <M>O(n^2)</M> candidate starts</td><td><M>O(kn^2\log^2 n)</M></td></tr>
-            <tr><td>2025–26</td><td>de Berg, Conradi, van der Hoog, Rotenberg <Cite k="6" /></td><td>dominators, sliding window, Möbius pieces</td><td><M>\Theta(n\log n)</M></td></tr>
-          </tbody>
-        </table>
+        <div className="tbl-scroll">
+          <table className="tbl tbl-wide">
+            <thead><tr><th>Year</th><th>Reference</th><th>Main idea</th><th>Running time</th></tr></thead>
+            <tbody>
+              <tr><td>2024</td><td>Shermer (CCCG open problem)</td><td>problem posed</td><td>open</td></tr>
+              <tr><td>2024–25</td><td><Cite k="2" /> <Cite k="3" /> <Cite k="4" /> → <Cite k="1" /> (SoCG 2025)</td><td>repeated greedy / <M>O(n^4)</M> candidates / analytic arc cover</td><td><M>O(kn^5\log n)</M></td></tr>
+              <tr className="hl"><td>2025</td><td>de Berg, Conradi, van der Hoog, Staals <Cite k="5" /></td><td>greedy from <M>O(n^2)</M> candidate starts</td><td><M>O(kn^2\log^2 n)</M></td></tr>
+              <tr><td>2025–26</td><td>de Berg, Conradi, van der Hoog, Rotenberg <Cite k="6" /></td><td>dominators, sliding window, Möbius pieces</td><td><M>\Theta(n\log n)</M></td></tr>
+            </tbody>
+          </table>
+        </div>
         <Aside title="Scope.">
           As suggested for this project, we do not re-explain the classical art gallery problem (Chvátal's <M>{'\\lfloor n/3 \\rfloor'}</M> theorem <Cite k="7" /> and its
           fan-triangulation proof), which is covered by many resources, and focus on the algorithm of <Cite k="5" />.
@@ -71,8 +73,8 @@ export default function Report() {
           <li><b>One guard.</b> Lee and Preparata <Cite k="13" />: the kernel of a polygon (the points that see all of it) can be computed in <M>O(n)</M> time; this decides whether <M>k = 1</M>.</li>
           <li><b>First polynomial algorithms (2024–2025).</b> Merrild, Rysgaard, Schou and Svenning <Cite k="2" />: the greedy algorithm uses at most <M>k+1</M> guards; restarting it <M>O(kn^3)</M> times gives an
             optimal solution in <M>O(kn^5\log n)</M> time; their approach does not extend to polygons with holes, for which the complexity is open.
-            Biniaz et al. <Cite k="3" />: a candidate set of <M>O(n^4)</M> guards always contains a guard of some optimal solution. Robson, Spalding-Jamieson and Zheng <Cite k="4" />: a reduction to the
-            <em>analytic arc cover problem</em>, where <M>{'\\mathrm{next}'}</M> has <M>O(n^3)</M> pieces, giving <M>O(n^6\log n)</M>. The three works were merged at SoCG 2025 <Cite k="1" />.</li>
+            Biniaz et al. <Cite k="3" />: an exact algorithm that computes <M>O(n^4)</M> candidate guard locations and combines them; they also show that <M>{'\\lfloor (n-2)/2 \\rfloor'}</M> contiguous guards always suffice. Robson, Spalding-Jamieson and Zheng <Cite k="4" />: a reduction to the
+            <em>analytic arc cover problem</em>, solved with tools from real algebraic geometry; they showed that <M>{'\\mathrm{next}'}</M> is a piecewise function with <M>O(n^3)</M> pieces <Cite k="6" />. The three works were merged at SoCG 2025 <Cite k="1" />.</li>
           <li><b>Our paper.</b> de Berg, Conradi, van der Hoog and Staals <Cite k="5" />: <M>O(n^2)</M> starting points suffice and one greedy step costs <M>O(\log^2 n)</M>, hence <M>O(kn^2\log^2 n)</M>.</li>
           <li><b>Optimal bound.</b> de Berg, Conradi, van der Hoog and Rotenberg <Cite k="6" />: <M>O(n)</M> starting points, <M>{'\\mathrm{next}'}</M> with <M>O(n)</M> Möbius pieces, an <M>O(n\log n)</M>
             algorithm, and a matching <M>\Omega(n\log n)</M> lower bound by reduction from set disjointness.</li>
@@ -93,7 +95,7 @@ export default function Report() {
           <li>visibility chains agree with direct segment tests on random points;</li>
           <li><M>{'\\mathrm{next}(u)'}</M> computed as in Lemma 6.8 is never beaten by a dense grid of candidate guards;</li>
           <li>the greedy from 200 evenly spaced starts never finds fewer guards than the <M>U_P</M>-based optimum, and no greedy run uses more than <M>k+1</M> guards;</li>
-          <li>on more than 13&nbsp;000 random guards, Proposition 4.3 / Corollary 4.7 (good guards) and Lemma 4.9 (bad guards) always produced a valid replacement, and our Lemma 6.2 construction always matched the visibility computation; the walk-through of Theorem 5.4 always ended at a point of <M>U_P</M>.</li>
+          <li>on the guards of 60 random polygons (<code>node tests/proofs-test.mjs 60</code>), Proposition 4.3 / Corollary 4.7 produced a valid replacement for all 8&nbsp;647 good guards and Lemma 4.9 for all 1&nbsp;381 bad guards, our Lemma 6.2 construction matched the visibility computation in all 5&nbsp;014 cases, and the walk-through of Theorem 5.4 ended at a point of <M>U_P</M> in all 61 cases.</li>
         </ul>
         <Aside title="Robustness.">
           The algorithm constantly uses points that lie exactly on supporting lines (arrangement vertices see their defining edges "edge-on") and segments that graze
@@ -102,45 +104,62 @@ export default function Report() {
         </Aside>
       </Sub>
 
-      <Sub id="team" num="R.5" title="Team, work distribution and acknowledgements">
+      <Sub id="team" num="R.5" title="Team: who did what">
         <p>
           <b>Authors.</b> Ilias Akajou (520466) and Jomaa Abdulrahman (583629). We both submit this same project.
         </p>
-        <h3 className="tbl-title">Who explains what (this site and the presentation)</h3>
-        <table className="tbl">
-          <thead><tr><th>Part</th><th>Content</th><th>Explained by</th></tr></thead>
-          <tbody>
-            <tr><td>Overview 01–02</td><td>The problem, the simple-polygon assumption, why the problem is surprising</td><td>Ilias Akajou</td></tr>
-            <tr><td>Chapter 1</td><td>Visibility cores, the greedy algorithm and its <M>k+1</M> bound</td><td>Ilias Akajou</td></tr>
-            <tr><td>Chapter 2</td><td>Good and bad guards, replacement lemmas</td><td>Ilias Akajou</td></tr>
-            <tr><td>Chapter 3</td><td>Candidate guards <M>G_P</M>, start points <M>U_P</M>, Theorem 5.4</td><td>Jomaa Abdulrahman</td></tr>
-            <tr><td>Chapter 4</td><td>Maximal visible chains (Lemma 6.2), one greedy step (Lemma 6.8), Theorem 7.1</td><td>Jomaa Abdulrahman</td></tr>
-            <tr><td>Chapter 5</td><td>The optimal <M>{'\\Theta(n\\log n)'}</M> algorithm</td><td>Jomaa Abdulrahman</td></tr>
-            <tr><td>Overview 05</td><td>Implementation and validation</td><td>Jomaa Abdulrahman</td></tr>
-            <tr><td>Overview 06, Play</td><td>The game, conclusion</td><td>Ilias Akajou</td></tr>
-          </tbody>
-        </table>
-        <h3 className="tbl-title">Who is responsible for which part of the code</h3>
-        <p>Each of us reviewed, tested and can explain the following parts (the code was written with AI assistance, see R.6).</p>
-        <table className="tbl">
-          <thead><tr><th>Ilias Akajou</th><th>Jomaa Abdulrahman</th></tr></thead>
-          <tbody>
-            <tr><td>Geometry basics: <code>vec.js</code>, <code>polygon.js</code> (visibility test), <code>visibility.js</code>, <code>core.js</code></td><td>Shortest paths and arrangement: <code>shortestPath.js</code>, <code>arrangement.js</code></td></tr>
-            <tr><td>Greedy algorithm and optimum in <code>solver.js</code> (<code>next</code>, <code>greedy</code>, <code>solve</code>)</td><td>Candidates and bad guards in <code>solver.js</code> (<code>candidateGuards</code>, <code>startPoints</code>, <code>nextBad</code>)</td></tr>
-            <tr><td>Figures 1–5 (chapters 1–2)</td><td>Proof constructions <code>proofs.js</code> and Figures 6–11 (chapters 3–5)</td></tr>
-            <tr><td>Site structure, design and animations (<code>App.jsx</code>, <code>pages/</code>, <code>anim/</code>, <code>styles.css</code>)</td><td>Tests (<code>tests/</code>) and their brute-force comparisons</td></tr>
-            <tr><td>Game and random polygons (<code>GameWidget.jsx</code>, <code>generate.js</code>)</td><td>Report sections on implementation and related work</td></tr>
-          </tbody>
-        </table>
         <p>
-          <b>Together:</b> choice of the topic, the proposal and its revision after the professor's feedback, the division of the explanations, the report, and the
-          deployment of this page. Ilias led the development sessions and chose the structure of the site (an overview for the presentation, details in chapters).
-          Jomaa reviewed the site and pointed out that the simple-polygon assumption had to be stated on the overview page, which we added.
+          <b>How we followed the professor's feedback.</b> Our proposal had four parts: 1. the problem, 2. the algorithm of <Cite k="5" />, 3. a game,
+          4. the report. It planned that Ilias would work on part 1, Jomaa on part 2, and both on parts 3 and 4. The professor asked us to keep part 1 short,
+          because the classical art gallery problem is well covered elsewhere, to both work on part 2, the core of the project, and to split its explanations,
+          with web widgets for the steps of the proof. We did so: part 1 is now a single section of the overview, and part 2 is split into two halves of the proof,
+          each of us explaining one half, with one interactive widget per step.
+        </p>
+
+        <h3 className="tbl-title">Part 2, the algorithm of [5]: who did which step of the proof</h3>
+        <div className="tbl-scroll">
+          <table className="tbl">
+            <thead><tr><th>Step of the proof</th><th>Who</th><th>Section, widget</th><th>Code</th></tr></thead>
+            <tbody>
+              <tr><td>Visibility cores; one guard is enough if and only if <M>P</M> is star-shaped (Obs. 2.1, 2.2)</td><td>Ilias</td><td>2.1, Figure 2</td><td><code>core.js</code>, <code>visibility.js</code></td></tr>
+              <tr><td>The greedy algorithm: at most <M>k+1</M> guards, and <M>k</M> from the right start</td><td>Ilias</td><td>2.2, Figure 3</td><td><code>solver.js</code>: <code>next</code>, <code>greedy</code>, <code>solve</code></td></tr>
+              <tr><td>Good and bad guards (Def. 4.1)</td><td>Ilias</td><td>2.3, Figure 4</td><td><code>solver.js</code>: <code>classifyGuard</code></td></tr>
+              <tr><td>Replacing guards by arrangement vertices (Prop. 4.3, Lemmas 4.2–4.6, Cor. 4.7, Lemma 4.9)</td><td>Ilias</td><td>2.4, Figure 5</td><td><code>proofs.js</code>: <code>replaceGoodGuard</code>, <code>lemma49</code></td></tr>
+              <tr><td>The arrangement, candidate guards <M>G_P</M> and start points <M>U_P</M> (Def. 5.1, 5.2, Lemma 5.3)</td><td>Jomaa</td><td>2.5, Figure 6</td><td><code>arrangement.js</code>; <code>solver.js</code>: <code>candidateGuards</code>, <code>startPoints</code></td></tr>
+              <tr><td>Theorem 5.4: an optimal solution starts in <M>U_P</M></td><td>Jomaa</td><td>2.6, Figure 7</td><td><code>proofs.js</code>: <code>theorem54</code></td></tr>
+              <tr><td>The maximal visible chain: two shortest paths and two rays (Lemma 6.2)</td><td>Jomaa</td><td>2.7, Figure 8</td><td><code>shortestPath.js</code>; <code>proofs.js</code>: <code>maximalChainLemma62</code></td></tr>
+              <tr><td>One greedy step in <M>{'O(\\log^2 n)'}</M>, bad guards on the line <M>\ell_u</M> (Lemmas 6.5–6.8)</td><td>Jomaa</td><td>2.8, Figure 9</td><td><code>solver.js</code>: <code>nextBad</code></td></tr>
+              <tr><td>The complete algorithm in <M>{'O(kn^2\\log^2 n)'}</M> (Theorem 7.1)</td><td>Jomaa</td><td>2.9, Figure 10</td><td>uses <code>solve</code></td></tr>
+              <tr><td>The optimal <M>{'\\Theta(n\\log n)'}</M> algorithm and its lower bound <Cite k="6" /></td><td>Jomaa</td><td>2.10, Figure 11</td><td>(not implemented)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className="tbl-title">The other parts</h3>
+        <div className="tbl-scroll">
+          <table className="tbl">
+            <thead><tr><th>Part</th><th>Ilias Akajou</th><th>Jomaa Abdulrahman</th></tr></thead>
+            <tbody>
+              <tr><td>1. The problem (kept short)</td><td>Overview 01–02 and Figure 1: the problem, the simple-polygon assumption, why the problem is surprising</td><td>Pointed out that the simple-polygon assumption had to be stated on the overview</td></tr>
+              <tr><td>Geometry basics</td><td><code>vec.js</code>, <code>polygon.js</code> (visibility test, simplicity test)</td><td></td></tr>
+              <tr><td>3. Game and sandbox</td><td>The game and the sandbox (<code>GameWidget.jsx</code>), random simple polygons (<code>generate.js</code>)</td><td></td></tr>
+              <tr><td>Validation</td><td></td><td>Automatic tests (<code>tests/</code>) and overview section 05</td></tr>
+              <tr><td>4. Report</td><td>R.1 Summary, R.2 Context</td><td>R.3 Related work, R.4 Implementation</td></tr>
+              <tr><td>Site</td><td>Structure, design and animations, deployment on GitHub Pages</td><td>Review of the site</td></tr>
+              <tr><td>Presentation (12 min)</td><td>0:00–5:15 and 11:15–12:00</td><td>5:15–11:15</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          <b>Together:</b> the choice of the topic, the proposal and its revision, the division of the work, Sections R.5–R.7 of the report, and the AI journal.
         </p>
         <p>
-          <b>Acknowledgements.</b> We thank our professor for the feedback on our proposal (keep the classical art gallery problem short, share the explanation of the
-          algorithm, illustrate the steps of the proof with widgets), and a fellow student for feedback on the course forum: the overview page had too many animations,
-          so they now play once, can be replayed, and can be switched off (⏸ in the top bar). The use of AI is acknowledged in Section R.6.
+          <b>How we worked.</b> The code, the widgets and the first drafts of the texts were produced with an AI assistant, in development sessions led by Ilias
+          (Section R.6). For each part, the person named above checked it against the paper, tested it, and explains it in the presentation.
+        </p>
+        <p>
+          <b>Acknowledgements.</b> We thank our professor for the feedback on our proposal, and a fellow student for feedback on the course forum: the overview page
+          had too many animations, so they now play once, can be replayed, and can be switched off (⏸ in the top bar). The use of AI is acknowledged in Section R.6.
         </p>
       </Sub>
 
@@ -151,7 +170,7 @@ export default function Report() {
           they are computed by our implementation, and no figure was copied from the papers.
         </p>
         <p>
-          <b>Use of AI.</b> We used an AI assistant (Claude, by Anthropic) to help us understand the papers and to implement and test the code of this site.
+          <b>Use of AI.</b> We used an AI assistant (Claude, by Anthropic) to help us understand the papers, to implement and test the code, and to draft the texts of this site.
           We reviewed, tested and corrected its results. Our AI journal, which describes this use in detail, will be provided with the final submission.
         </p>
         <p>

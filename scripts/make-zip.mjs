@@ -2,10 +2,12 @@
 //   Guarding-Walls-Contiguously.zip  (written next to the project folder)
 //   ├── VOIR_LE_SITE.html          the whole site in one file (double-click, works offline)
 //   ├── Le_sujet_explique.pdf      the subject explained simply, from zero (FR)
+//   ├── Le_projet_explique_en_detail.pdf  the whole project in detail, from zero (FR)
 //   ├── Dossier_complet.pdf        the document that explains everything
 //   ├── Contribution_*.pdf         one page per student: who explains / presents / is responsible for what
 //   ├── LISEZ-MOI.txt              how to view, run and continue the project
 //   └── projet/                    the source code (without node_modules)
+// plus a CodeSandbox archive and a submission archive (see the end of this file)
 // Usage: npm run zip   (runs build:single first)
 
 import fs from 'node:fs';
@@ -29,6 +31,8 @@ const pdf = path.join(root, 'docs', 'Guarding_Walls_Contiguously_Dossier_complet
 if (fs.existsSync(pdf)) fs.copyFileSync(pdf, path.join(dir, 'Dossier_complet.pdf'));
 const easy = path.join(root, 'docs', 'Le_sujet_explique_FR.pdf');
 if (fs.existsSync(easy)) fs.copyFileSync(easy, path.join(dir, 'Le_sujet_explique.pdf'));
+const detail = path.join(root, 'docs', 'Le_projet_explique_en_detail_FR.pdf');
+if (fs.existsSync(detail)) fs.copyFileSync(detail, path.join(dir, 'Le_projet_explique_en_detail.pdf'));
 for (const f of ['Contribution_Ilias_Akajou.pdf', 'Contribution_Jomaa_Abdulrahman.pdf']) {
   const src = path.join(root, 'docs', f);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(dir, f));
@@ -69,3 +73,23 @@ if (fs.existsSync(sbOut)) fs.rmSync(sbOut);
 execFileSync('zip', ['-r', '-q', '-X', sbOut, sbName], { cwd: sbStage });
 fs.rmSync(sbStage, { recursive: true, force: true });
 console.log(`✓ ${sbOut} (${(fs.statSync(sbOut).size / 1e6).toFixed(1)} MB)`);
+
+// Third archive: the submission. Exactly the files of the git repository (what `git add -A` would
+// commit: no drafts, no presentation notes, no build files), plus the offline site and the report PDF.
+const subName = `${name}-Submission`;
+const subOut = path.resolve(root, '..', `${subName}.zip`);
+const subStage = fs.mkdtempSync(path.join(os.tmpdir(), 'cag-sub-'));
+const subDir = path.join(subStage, subName);
+const tracked = execFileSync('git', ['ls-files', '-co', '--exclude-standard'], { cwd: root, encoding: 'utf8' })
+  .split('\n').filter((f) => f && fs.existsSync(path.join(root, f)));
+for (const f of tracked) {
+  fs.mkdirSync(path.dirname(path.join(subDir, f)), { recursive: true });
+  fs.copyFileSync(path.join(root, f), path.join(subDir, f));
+}
+fs.copyFileSync(path.join(root, 'dist-single', 'index.html'), path.join(subDir, 'site-offline.html'));
+const reportPdf = path.join(root, 'report', 'main.pdf');
+if (fs.existsSync(reportPdf)) fs.copyFileSync(reportPdf, path.join(subDir, 'Report.pdf'));
+if (fs.existsSync(subOut)) fs.rmSync(subOut);
+execFileSync('zip', ['-r', '-q', '-X', subOut, subName], { cwd: subStage });
+fs.rmSync(subStage, { recursive: true, force: true });
+console.log(`✓ ${subOut} (${(fs.statSync(subOut).size / 1e6).toFixed(1)} MB, ${tracked.length} files from the repository)`);

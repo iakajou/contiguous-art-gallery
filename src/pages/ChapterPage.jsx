@@ -32,7 +32,7 @@ export const CHAPTERS = [
   },
   {
     id: 5, short: 'Θ(n log n)', title: 'Towards the optimal Θ(n log n)', author: 'jomaa', comp: Chapter5, hue: 'cyan',
-    lead: 'A few months later the same group reached Θ(n log n): linear-size start sets, a sliding window, and the function next as O(n) Möbius pieces, with a matching lower bound.',
+    lead: 'A few months later three of the same authors, with E. Rotenberg, reached Θ(n log n): linear-size start sets, a sliding window, and the function next as O(n) Möbius pieces, with a matching lower bound.',
     sections: [['optimal', '2.10 The optimal algorithm']],
     refs: 'de Berg, Conradi, van der Hoog, Rotenberg (arXiv:2511.02960)',
   },

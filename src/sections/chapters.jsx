@@ -85,7 +85,7 @@ export function Chapter2() {
       <Sub id="goodbad" num="2.3" title="Good and bad guards" author="ilias">
         <p>
           To discretise the possible solutions, the paper splits contiguous guards in two classes. Intuitively a guard is <em>good</em> if the angle{' '}
-          <M>{'\\angle(u,g,v)'}</M> under which it sees its chain is at most <M>\pi</M>, and <em>bad</em> if it sees "around" an obstacle, with an angle larger
+          <M>{'\\angle(v,g,u)'}</M> under which it sees its chain is at most <M>\pi</M>, and <em>bad</em> if it sees "around" an obstacle, with an angle larger
           than <M>\pi</M>. The precise definition has four conditions.
         </p>
         <Thm kind="Definition" name="4.1">
@@ -281,7 +281,7 @@ export function Chapter4() {
         <NextStepWidget />
       </Sub>
 
-      <Sub id="full" num="2.9" title="The complete algorithm and its running time" author="ilias">
+      <Sub id="full" num="2.9" title="The complete algorithm and its running time" author="jomaa">
         <Thm kind="Theorem" name="7.1">
           Given a simple polygon <M>P</M> with <M>n</M> vertices, a minimum set of <M>k</M> contiguous guards covering <M>\partial P</M> can be computed in{' '}
           <M>O(kn^2 \log^2 n)</M> time and <M>O(n^2)</M> space.

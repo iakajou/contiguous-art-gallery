@@ -83,6 +83,11 @@ The repository contains `.codesandbox/tasks.json`: CodeSandbox installs the depe
 
 Without GitHub: create a new Devbox, upload the files of the zip, then run `npm install` and `npm run dev -- --host` in its terminal.
 
+## Report in LaTeX
+
+`report/main.tex` (with `report/figures/`) is the written report as a LaTeX document, with the same content as the Report page.
+It compiles with pdfLaTeX, for example on Overleaf (New Project → Upload Project → the zip of the `report` folder). `report/main.pdf` is the compiled version.
+
 ## Important assumption
 
 The input must be a **simple polygon** (one closed boundary that does not cross itself, no holes). All the papers assume it, and the algorithm
