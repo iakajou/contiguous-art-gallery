@@ -147,7 +147,7 @@ const DOCS = [
   ['Work_split_EN_draft', 'Work distribution', () => workSplit()],
   ['Contribution_Ilias_Akajou', 'Individual contribution — Ilias Akajou', () => contribution('ilias')],
   ['Contribution_Jomaa_Abdulrahman', 'Individual contribution — Jomaa Abdulrahman', () => contribution('jomaa')],
-  // the AI journal is now written in LaTeX: report/ai_journal.tex -> docs/AI_journal_EN.pdf
+  // the AI journal is a PDF provided by the students: docs/AI_journal_EN.pdf
 ];
 const onlyArg = (process.argv.find((a) => a.startsWith('--only=')) || '').slice(7);
 for (const [file, title, make] of DOCS) {
